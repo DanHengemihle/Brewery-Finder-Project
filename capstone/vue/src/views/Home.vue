@@ -12,14 +12,6 @@ export default {
 </script>
 
 
-<<<<<<< HEAD
-<style scoped>
-
-
-
-
-=======
 <style>
->>>>>>> main
 
 </style>
