@@ -125,23 +125,4 @@ div{
 
 
 
-
-
-
-
-#login  {
-  background-image: url('/centermug.jpg'); 
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin:0;
-  padding:0;
-
-  display: flex;
-flex-wrap: wrap;
-justify-content: center;
-}
-
-
 </style>
