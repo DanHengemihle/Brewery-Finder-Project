@@ -79,7 +79,6 @@ export default {
   }
 };
 </script>
-<<<<<<< HEAD
 
 <style scoped>
 
@@ -127,9 +126,8 @@ div{
 
 
 
-</style>
-=======
-<style>
+
+
 
 #login  {
   background-image: url('/centermug.jpg'); 
@@ -147,4 +145,3 @@ justify-content: center;
 
 
 </style>
->>>>>>> main
