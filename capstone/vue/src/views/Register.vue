@@ -90,4 +90,14 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#register  {
+  background-image: url('/halfpagemug.jpg'); 
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin:0;
+  padding:0;
+}
+</style>
