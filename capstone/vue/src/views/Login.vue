@@ -1,5 +1,9 @@
 <template>
+
+  
+
   <div id="login" class="text-center">
+   
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div
@@ -35,6 +39,7 @@
       <button type="submit">Sign in</button>
     </form>
   </div>
+
 </template>
 
 <script>
@@ -74,3 +79,50 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+
+
+
+#text-center{
+
+  display: flex;
+flex-direction: row;
+justify-content: space-around;
+justify-content: space-evenly;
+}
+
+#login{
+
+  display: table;
+   width: 100%;
+}
+
+
+#form-signin{
+display: table-cell;
+
+justify-content: center;
+text-align: center;
+vertical-align: middle;
+
+}
+
+
+
+div{
+
+  background-image: url("https://images.unsplash.com/photo-1608270586620-248524c67de9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8YmVlcnxlbnwwfHwwfHw%3D&w=1000&q=80");
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  
+}
+
+
+
+
+</style>
