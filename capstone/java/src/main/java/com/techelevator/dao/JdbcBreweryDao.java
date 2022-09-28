@@ -73,8 +73,8 @@ public class JdbcBreweryDao implements BreweryDAO {
         brewery.setStreet(results.getString("street"));
         brewery.setCity(results.getString("city"));
         brewery.setState(results.getString("state"));
-        brewery.setPostalCode(results.getString("postal_code"));
-        brewery.setCountry(results.getString("country"));
+//        brewery.setPostalCode(results.getString("postal_code"));
+//        brewery.setCountry(results.getString("country"));
         brewery.setPhone(results.getString("phone"));
         brewery.setWebsiteUrl(results.getString("website"));
         brewery.setHoursOfOperation(results.getString("hours_of_operation"));
