@@ -12,6 +12,7 @@ public interface BreweryDAO {
 
     Brewery getBreweryByName(String name);
 
-    boolean createBrewery(String name, String street, String city, String state, String postalCode,
-                          String country, String website, String hoursOfOperation);
+    boolean createBrewery(Brewery brewery);
+
+    void updateBrewery(Brewery brewery, int breweryId);
 }
