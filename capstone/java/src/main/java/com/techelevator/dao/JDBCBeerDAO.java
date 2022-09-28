@@ -5,6 +5,7 @@ import com.techelevator.model.Review;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class JDBCBeerDAO implements BeerDAO {
@@ -30,45 +31,57 @@ public class JDBCBeerDAO implements BeerDAO {
 
     @Override
     public int getBeerIdByName(String name) {
-        return 0;
+        String sql = "SELECT beer_id FROM beer WHERE name = ?";
+        int beerId = jdbcTemplate.queryForObject(sql, Integer.class, name);
+        return beerId;
     }
 
     @Override
     public boolean createNewBeer(Beer beer) {
-        return false;
+        String sql = "INSERT INTO beer (brewery_id, beer_name, beer_description, image, beer_type, abv) " +
+                "VALUES (?, ?, ?, ?, ?, ?) RETURNING beer_id";
+        Integer newBeerId = jdbcTemplate.queryForObject(sql, Integer.class, beer.getBreweryId(), beer.getBeerName(), beer.getBeerDescription(), beer.getImage(),
+                beer.getBeerType(), beer.getAbv());
+        if (newBeerId == null) return false;
+        beer.setBeerId(newBeerId);
+        return true;
     }
 
     @Override
     public boolean addReview(Review review) {
-        return false;
+        String sql = "INSERT INTO review (user_id, beer_id, beer_name, brewery_name, description, rating) " +
+                "VALUES (?, ?, ?, ?, ?, ?) RETURNING review_id";
+        Integer reviewId = jdbcTemplate.queryForObject(sql, Integer.class, review.getUserId(),
+                review.getBeerId(), review.getBeerName(), review.getBreweryName(), review.getDescription(), review.getRating());
+        if (reviewId == null) return false;
+        review.setReviewId(reviewId);
+        return true;
     }
 
     @Override
     public List<Beer> getAllBeers() {
-        return null;
+        List<Beer> allBeers = new ArrayList<Beer>();
+        String sql = "SELECT * FROM beer";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            Beer beer = mapRowToBeer(results);
+            allBeers.add(beer);
+        }
+        return allBeers;
     }
 
     @Override
     public List<Beer> getBeersByBreweryId(int id) {
-        return null;
+        List<Beer> allBeers = new ArrayList<>();
+        String sql = "SELECT * FROM beer WHERE brewery_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+        while (results.next()) {
+            Beer beer = mapRowToBeer(results);
+            allBeers.add(beer);
+        }
+        return allBeers;
     }
 
-    @Override
-    public List<Beer> getAllBeersByBeerId(int id) {
-        return null;
-    }
-
-    private Review mapRowToReview(SqlRowSet results) {
-        Review review = new Review();
-        review.setReviewId(results.getInt("review_id"));
-        review.setUserId(results.getInt("user_id"));
-        review.setBeerId(results.getInt("beer_id"));
-        review.setBeerName(results.getString("beer_name"));
-        review.setBreweryName(results.getString("brewery_name"));
-        review.setDescription(results.getString("description"));
-        review.setRating(results.getInt("rating"));
-        return review;
-    }
 
     private Beer mapRowToBeer(SqlRowSet results) {
         Beer beer = new Beer();
@@ -79,8 +92,6 @@ public class JDBCBeerDAO implements BeerDAO {
         beer.setImage(results.getString("image"));
         beer.setAbv(results.getDouble("abv"));
         beer.setBeerType(results.getString("beer_type"));
-
-
         return beer;
     }
 }
