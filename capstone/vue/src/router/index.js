@@ -52,7 +52,25 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    }
+      },
+      {
+        path: "/breweries/:id",
+        name: "breweries",
+        component: Home,
+        meta: {
+          requiresAuth: false
+        }
+      
+    },
+    // {
+    //   path: "/admin",
+    //   name: "admin",
+    //   component: Admin,
+    //   meta: {
+    //     requiresAuth: false
+    //   }
+    // },
+    
   ]
 })
 

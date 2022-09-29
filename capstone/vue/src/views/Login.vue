@@ -1,147 +1,18 @@
 <template>
-
   
-
-  <div id="login" class="text-center">
-   
-    <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        v-if="invalidCredentials"
-      >Invalid username and password!</div>
-      <div
-        class="alert alert-success"
-        role="alert"
-        v-if="this.$route.query.registration"
-      >Thank you for registering, please sign in.</div>
-      <label for="username" class="sr-only">Username</label>
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-        placeholder="Username"
-        v-model="user.username"
-        required
-        autofocus
-      />
-      <label for="password" class="sr-only">Password</label>
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
-    </form>
-  </div>
-
+  <login />
 </template>
 
 <script>
-import authService from "../services/AuthService";
-
+import Login from '@/components/Login'
 export default {
-  name: "login",
-  components: {},
-  data() {
-    return {
-      user: {
-        username: "",
-        password: ""
-      },
-      invalidCredentials: false
-    };
-  },
-  methods: {
-    login() {
-      authService
-        .login(this.user)
-        .then(response => {
-          if (response.status == 200) {
-            this.$store.commit("SET_AUTH_TOKEN", response.data.token);
-            this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/");
-          }
-        })
-        .catch(error => {
-          const response = error.response;
-
-          if (response.status === 401) {
-            this.invalidCredentials = true;
-          }
-        });
-    }
+  components: {
+    Login
   }
-};
+
+}
 </script>
 
-<style scoped>
-
-
-
-#text-center{
-
-  display: flex;
-flex-direction: row;
-justify-content: space-around;
-justify-content: space-evenly;
-}
-
-#login{
-
-  display: table;
-   width: 100%;
-}
-
-
-#form-signin{
-display: table-cell;
-
-justify-content: center;
-text-align: center;
-vertical-align: middle;
-
-}
-
-
-
-div{
-
-  background-image: url("https://images.unsplash.com/photo-1608270586620-248524c67de9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8YmVlcnxlbnwwfHwwfHw%3D&w=1000&q=80");
-  height: 100vh;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  margin: 0;
-  padding: 0;
-  
-}
-
-
-
-
-
-
-
-
-#login  {
-  background-image: url('/centermug.jpg'); 
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin:0;
-  padding:0;
-
-  display: flex;
-flex-wrap: wrap;
-justify-content: center;
-}
-
+<style>
 
 </style>
