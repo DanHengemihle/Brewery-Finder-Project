@@ -17,12 +17,21 @@ public class Brewery {
     private String websiteUrl;
 //    private List<String> beerList;
     private String hoursOfOperation;
+    private Brewery[] results;
 //    private String role;
 
 //    public void setRole(String role) {
 //        this.role = "Brewer";
 //    }
 
+
+    public Brewery[] getResults() {
+        return results;
+    }
+
+    public void setResults(Brewery[] results) {
+        this.results = results;
+    }
 
     public int getBrewerId() {
         return brewerId;

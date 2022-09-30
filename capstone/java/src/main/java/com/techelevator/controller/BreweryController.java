@@ -2,13 +2,17 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.BreweryDAO;
 import com.techelevator.model.Brewery;
+import com.techelevator.services.BreweryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.security.Principal;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -16,10 +20,18 @@ import java.util.List;
 public class BreweryController {
     @Autowired
     private BreweryDAO breweryDAO;
+    @Autowired
+    BreweryService breweryService;
+
+//    @PreAuthorize("permitAll")
+//    @RequestMapping(value = "/breweries", method = RequestMethod.GET)
+//    public List<Brewery> breweries(){ return breweryDAO.listAllBreweries();}
 
     @PreAuthorize("permitAll")
     @RequestMapping(value = "/breweries", method = RequestMethod.GET)
-    public List<Brewery> breweries(){ return breweryDAO.listAllBreweries();}
+    public List<String> getAllBreweries() throws IOException, InterruptedException {
+    return breweryService.getAllBreweries();
+    }
 
     @RequestMapping(path = "/breweries/{id}", method = RequestMethod.GET)
     public Brewery getById(@PathVariable int id){return breweryDAO.getBreweryById(id);}
