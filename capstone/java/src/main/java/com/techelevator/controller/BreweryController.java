@@ -4,7 +4,7 @@ import com.techelevator.dao.BreweryDAO;
 import com.techelevator.model.Brewery;
 import com.techelevator.services.BreweryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.*;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -23,14 +23,16 @@ public class BreweryController {
     @Autowired
     BreweryService breweryService;
 
-//    @PreAuthorize("permitAll")
-//    @RequestMapping(value = "/breweries", method = RequestMethod.GET)
-//    public List<Brewery> breweries(){ return breweryDAO.listAllBreweries();}
-
-    @PreAuthorize("permitAll")
     @RequestMapping(value = "/breweries", method = RequestMethod.GET)
-    public List<String> getAllBreweries() throws IOException, InterruptedException {
-    return breweryService.getAllBreweries();
+    public ResponseEntity<String> callExternalApi(){
+        String url = "https://brianiswu-open-brewery-db-v1.p.rapidapi.com/breweries";
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("X-RapidAPI-Key", "3a718e556cmsh7ad85a3df7327f8p1e9f3cjsn0f94a22217e1");
+        headers.add("X-RapidAPI-Host", "brianiswu-open-brewery-db-v1.p.rapidapi.com");
+        HttpEntity<Object> entity = new HttpEntity<Object>(headers);
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        return response;
     }
 
     @RequestMapping(path = "/breweries/{id}", method = RequestMethod.GET)
