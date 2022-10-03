@@ -109,8 +109,6 @@ this.breweries=response.data;
 table,
 th,
 td {
-  border: 1px solid blue;
 }
-
 
 </style>

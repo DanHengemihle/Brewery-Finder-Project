@@ -1,7 +1,6 @@
 <template>
   
 <div id= 'brewer-page'>
-
   <h1>New Brewery: Please Input Brewery Information</h1>
   <form>
     <table class='brewer-table' id='brewery-add'>
@@ -81,7 +80,7 @@ v-on:click.prevent="addNewBrewery()">Submit</button>
 </div>
 </div>
 
-
+</div>
 
 </template>
 

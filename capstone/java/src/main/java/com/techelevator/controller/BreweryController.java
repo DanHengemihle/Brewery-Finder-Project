@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.security.Principal;
 import java.util.Arrays;
 import java.util.List;
-
+@CrossOrigin
 @RestController
 @PreAuthorize("isAuthenticated()")
 public class BreweryController {
