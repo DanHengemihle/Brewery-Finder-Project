@@ -2,8 +2,9 @@
   
 <div class="brewery-list">
 
-
+<div class="heading">
 <h1>List of Breweries</h1>
+</div>
 <table>
     <thead>
 <tr>
@@ -106,9 +107,41 @@ this.breweries=response.data;
 
 <style>
 
-table,
-th,
-td {
+.brewery-list{
+padding-right: 25px;
+padding-left: 25px;
+display: flex;
+/* flex-wrap: wrap; */
+/* align-self: space-around; */
+ /* background-image: url("/beer7.png"); */
+ background-repeat: no-repeat;
 }
+
+*{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+table{
+  background-color: goldenrod;
+  opacity: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+background-position: center;
+}
+.heading{
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+  color: goldenrod;
+  text-shadow: 2px 2px 15px black;
+}
+
 
 </style>
