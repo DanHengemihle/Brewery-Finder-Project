@@ -12,8 +12,8 @@ getBreweries(){
     return axios.get('/breweries')
 },
 
-addBrewery(){
-    return axios.post('/breweries')
+addBrewery(payload){
+    return axios.post('/breweries', payload)
 },
 
 getBeerByBrewery(id){

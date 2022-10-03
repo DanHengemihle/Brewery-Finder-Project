@@ -42,7 +42,7 @@
           <router-link v-bind:to="{ name: 'home' }">Home</router-link>
         </li>
      <li>
-          <router-link v-bind:to="{ name: 'home' }">Breweries</router-link>
+          <router-link v-bind:to="{ name: 'breweries' }">Breweries</router-link>
         </li> 
         <li>
           <router-link v-bind:to="{ name: 'home' }">About Us</router-link>

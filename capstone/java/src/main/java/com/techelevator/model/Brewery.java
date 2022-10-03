@@ -21,15 +21,7 @@ public class Brewery {
     private String phone;
     private String websiteUrl;
     private String hoursOfOperation;
-    private Brewery[] results;
 
-    public Brewery[] getResults() {
-        return results;
-    }
-
-    public void setResults(Brewery[] results) {
-        this.results = results;
-    }
 
     public int getBrewerId() {
         return brewerId;
