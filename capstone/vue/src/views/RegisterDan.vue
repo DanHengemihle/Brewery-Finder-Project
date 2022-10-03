@@ -42,8 +42,31 @@
             v-model="user.confirmPassword"
             required
           />
+
+        
+        
         </div>
-        <router-link id="haveaccount" :to="{ name: 'login' }">Have an account?</router-link>
+         <router-link id="haveaccount" :to="{ name: 'login' }">Have an account?</router-link>
+          <div class="brewer">
+        <label class="brewer-label"> Brewer? </label>
+        
+        <div class="checkbox">
+          
+          <!-- <input 
+          type="checkbox"
+          id="brewer-checkbox"
+          class="checkbox"
+          v-on:change="(user.role == 'user' ? user.role = 'brewer' : user.role= 'user')"
+          /> -->
+          <label class="switch">
+  <input type="checkbox" v-on:change="(user.role == 'user' ? user.role = 'brewer' : user.role= 'user')">
+  <span class="slider round"></span>
+</label>
+        </div>
+     
+
+        </div>
+       <br>
         <button
           id="create-account"
           class="btn btn-lg btn-primary btn-block"
@@ -51,11 +74,16 @@
         >
           Register
         </button>
+
+
+
       </form>
     </div>
     <div id="space">space</div>
     <i id="usericon" class="fa fa-user icon"></i>
     <i id="keyicon" class="fa fa-key icon"></i>
+   
+    <!-- <i class="fa fa-eye"></i> -->
   </body>
 </template>
 
@@ -110,19 +138,116 @@ export default {
 </script>
 
 <style scoped>
+
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 25px;
+  height: 15px;
+  padding: 0px;
+  
+}
+
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(0, 0, 0);
+  -webkit-transition: .4s;
+  transition: .4s;
+  
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 10px;
+  width: 10px;
+  left: 4px;
+  bottom: 3px;
+  background-color: rgb(255, 247, 228);
+  -webkit-transition: .4s;
+  transition: .4s;
+  
+ 
+}
+
+
+
+input:checked + .slider {
+  background-color: rgb(235, 181, 46);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px black;
+  
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(8px);
+  -ms-transform: translateX(8px);
+  transform: translateX(8px);
+  color-adjust: black;
+}
+
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.checkbox{
+  transform: translate(4vw, -2.7vh );
+}
+
+
+.brewer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 2vh;
+  font-weight: 750;
+  max-height: 11vh;
+  margin-bottom: -17%;
+
+}
+
+
+
 #space {
   height: 1000px;
 }
 
+#username{
+  margin-top: -2%;
+}
+
 #usericon {
-  transform: translate(-880%, 130%);
+  transform: translate(-880%, -10%);
   opacity: 0.8;
   padding: 10px;
   min-width: 40px;
 }
 
 #keyicon {
-  transform: translate(-985%, 285%);
+  transform: translate(-985%, 145%);
   opacity: 0.8;
   padding: 10px;
   min-width: 40px;
@@ -134,9 +259,11 @@ input::placeholder {
 
 #haveaccount{
 
- color: #001979;
+ color: #000274;
   font-weight: 650;
-  font-size: 2.01vh;
+  font-size: 1.8vh;
+  text-shadow: 30px;
+  
 }
 
 * {
@@ -154,14 +281,15 @@ input {
   padding: 0 10px;
   margin-top: 4px;
   font-size: 17px;
-  font-weight: 500;
+  font-weight: 650;
   text-align: center;
   color: black;
 }
 
 img {
   opacity: 0.85;
-  width: 25vh;
+  width: 18vh;
+  
 }
 
 body {
@@ -185,7 +313,7 @@ html {
 h1 {
   text-shadow: 1px 1px black;
   
-  margin-bottom: 7%;
+  
   font-size: 300%;
   color: black;
  
@@ -198,6 +326,6 @@ h1 {
   font-size: 130%;
   background-color: black;
   cursor: pointer;
-  
+  margin-top: 1vh;
 }
 </style>
