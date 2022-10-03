@@ -16,9 +16,9 @@ addBrewery(){
     return axios.post('/breweries')
 },
 
-// getBeer(){
-//     return axios.get('/beer')
-// },
+getBeerByBrewery(id){
+    return axios.get(`/brewery/${id}`)
+},
 
 // getBreweryById(id){
 //     return http.get('/breweries/${id}')
