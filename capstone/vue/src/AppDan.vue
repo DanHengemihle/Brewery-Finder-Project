@@ -1,5 +1,48 @@
 <template>
-  <div id="app">
+
+<div id="app">
+    <router-link id="logo" v-bind:to="{ name: 'home' }"
+      ><img id="logo" src="../public/logo.png"
+    /></router-link>
+
+    <nav class="navbar">
+      <ul class="nav links">
+        <!-- <div id="nav"> -->
+
+        <li>
+          <router-link v-bind:to="{ name: 'home' }">Home</router-link>
+        </li>
+     <li>
+          <router-link v-bind:to="{ name: 'home' }">Breweries</router-link>
+        </li> 
+        <li>
+          <router-link v-bind:to="{ name: 'home' }">About Us</router-link>
+        </li>
+        <li><router-link v-bind:to="{ name: 'login' }">Login</router-link></li>
+        <li><router-link v-bind:to="{ name: 'register' }">Register</router-link></li>
+        <li><router-link v-bind:to="{ name: 'brewer' }">Brewer</router-link></li>
+
+        <li>
+          <router-link
+            id="logout-link"
+            v-bind:to="{ name: 'logout' }"
+            v-if="$store.state.token != ''"
+            >Logout</router-link
+          >
+        </li>
+      </ul>
+    </nav>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
+
+    <router-view />
+  </div>
+
+  <!-- <div id="app">
     <div id="nav" :class="{ sticky: active }">
       <link
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -10,18 +53,18 @@
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-      />
+      /> -->
 
-      <div id="dropdown">
+      <!-- <div id="dropdown">
         <button id="logonav" class="dropbtn" @click="toggle"></button>
-        <div v-if="active">Menu</div>
+        <div v-if="active">Menu</div> -->
 
         <!-- <div class="dropdown-content">
       <a href="Home">Home</a>
       <a href="#">Link 2</a>
       <a href="#">Link 3</a>
     </div> -->
-      </div>
+      <!-- </div>
       <router-link id="homenav" v-bind:to="{ name: 'home' }">Home |</router-link
       >&nbsp;|&nbsp;
       <div class="navbar">
@@ -38,170 +81,93 @@
       </div>
     </div>
     <router-view />
-  </div>
+  </div> -->
 </template>
 
-<script>
-export default {
-  name: "app",
-  data() {
-    return {
-      scrolling: false,
-      active: false,
-    };
-  },
-  methods: {
-    toggle() {
-      this.active = !this.active;
-    },
 
-    //     toggleNavClass(){
-    //         if(this.scrolling == false){
-    //           return 'nav'
-    //         } else {
-    //           return 'sticky-nav'
-    //         }
-
-    // }
-    //   },
-    //   mounted(){
-    //   window.document.onscroll = () => {
-    //       let navBar = document.getElementById('dropdown');
-    //       if(window.scrollY > navBar.offsetTop){
-    //         this.scrolling = true;
-    //         } else {
-    //         this.scrolling = false;
-    //       }
-    //     }
-  },
-};
-</script>
 
 <style>
-/* Navbar container */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+/* li {
+  float: right;
+} */
+
+ul {
+  opacity: 75%;
+  background-color: rgb(59, 64, 75);
+  position: right;
+  top: 11rem;
+  width: 100%;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  box-shadow: inset 0px 0px 10px #000; 
+}
+div#app {
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url("/beer7.png");
+  opacity: 92%;
+   position: relative; 
+  background-position: left top; 
+   background-size: cover; 
+ background-repeat: no-repeat; 
+   background-attachment: fixed; 
+  margin: -8px;
+  margin-top: -20px;
+}
+
 .navbar {
-  overflow: hidden;
+  border-right: none; 
+   display: flex;
+   justify-content: flex-end; 
+   background-color: transparent;
 }
 
-/* Links inside the navbar */
-.navbar a {
-  float: left;
-  font-size: 16px;
-  color: darkgoldenrod;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+.nav-links {
+  list-style-type: none;
 }
 
-/* The dropdown container */
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-/* Dropdown button */
-.dropdown .dropbtn {
-  font-size: 16px;
-  border: none;
-  outline: none;
+a,
+li {
+  display: block;
   color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit; /* Important for vertical align on mobile phones */
-  margin: 0; /* Important for vertical align on mobile phones */
-}
-
-/* Add a red background color to navbar links on hover */
-.navbar a:hover,
-.dropdown:hover .dropbtn {
-  background-color: red;
-}
-
-/* Dropdown content (hidden by default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
+  padding: 5px;
   text-decoration: none;
-  display: block;
-  text-align: left;
+  transition-duration: 500ms;
+  border-radius: 5px;
 }
 
-/* Add a grey background color to dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #ddd;
+a:hover {
+  color: goldenrod;
 }
 
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
+li a:hover {
+  background-color: #111;
+  box-shadow: inset 0px 0px 5px goldenrod;
+}
+
+#logo {
+  max-width: 35%;
 }
 
 #nav {
-  display: flex;
-  align-items: center;
-  background-color: black;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  border-bottom: solid darkgray;
-}
-/* #nav {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  background-color: black;
-  position: fixed;
-  top: 0;
-} */
-
-#logonav {
-  margin-left: 10px;
-  padding-right: 50px;
-  width: 50px;
-  height: 50px;
-  background-image: url("/navlogo.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-style: none;
-}
-
-#homenav {
-  padding-left: 20px;
-  color: darkgoldenrod;
-  font-size: 3vh;
-}
-
-.nav {
-  transition: 100ms;
-  padding: 25px;
-}
-
-.sticky-nav {
-  transition: 100ms;
+  background-color: #F1F1F1;
+  text-align: left;
   padding: 20px;
+font-size: 3vw;
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
+
 }
 
-/* have to add the ID nav (#nav) otherwise the backgrnd color won't change as the previous background color is set in an ID and ID trumps class notation */
-#nav.sticky {
-  transition: 150ms;
-  box-shadow: 0px 15px 10px -15px #111;
-  background-color: darkgray;
-}
+#nav:hover{
+  background-color:goldenrod;
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
+
+}  
 
 
-#searchicon{
- font-size: 1em;
-transform: translate(-1.5vw, 0%);
-}
+
 </style>

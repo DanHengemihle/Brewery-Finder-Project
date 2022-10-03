@@ -23,6 +23,7 @@ public class BreweryController {
     @Autowired
     BreweryService breweryService;
 
+    @PreAuthorize("permitAll")
     @RequestMapping(value = "/breweries", method = RequestMethod.GET)
     public ResponseEntity<String> callExternalApi(){
         String url = "https://brianiswu-open-brewery-db-v1.p.rapidapi.com/breweries";

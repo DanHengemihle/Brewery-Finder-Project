@@ -1,7 +1,9 @@
 <template>
   
-<div class="breweries-list">
+<div class="brewery-list">
 
+
+<h1>List of Breweries</h1>
 <table>
     <thead>
 <tr>
@@ -18,10 +20,10 @@
  </tr>
 </thead>
 <tbody>
-<tr v-for="brewery in breweries" :key="brewery.id">
-    <td class="name">{{brewery.name}}</td>
+<tr v-for="brewery in sortedBreweries" :key="brewery">
+    <td class="id">{{brewery.id}}</td>
     <td>
-        <td>{{brewery.zipcode}}</td>
+        <td>{{brewery.name}}</td>
     <td>
         <button v-on:click="viewBrewery(brewery.name)">See More</button>&nbsp;
         <button v-on:click="favoriteBrewery(brewery.name)">Add to Favorites</button>
@@ -32,37 +34,63 @@
     </tbody>
 
 </table>  
+</div>
 </template>
 
 <script>
 import applicationService from "../services/ApplicationService";
 
 export default {
+    data(){
+        return {
+            breweries: []
+        }
+    },
   name: "breweries-list",
   methods: {
-    viewBrewery(name) {
-      this.$router.push(`/breweries/${name}`);
+    viewBrewery(id) {
+      this.$router.push(`/breweries/${id}`);
     },
-    deleteBrewery(id) {
-      applicationService
-        .delete(id)
-        .then((response) => {
-          if (response.status === 200) {
-            this.getDocuments();
-          }
-        })
+   deleteBrewery() {
+      if (confirm("Are you sure you want to delete this brewery and all associated information? This action cannot be undone.")) {
+        applicationService
+          .deleteBrewery(this.brewery.id)
+          .then(response => {
+            if (response.status === 200) {
+              alert("Brewery successfully deleted");
+
+              this.$store.commit("DELETE_BREWERY", this.brewery.id);
+
+              this.$router.push({ name: 'Home' });
+            }
+          })
+          
         .catch((error) => {
           if (error.response.status === 404) {
             this.$router.push("/404");
           } else {
             console.error(error);
           }
+        
         });
+      }
     },
     getBreweries() {
-      applicationService.list().then((response) => {
-        this.$store.commit("SET_BREWERY", response.data);
-      });
+      applicationService.getBreweries().then(response => {
+          if(response.status == 200) {
+ this.$store.commit("SET_BREWERY", response.data);
+this.breweries=response.data;
+          }
+       
+      })
+      .catch((error) => {
+          if (error.response.status === 404) {
+            this.$router.push("/404");
+          } else {
+            console.error(error);
+          }
+        
+        });
     },
   },
   created() {
@@ -77,4 +105,12 @@ export default {
 </script>
 
 <style>
+
+table,
+th,
+td {
+  border: 1px solid blue;
+}
+
+
 </style>

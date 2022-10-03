@@ -52,8 +52,16 @@ activeBreweries: {
       state.user = {};
       axios.defaults.headers.common = {};
     },
+    SET_ACTIVE_BREWERY(state, data){
+      state.activeBreweries=data;
+    },
     SET_BREWERY(state, data){
       state.breweries=data;
     }
+  },
+  DELETE_BREWERY(state, breweryIdToDelete) {
+    state.brewery = state.brewery.filter((brewery) => {
+      return brewery.id !== breweryIdToDelete;
+    });
   }
 })
