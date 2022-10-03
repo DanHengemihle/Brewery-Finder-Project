@@ -12,6 +12,9 @@ getBreweries(){
     return http.get('/breweries')
 },
 
+addBrewery(){
+    return http.post('/breweries')
+},
 
 getBeer(){
     return http.get('/beer')

@@ -25,7 +25,8 @@ export default new Vuex.Store({
 
     
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+    
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -33,7 +34,9 @@ export default new Vuex.Store({
       localStorage.setItem('token', token);
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     },
+    
     SET_USER(state, user) {
+      console.log(user);
       state.user = user;
       localStorage.setItem('user',JSON.stringify(user));
     },

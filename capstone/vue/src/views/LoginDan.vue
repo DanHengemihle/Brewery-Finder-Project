@@ -65,10 +65,12 @@ export default {
       user: {
         username: "",
         password: "",
+        role: "user"
       },
       invalidCredentials: false,
     };
   },
+  
   methods: {
     login() {
       authService

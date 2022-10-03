@@ -14,28 +14,62 @@
 
       <div id="dropdown">
         <button id="logonav" class="dropbtn" @click="toggle"></button>
-        <div v-if="active">Menu</div>
-
-        <!-- <div class="dropdown-content">
-      <a href="Home">Home</a>
+        <div v-if="active"><a href="Home">Home</a>
       <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div> -->
+      <a href="#">Link 3</a></div>
+
+        <!-- <div class="dropdown-content"> -->
+      <!-- <a href="Home">Home</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a> -->
+    <!-- </div> -->
       </div>
-      <router-link id="homenav" v-bind:to="{ name: 'home' }">Home |</router-link
+      <!-- <router-link id="homenav" v-bind:to="{ name: 'home' }">Home |</router-link
       >&nbsp;|&nbsp;
       <div class="navbar">
         <router-link
           v-bind:to="{ name: 'logout' }"
           v-if="$store.state.token != ''"
           >Logout</router-link
-        >
+        > -->
+        
 
-        <a id="about" href="#about">About</a> |
+        <nav class="navbar">
+      <ul class="nav links">
+        <!-- <div id="nav"> -->
+
+        <li>
+          <router-link v-bind:to="{ name: 'home' }">Home</router-link>
+        </li>
+     <li>
+          <router-link v-bind:to="{ name: 'home' }">Breweries</router-link>
+        </li> 
+        <li>
+          <router-link v-bind:to="{ name: 'home' }">About Us</router-link>
+        </li>
+        <li><router-link v-bind:to="{ name: 'login' }">Login</router-link></li>
+        <li><router-link v-bind:to="{ name: 'register' }">Register</router-link></li>
+        <li><router-link v-bind:to="{ name: 'admin' }">Admin</router-link></li>
+          <a id="about" href="#about">About</a> |
         <a id="contact" href="#contact">Contact</a>
         <input id="search" type="text" placeholder="Search.." />
         <i id="searchicon" class="fa fa-search icon"></i>
-      </div>
+
+
+        <li>
+          <router-link
+            id="logout-link"
+            v-bind:to="{ name: 'logout' }"
+            v-if="$store.state.token != ''"
+            >Logout</router-link
+          >
+        </li>
+      </ul>
+    </nav>
+
+      
+        <router-link id="breweryinfo" :to="{name: 'brewery' }" v-if="$store.state.user.role == 'ROLE_BREWER'">Add/Update Brewery</router-link>
+      <!-- </div> -->
     </div>
     <router-view />
   </div>
@@ -48,12 +82,18 @@ export default {
     return {
       scrolling: false,
       active: false,
+      loggedIn: false
     };
   },
+
   methods: {
     toggle() {
       this.active = !this.active;
     },
+    
+    hasBrewerRole(){
+      
+    }
 
     //     toggleNavClass(){
     //         if(this.scrolling == false){
@@ -111,11 +151,6 @@ export default {
   margin: 0; /* Important for vertical align on mobile phones */
 }
 
-/* Add a red background color to navbar links on hover */
-.navbar a:hover,
-.dropdown:hover .dropbtn {
-  background-color: red;
-}
 
 /* Dropdown content (hidden by default) */
 .dropdown-content {
@@ -202,6 +237,12 @@ export default {
 
 #searchicon{
  font-size: 1em;
-transform: translate(-1.5vw, 0%);
+transform: translate(-1.5vw, 1.9vh);
 }
+
+#search{
+  height: 3vh;
+  transform: translate(0, 1.5vh);
+}
+
 </style>
