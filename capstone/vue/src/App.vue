@@ -19,7 +19,7 @@
         </li>
         <li><router-link v-bind:to="{ name: 'login' }">Login</router-link></li>
         <li><router-link v-bind:to="{ name: 'register' }">Register</router-link></li>
-        <li><router-link v-bind:to="{ name: 'admin' }">Admin</router-link></li>
+        <li><router-link v-bind:to="{ name: 'brewer' }">Brewer</router-link></li>
 
         <li>
           <router-link

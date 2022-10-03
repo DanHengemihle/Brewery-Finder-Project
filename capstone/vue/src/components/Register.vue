@@ -1,67 +1,89 @@
 <template>
-<body>
-  <div id="register" class="text-center">
-    <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
-      <br />
-      <div class="alert alert-danger" role="alert" v-if="registrationErrors">
-        {{ registrationErrorMsg }}
-      </div>
-      <br>
-      <label for="username" class="sr-only">Username</label>
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-        placeholder="Create Beer Lover Username"
-        v-model="user.username"
-        required
-        autofocus
-      />
-      <div class="form-field">
-        <label for="password" class="sr-only">Password</label>
+  <body>
+    <div id="register" class="text-center">
+      <img :src="'\Logo.png'" />
+      <form class="form-register" @submit.prevent="register">
+        <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+        <div class="alert alert-danger" role="alert" v-if="registrationErrors">
+          {{ registrationErrorMsg }}
+        </div>
 
-        <input
-          type="password"
-          id="password"
-          class="form-control"
-          placeholder="New Password"
-          v-model="user.password"
-          required
-        />
-      </div>
-      <br />
-      <div class="form-field">
-        <input
-          type="password"
-          id="confirmPassword"
-          class="form-control"
-          placeholder="Confirm New Password"
-          v-model="user.confirmPassword"
-          required
-        />
-      </div>
-      <br>
-      <br>
-      <div class="brewer">
-        <label class="brewer-label"> Are you a Brewer? </label>
-        <br>
+        <div>
+          <label for="username" class="sr-only">Username</label>
+
+          <input
+            type="text"
+            id="username"
+            class="form-control"
+            placeholder="Username"
+            v-model="user.username"
+            required
+            autofocus
+          />
+        </div>
+        <div>
+          <label for="password" class="sr-only">Password</label>
+
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            placeholder="Password"
+            v-model="user.password"
+            required
+          />
+        </div>
+        <div>
+          <input
+            type="password"
+            id="confirmPassword"
+            class="form-control"
+            placeholder="Confirm Password"
+            v-model="user.confirmPassword"
+            required
+          />
+
+        
+        
+        </div>
+         <router-link id="haveaccount" :to="{ name: 'login' }">Have an account?</router-link>
+          <div class="brewer">
+        <label class="brewer-label"> Brewer? </label>
+        
         <div class="checkbox">
-          <input 
+          
+          <!-- <input 
           type="checkbox"
           id="brewer-checkbox"
           class="checkbox"
           v-on:change="(user.role == 'user' ? user.role = 'brewer' : user.role= 'user')"
-          />
+          /> -->
+          <label class="switch">
+  <input type="checkbox" v-on:change="(user.role == 'user' ? user.role = 'brewer' : user.role= 'user')">
+  <span class="slider round"></span>
+</label>
         </div>
-        <label class="yes"> Yes</label><br>
+     
+
         </div>
-      <router-link class="have-account" :to="{ name: 'login' }">Have an account?</router-link>
-      <button class="create-account"  type="submit">
-        Create Account
-      </button>
-    </form>
-  </div>
+       <br>
+        <button
+          id="create-account"
+          class="btn btn-lg btn-primary btn-block"
+          type="submit"
+        >
+          Register
+        </button>
+
+
+
+      </form>
+    </div>
+    <div id="space">space</div>
+    <i id="usericon" class="fa fa-user icon"></i>
+    <i id="keyicon" class="fa fa-key icon"></i>
+   
+    <!-- <i class="fa fa-eye"></i> -->
   </body>
 </template>
 
@@ -115,128 +137,195 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 
-*{
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 25px;
+  height: 15px;
   padding: 0px;
-  margin: 0;
-  box-sizing: border-box;
-
+  
 }
 
-#background{
-  height: 87vh;
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
-.password{
-  margin-top: 1rem;
-}
 
-h1{
-  margin: -5px 0px -20px -12px;
-  font-size: 2rem;
-
-}
-
-.sr-only{
-  margin-left: -.6rem;
-}
-
-/* form.form-register{
+.slider {
   position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
   right: 0;
-  margin: 5vh;
-  max-width: 300px;
-  padding: 16px;
-  background-color: #f2f2f2;
-  border-radius: 5px;
-  padding-left:30px;
- 
-} */
-
-form.form-register{
-  height: 60vh;
-right: 0;
-margin: 5vh;
-max-width: 300px;
-padding: 60px;
-border-radius: 10px;
-padding-left: 30px;
-padding-right: 30px;
+  bottom: 0;
+  background-color: rgb(0, 0, 0);
+  -webkit-transition: .4s;
+  transition: .4s;
+  
 }
 
-.form-register{
-  background-color: #f2f2f2;
-  background-position: center;
-  background-size: 100vh;
-  backdrop-filter: blur(5px);
-  box-shadow: inset 0px 0px 10px #000;
-}
-
-.username-input-box, .password-input-box, .confirm-password-input-box {
-  margin-top: .5rem;
-  margin-left: -10px;
-}
-
-#username.form-control{
-
-  font-size: 50;
-  margin-right: 2rem;
-
-  margin-top: 1rem;
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 10px;
+  width: 10px;
+  left: 4px;
+  bottom: 3px;
+  background-color: rgb(255, 247, 228);
+  -webkit-transition: .4s;
+  transition: .4s;
+  
  
 }
 
 
-#password.form-control{
-  font-size: 50;
- margin-right: 2rem;
-  margin-top: 1rem;
- 
+
+input:checked + .slider {
+  background-color: rgb(235, 181, 46);
 }
 
-.have-account{
-  text-decoration: none;
-  color: #776262;
-  text-decoration: underline;
+input:focus + .slider {
+  box-shadow: 0 0 1px black;
+  
 }
 
-.brewer{
-  display: inline;
+input:checked + .slider:before {
+  -webkit-transform: translateX(8px);
+  -ms-transform: translateX(8px);
+  transform: translateX(8px);
+  color-adjust: black;
+}
+
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
 
 .checkbox{
-  display: inline-block;
+  transform: translate(4vw, -2.7vh );
 }
 
-.have-account:hover{
-  color: gold;
-  text-decoration: underline;
-}
 
-.create-account{
-  background-color: gold;
-  border: none;
-  font-size: 15px;
-  padding: 7px;
-  margin: 10px 0px 0px 10px;
-  border-radius: 3px;
-}
-
-.create-account:hover{
-  background-color: black;
-  color: white;
-}
-
-#register {
+.brewer{
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  background-image: url("/halfpagemug.jpg");
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin: 0;
+  font-size: 2vh;
+  font-weight: 750;
+  max-height: 11vh;
+  margin-bottom: -17%;
+
+}
+
+
+
+#space {
+  height: 1000px;
+}
+
+#username{
+  margin-top: -2%;
+}
+
+#usericon {
+  transform: translate(-880%, -10%);
+  opacity: 0.8;
+  padding: 10px;
+  min-width: 40px;
+}
+
+#keyicon {
+  transform: translate(-985%, 145%);
+  opacity: 0.8;
+  padding: 10px;
+  min-width: 40px;
+}
+
+input::placeholder {
+  color: black;
+}
+
+#haveaccount{
+
+ color: #000274;
+  font-weight: 650;
+  font-size: 1.8vh;
+  text-shadow: 30px;
+  
+}
+
+* {
   padding: 0;
+  margin: 0;
+}
+
+
+input {
+  display: block;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.205);
+  border: 2px solid rgba(0, 0, 0, 0.383);
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 4px;
+  font-size: 17px;
+  font-weight: 650;
+  text-align: center;
+  color: black;
+}
+
+img {
+  opacity: 0.85;
+  width: 18vh;
+  
+}
+
+body {
+  display: flex;
+
+  background-image: url("/beer.jpeg");
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+  padding-left: 130px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+body,
+html {
+  height: 100vh;
+}
+
+h1 {
+  text-shadow: 1px 1px black;
+  
+  
+  font-size: 300%;
+  color: black;
+ 
+}
+
+#create-account {
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 0px 20px rgba(8, 7, 16, 0.6);
+  color: darkgoldenrod;
+  font-size: 130%;
+  background-color: black;
+  cursor: pointer;
+  margin-top: 1vh;
 }
 </style>

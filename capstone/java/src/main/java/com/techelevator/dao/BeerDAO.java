@@ -10,12 +10,14 @@ public interface BeerDAO {
 
     int getBeerIdByName(String name);
 
-    boolean createNewBeer(Beer beer);
+    boolean addNewBeer(Beer beer);
 
     boolean addReview(Review review);
 
     List<Beer> getAllBeers();
 
     List<Beer> getBeersByBreweryId(int id);
+
+    List<Review> getReviewsByBeerId(int id);
 
 }
