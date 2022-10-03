@@ -59,7 +59,7 @@ public class JdbcBreweryDao implements BreweryDAO {
 
     @Override
     public boolean createBrewery(Brewery brewery) {
-        String insertBrewerySql = "INSERT INTO breweries (name, street, city, state, phone, website, " +
+        String insertBrewerySql = "INSERT INTO breweries (name, street, city, state, phone_number, website_url, " +
                 "hours_of_operation) VALUES (?, ?, ?, ?, ?, ?, ?)";
         return jdbcTemplate.update(insertBrewerySql, brewery.getName(), brewery.getStreet(), brewery.getCity(), brewery.getState(),
                 brewery.getPhone(), brewery.getWebsiteUrl(), brewery.getHoursOfOperation()) == 1;
@@ -67,10 +67,20 @@ public class JdbcBreweryDao implements BreweryDAO {
 
     @Override // needs finished
     public void updateBrewery(Brewery brewery, int breweryId) {
-        String sql = "UPDATE breweries SET name = ?, street = ?, city = ?, state = ?, phone = ?, " +
-                "website = ?, hours_of_operation = ? WHERE brewery_id = ?";
+        String sql = "UPDATE breweries SET name = ?, street = ?, city = ?, state = ?, phone_number = ?, " +
+                "website_url = ?, hours_of_operation = ? WHERE brewery_id = ?";
         jdbcTemplate.update(sql, brewery.getName(), brewery.getStreet(), brewery.getCity(),brewery.getState(),
                 brewery.getPhone(), brewery.getWebsiteUrl(), brewery.getHoursOfOperation(), breweryId);
+    }
+
+    @Override
+    public void deleteBrewery(int breweryId) {
+        String sql = "DELETE FROM breweries WHERE id = ?";
+        try {
+            jdbcTemplate.update(sql, breweryId);
+        }catch (Exception ex){
+            System.out.println("ERROR deleting from the database");
+        }
     }
 
     private Brewery mapRowToBrewery(SqlRowSet results) {
@@ -82,8 +92,8 @@ public class JdbcBreweryDao implements BreweryDAO {
         brewery.setState(results.getString("state"));
 //        brewery.setPostalCode(results.getString("postal_code"));
 //        brewery.setCountry(results.getString("country"));
-        brewery.setPhone(results.getString("phone"));
-        brewery.setWebsiteUrl(results.getString("website"));
+        brewery.setPhone(results.getString("phone_number"));
+        brewery.setWebsiteUrl(results.getString("website_url"));
         brewery.setHoursOfOperation(results.getString("hours_of_operation"));
 
 

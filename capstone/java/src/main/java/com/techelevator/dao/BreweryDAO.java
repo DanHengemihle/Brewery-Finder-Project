@@ -15,4 +15,6 @@ public interface BreweryDAO {
     boolean createBrewery(Brewery brewery);
 
     void updateBrewery(Brewery brewery, int breweryId);
+
+    void deleteBrewery(int breweryId);
 }

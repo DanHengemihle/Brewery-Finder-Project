@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../views/Home.vue'
-import LoginDan from '../views/Login.vue'
+import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import store from '../store/index'
 import Register from '../components/Register.vue'
@@ -9,6 +9,7 @@ import Brewer from '../components/Brewer.vue'
 import BeerLover from '../components/BeerLover.vue'
 import Admin from '../components/Admin.vue'
 import Breweries from '../components/Breweries.vue'
+import BreweryForm from '../components/BreweryForm.vue'
 
 
 Vue.use(Router)
@@ -37,7 +38,7 @@ const router = new Router({
     {
       path: "/login",
       name: "login",
-      component: LoginDan,
+      component: Login,
       meta: {
         requiresAuth: false
       }
@@ -65,8 +66,16 @@ const router = new Router({
         meta: {
           requiresAuth: false
         }
-      
-     },
+      },
+      {
+        path: "/brewery/",
+        name: "brewery",
+        component: BreweryForm,
+        meta: {
+          requiresAuth: true
+        }
+      },
+    
     { path: "/brewer",
     name: "brewer",
     component: Brewer,

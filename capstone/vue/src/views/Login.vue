@@ -65,10 +65,12 @@ export default {
       user: {
         username: "",
         password: "",
+        role: "user"
       },
       invalidCredentials: false,
     };
   },
+  
   methods: {
     login() {
       authService
@@ -77,17 +79,8 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            console.log(response.data.user.authorities[0].name)
-            if(response.data.user.authorities[0].name == "ROLE_BREWER"){
-              this.$router.push({name: 'brewer'});
-            }else if (response.data.user.authorities[0].name == "ROLE_USER"){
-            this.$router.push({name: 'beerlover'});
-            }else if (response.data.user.authorities[0].name == "ROLE_ADMIN"){
-            this.$router.push({name: 'admin'});
-          }else{
             this.$router.push("/");
           }
-        }
         })
         .catch((error) => {
           const response = error.response;
