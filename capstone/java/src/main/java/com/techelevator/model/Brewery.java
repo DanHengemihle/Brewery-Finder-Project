@@ -8,21 +8,28 @@ public class Brewery {
     private int brewerId;
     @NotBlank
     private String name;
+    private String breweryType;
     private String street;
+    private String address2;
+    private String address3;
     private String city;
     private String state;
-//    private String postalCode;
-//    private String country;
+    private String countyProvince;
+    private String country;
+    private String Longitude;
+    private String latitude;
     private String phone;
     private String websiteUrl;
-//    private List<String> beerList;
     private String hoursOfOperation;
-//    private String role;
+    private Brewery[] results;
 
-//    public void setRole(String role) {
-//        this.role = "Brewer";
-//    }
+    public Brewery[] getResults() {
+        return results;
+    }
 
+    public void setResults(Brewery[] results) {
+        this.results = results;
+    }
 
     public int getBrewerId() {
         return brewerId;

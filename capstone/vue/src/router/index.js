@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
+import LoginDan from '../views/LoginDan.vue'
 import Logout from '../views/Logout.vue'
-import Register from '../views/Register.vue'
+import RegisterDan from '../views/RegisterDan.vue'
 import store from '../store/index'
 
 Vue.use(Router)
@@ -32,7 +32,7 @@ const router = new Router({
     {
       path: "/login",
       name: "login",
-      component: Login,
+      component: LoginDan,
       meta: {
         requiresAuth: false
       }
@@ -48,11 +48,29 @@ const router = new Router({
     {
       path: "/register",
       name: "register",
-      component: Register,
+      component: RegisterDan,
       meta: {
         requiresAuth: false
       }
-    }
+      },
+      {
+        path: "/breweries/:id",
+        name: "breweries",
+        component: Home,
+        meta: {
+          requiresAuth: false
+        }
+      
+    },
+    // {
+    //   path: "/admin",
+    //   name: "admin",
+    //   component: Admin,
+    //   meta: {
+    //     requiresAuth: false
+    //   }
+    // },
+    
   ]
 })
 
