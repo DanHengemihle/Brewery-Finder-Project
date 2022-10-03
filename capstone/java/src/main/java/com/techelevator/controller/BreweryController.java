@@ -16,10 +16,7 @@ import java.net.http.HttpResponse;
 import java.security.Principal;
 import java.util.Arrays;
 import java.util.List;
-<<<<<<< HEAD
 
-=======
->>>>>>> main
 @CrossOrigin
 @RestController
 @PreAuthorize("isAuthenticated()")
@@ -78,4 +75,7 @@ public class BreweryController {
     public void updateBrewery(@Valid @RequestBody Brewery brewery, @PathVariable int id){
         breweryDAO.updateBrewery(brewery, id);
     }
+
+    @RequestMapping(path = "/breweries/{id}", method = RequestMethod.DELETE)
+    public void deleteBrewery(@RequestParam int id){breweryDAO.deleteBrewery(id);}
 }
