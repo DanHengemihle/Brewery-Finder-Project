@@ -279,6 +279,11 @@ export default {
 
 <style scoped>
 
+div#registerBrewery.text-center{
+  position: absolute;
+  overflow: hidden;
+}
+
 #remove{
 font-size: 1.5vh;
 padding: 0;
@@ -287,11 +292,15 @@ padding: 0;
 #hoursDisplay{
   font-weight: bold;
   font-size: 1.8vh;
+  color: darkgoldenrod;
+  margin: 1vh;
 }
 
 #hoursOfOpText{
   font-weight: bolder;
   font-size: 2vh;
+  color: darkgoldenrod;
+ 
 }
 
 .switch {
@@ -411,7 +420,7 @@ input::placeholder {
 input {
   display: block;
   height: 50px;
-  background-color: rgba(255, 255, 255, 0.205);
+  background-color: rgba(255, 255, 255, 0.787);
   border: 2px solid rgba(0, 0, 0, 0.383);
   border-radius: 3px;
   padding: 0 10px;
@@ -423,14 +432,14 @@ input {
 }
 
 img {
-  opacity: 0.85;
+  
   width: 18vh;
 }
 
 body {
   display: flex;
 
-  background-image: url("/beer.jpeg");
+  background-image: url("/bar1.jpg");
   justify-content: center;
   align-items: center;
   padding-top: 50px;
@@ -438,6 +447,7 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  
 }
 
 body,
@@ -449,16 +459,16 @@ h1 {
   text-shadow: 1px 1px black;
 
   font-size: 300%;
-  color: black;
+  color: darkgoldenrod;
 }
 
-#create-account {
+#create-brewery {
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0px 0px 20px rgba(8, 7, 16, 0.6);
   color: darkgoldenrod;
   font-size: 130%;
   background-color: black;
   cursor: pointer;
-  margin-top: 1vh;
+  margin-top: -4.5vh;
 }
 </style>

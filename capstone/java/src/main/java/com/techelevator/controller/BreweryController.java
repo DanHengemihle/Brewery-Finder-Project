@@ -16,10 +16,7 @@ import java.net.http.HttpResponse;
 import java.security.Principal;
 import java.util.Arrays;
 import java.util.List;
-<<<<<<< HEAD
 
-=======
->>>>>>> main
 @CrossOrigin
 @RestController
 @PreAuthorize("isAuthenticated()")
