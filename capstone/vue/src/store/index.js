@@ -19,6 +19,7 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
 
+beers: [],
 breweries: [],
 activeBreweries: {
   id: null, 
@@ -60,6 +61,10 @@ activeBreweries: {
     },
     SET_BREWERY(state, data){
       state.breweries=data;
+    },
+
+    SET_BEERS(state, data){
+      state.beer=data;
     }
   },
   DELETE_BREWERY(state, breweryIdToDelete) {

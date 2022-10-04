@@ -17,6 +17,8 @@ public class JdbcBreweryDao implements BreweryDAO {
 
     private final JdbcTemplate jdbcTemplate;
 
+    private User user;
+
     public JdbcBreweryDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -84,6 +86,16 @@ public class JdbcBreweryDao implements BreweryDAO {
             System.out.println("ERROR deleting from the database");
         }
     }
+
+//    @Override
+//    public void deleteBrewery(int breweryId) {
+//        String sql = "DELETE FROM breweries WHERE id = ?";
+//        try {
+//            jdbcTemplate.update(sql, breweryId);
+//        }catch (Exception ex){
+//            System.out.println("ERROR deleting from the database");
+//        }
+//    }
 
     private Brewery mapRowToBrewery(SqlRowSet results) {
         Brewery brewery = new Brewery();
