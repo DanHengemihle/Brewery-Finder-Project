@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
@@ -11,8 +13,21 @@ public class Brewery {
     private String city;
     private String state;
     private String phone;
+    @JsonProperty("website_url")
     private String websiteUrl;
     private String hoursOfOperation;
+
+    public Brewery() {}
+
+    public Brewery(int id, String name, String street, String city, String state, String phone, String websiteUrl) {
+        this.id = id;
+        this.name = name;
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.phone = phone;
+        this.websiteUrl = websiteUrl;
+    }
 
     public void setId(int id) {
         this.id = id;
