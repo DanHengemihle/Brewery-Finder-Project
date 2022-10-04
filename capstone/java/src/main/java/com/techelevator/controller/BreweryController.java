@@ -39,6 +39,8 @@ public class BreweryController {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
         return response;
+
+
     }
 
     @RequestMapping(path = "/breweries/{id}", method = RequestMethod.GET)
