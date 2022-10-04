@@ -206,11 +206,11 @@ export default {
   border-style: none;
 }
 
-#homenav {
+/* #homenav {
   padding-left: 20px;
   color: darkgoldenrod;
   font-size: 3vh;
-}
+} */
 
 .nav {
   transition: 100ms;

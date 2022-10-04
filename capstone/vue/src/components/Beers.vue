@@ -23,7 +23,7 @@
             <button v-on:click="favoriteBeer(beer.name)">
               Add to Favorites
             </button>
-            <button v-on:click="deleteBeer(beer.id)">Delete</button>
+            <button v-on:click="deleteBeer(beer.beerId)">Delete</button>
           </td>
         </tr>
       </tbody>
@@ -46,19 +46,19 @@ export default {
     viewBrewery(id) {
       this.$router.push(`/breweries/${id}`);
     },
-    deleteBeer() {
+    deleteBeer(id) {
       if (
         confirm(
-          "Are you sure you want to delete this brewery and all associated information? This action cannot be undone."
+          "Are you sure you want to delete this beer and all associated information? This action cannot be undone."
         )
       ) {
         applicationService
-          .deleteBeer(this.brewery.id)
+          .deleteBeer(id)
           .then((response) => {
             if (response.status === 200) {
-              alert("Brewery successfully deleted");
+              alert("Beer successfully deleted");
 
-              this.$store.commit("DELETE_BEER", this.brewery.id);
+              this.$store.commit("DELETE_BEER", id);
 
               this.$router.push({ name: "Home" });
             }

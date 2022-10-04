@@ -265,12 +265,7 @@ export default {
     hoursOfOperation() {
       
       this.hours_of_operation.push(this.days + " " + this.startingHour + " - " + this.endingHour);
-      this.brewery.hoursOfOperation = this.hours_of_operation.toString();
-      // this.brewery.hoursOfOp[0].push(this.brewery.days);
-      // this.brewery.hoursOfOp.starting.push(this.brewery.startingHour);
-      // this.brewery.hoursOfOp.ending.push(this.brewery.endingHour);
-      
-     
+      this.brewery.hoursOfOperation = this.hours_of_operation.toString().split(",").join(", ");   
     },
 
     selectedDay(event){
