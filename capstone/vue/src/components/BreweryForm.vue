@@ -48,7 +48,7 @@ Show Form </button>
             id="phone-number"
             class="form-control"
             placeholder="Phone Number"
-            v-model="brewery.phone_number"
+            v-model="brewery.phone"
             required
           />
         </div>
@@ -61,7 +61,7 @@ Show Form </button>
             id="website-url"
             class="form-control"
             placeholder="Website Url"
-            v-model="brewery.website_url"
+            v-model="brewery.websiteUrl"
             required
           />
         </div>
@@ -191,7 +191,7 @@ Show Form </button>
             <button id="add-hours" type="submit">Add Hours</button>
           </div>
         </form>
-        <div id="hoursDisplay" v-for="day in brewery.hours_of_operation" v-bind:key = "day">{{day}} <button id="remove" class="btn" @click="removeDay(day)">Remove</button></div>
+        <div id="hoursDisplay" v-for="day in hours_of_operation" v-bind:key = "day">{{day}} <button id="remove" class="btn" @click="removeDay(day)">Remove</button></div>
 
         <br />
         <br />
@@ -222,13 +222,14 @@ export default {
         street: "",
         city: "",
         state: "",
-        phone_number: "",
-        website_url: "",
+        phone: "",
+        websiteUrl: "",
+         hoursOfOperation: "",
+         
         // hoursOfOp: [{day: []}, {starting: []}, {ending: []}],
-        hours_of_operation: [],
-       
         
       },
+      hours_of_operation: [],
        days: "",
         startingHour: "",
         endingHour: "",
@@ -263,7 +264,8 @@ export default {
     },
     hoursOfOperation() {
       
-      this.brewery.hours_of_operation.push(this.days + " " + this.startingHour + " - " + this.endingHour);
+      this.hours_of_operation.push(this.days + " " + this.startingHour + " - " + this.endingHour);
+      this.brewery.hoursOfOperation = this.hours_of_operation.toString();
       // this.brewery.hoursOfOp[0].push(this.brewery.days);
       // this.brewery.hoursOfOp.starting.push(this.brewery.startingHour);
       // this.brewery.hoursOfOp.ending.push(this.brewery.endingHour);
@@ -284,8 +286,8 @@ export default {
     },
 
     removeDay(day){
-      let currentDayToRemove = this.brewery.hours_of_operation.indexOf(day);
-      this.brewery.hours_of_operation.splice(currentDayToRemove, 1);
+      let currentDayToRemove = this.hours_of_operation.indexOf(day);
+      this.hours_of_operation.splice(currentDayToRemove, 1);
     }
 
 

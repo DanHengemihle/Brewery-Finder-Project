@@ -16,8 +16,12 @@ addBrewery(payload){
     return axios.post('/breweries', payload)
 },
 
-getBeerByBrewery(id){
-    return axios.get(`/brewery/${id}`)
+getBeerByBreweryId(id){
+    return axios.get(`/breweries/${id}`)
+},
+
+getBeer(){
+    return axios.get('/beers')
 },
 
 // getBreweryById(id){
@@ -27,6 +31,10 @@ getBeerByBrewery(id){
 deleteBrewery(id){
 return axios.delete(`/breweries/${id}`)
 
+},
+
+deleteBeer(id){
+    return axios.delete(`/beer/${id}`)
 }
 
 
