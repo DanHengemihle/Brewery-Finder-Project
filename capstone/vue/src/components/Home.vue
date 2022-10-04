@@ -1,18 +1,20 @@
 <template>
- 
- <div class="home"> 
+  <body>
+
+<div class="home"> 
 
   <div class="headings">
 
 <h1 class="heading">Welcome to Bootlegger!</h1> 
 <br>
-<!-- <h2 class="subheading">Beer Lover's Paradise</h2>  -->
+
  </div>
  
  <div id="body"> 
 <h3 class="breweries">Breweries</h3>
 </div>
 <br>
+
 <input type="text" placeholder="Search..">
 <br>
 <br>
@@ -23,89 +25,178 @@
  <img id="beer" src="/public/centermug.jpg"/> 
    
   </div>
- <div class="breweries-list"> 
+
   
- <brewery-card class="card-space" v-for="brewery in breweries" v-bind:key="brewery.name" v-bind:brewery="brewery"/>
-  </div> 
+ <!-- <brewery-card class="card-space" v-for="brewery in breweries" v-bind:key="brewery.name" v-bind:brewery="brewery"/> -->
+  <!-- </div>  -->
 
   
  </div>
+
+<div class="brewery-list">
+
+
+
+<table>
+    <thead>
+<tr>
+<th>&nbsp;</th>
+<th>Name</th>
+<th>City</th>
+<th>State</th>
+<th>Zipcode</th>
+<th>Phone</th>
+<th>Website URL</th>
+<th>Hours of Operation</th>
+
+ </tr>
+</thead>
+<tbody>
+<tr v-for="brewery in sortedBreweries" :key="brewery">
+    <!-- <td class="id">{{brewery.id}}</td> -->
+    <td>
+        <td>{{brewery.name}}</td>
+        <td>{{brewery.phone}}</td>
+          <td>{{brewery.website_url}}</td>
+    <td>
+        <button v-on:click="viewBrewery(brewery.name)">See More</button>&nbsp;
+        <button v-on:click="favoriteBrewery(brewery.name)">Add to Favorites</button>
+                <button v-on:click="deleteBrewery(brewery.id)">Delete</button>
+
+    </td>
+</tr>
+    </tbody>
+
+</table>  
+</div>
+</body>
 </template>
 
 <script>
+import applicationService from "../services/ApplicationService";
 
-// // import BreweryList from "./BreweryList.vue"
+export default {
+    data(){
+        return {
+            breweries: []
+        }
+    },
+  name: "breweries-list",
+  methods: {
+    viewBrewery(id) {
+      this.$router.push(`/breweries/${id}`);
+    },
+   deleteBrewery() {
+      if (confirm("Are you sure you want to delete this brewery and all associated information? This action cannot be undone.")) {
+        applicationService
+          .deleteBrewery(this.brewery.id)
+          .then(response => {
+            if (response.status === 200) {
+              alert("Brewery successfully deleted");
 
+              this.$store.commit("DELETE_BREWERY", this.brewery.id);
 
- export default {
-  components: {
-     },
+              this.$router.push({ name: 'Home' });
+            }
+          })
+          
+        .catch((error) => {
+          if (error.response.status === 404) {
+            this.$router.push("/404");
+          } else {
+            console.error(error);
+          }
+        
+        });
+      }
+    },
+    getBreweries() {
+      applicationService.getBreweries().then(response => {
+          if(response.status == 200) {
+ this.$store.commit("SET_BREWERY", response.data);
+this.breweries=response.data;
+          }
+       
+      })
+      .catch((error) => {
+          if (error.response.status === 404) {
+            this.$router.push("/404");
+          } else {
+            console.error(error);
+          }
+        
+        });
+    },
+  },
+  created() {
+    this.getBreweries();
+  },
+  computed: {
+      sortedBreweries(){
+          return this.$store.state.breweries;
+      }
+  }
 };
 </script>
 
+<style scoped>
 
-<style>
 
-* {
-   padding: 0;
-  margin: 0;
+*{
+  padding: 0px;
+  margin: 0px;
   box-sizing: border-box;
- }
-
-.breweries input[type=text] {
-  float: right;
-  padding: 6px;
-  border: none;
-  margin-top: 8px;
-  margin-right: 16px;
-  font-size: 17px;
 }
 
-.headings h1 {
-  font-size: 4rem;
-     margin-top: -2rem;
-  margin-bottom: 1rem;
-   line-height: 1.2;
- }
-
-.headings {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
- justify-content: center;
-  text-align: center;
-  height: 55vh;
-  color: black;
-  text-shadow: 2px 2px 15px black;
- }
-
-.headings h2 {
-   font-size: 1rem;
- font-style: italic;
-   display: block;
- }
-
- h3 {
-  color: black;
-  text-shadow: 2px 2px 15px black;
+/* table{
+  padding: 30px;
+  margin-top: 500px;
+  background-color: goldenrod;
+  opacity: 90%;
   display: flex;
   flex-direction: column;
- align-items: center;
-   font-size: 3rem;
-   margin-top: 11rem;
-   margin-bottom: 2rem;
- }
+  align-items: center;
+  justify-content: center;
+background-position: center;
+} */
 
-
-.brewery-list {
+table{
   padding-right: 25px;
-   padding-left: 25px;
- display: flex;
+  padding-left: 25px;
+  display: flex;
   flex-wrap: wrap;
   grid-gap: 10px 200px;
   align-self: space-around;
   justify-content: space-around;
- }
+  background-color: goldenrod;
+}
+.heading{
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+  color: goldenrod;
+  text-shadow: 2px 2px 15px black;
+}
+body, html {
+  display: flex;
+
+  background-image: url("/beer7.png");
+/* max-height: 300px; */
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+} 
+
+ body, html{
+   /* max-height: 300px; */
+  height: 100vh;
+} 
 
 
 </style>

@@ -79,7 +79,7 @@
 
       </form>
     </div>
-    <div id="space">space</div>
+    <!-- <div id="space">space</div> -->
     <i id="usericon" class="fa fa-user icon"></i>
     <i id="keyicon" class="fa fa-key icon"></i>
    
@@ -231,9 +231,7 @@ input:checked + .slider:before {
 
 
 
-#space {
-  height: 1000px;
-}
+
 
 #username{
   margin-top: -2%;

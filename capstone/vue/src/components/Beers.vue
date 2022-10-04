@@ -93,8 +93,8 @@ this.beers=response.data;
         
         });
     },
-     getBeerByBreweryId() {
-      applicationService.getBeersByBreweryId(this.$store.state.user.brewer_id).then(response => {
+     getBeersByBreweryId() {
+      applicationService.getBeerByBreweryId(this.$store.state.user.brewer_id).then(response => {
           if(response.status == 200) {
  this.$store.commit("SET_BEERS", response.data);
 this.beers=response.data;
@@ -112,7 +112,7 @@ this.beers=response.data;
     },
   },
   created() {
-    this.getBeerByBreweryId();
+    this.getBeersByBreweryId();
   },
   computed: {
       sortedBeers(){
