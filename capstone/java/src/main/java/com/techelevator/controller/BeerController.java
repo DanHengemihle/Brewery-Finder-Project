@@ -10,8 +10,9 @@ import javax.validation.Valid;
 import java.util.List;
 
 
-@RequestMapping("/")
 
+
+@RequestMapping("/")
 
 
 @RestController
@@ -45,6 +46,14 @@ public class BeerController {
     public List<Beer> getBreweriesById(@PathVariable int id) {
         return beerDAO.getBeersByBreweryId(id);
     }
+
+
+
+    @DeleteMapping ("/delete-beer/{id}")
+    public void deleteBeer(@PathVariable int id) {
+        beerDAO.deleteBeer(id);
+    }
+
 
 
 }
