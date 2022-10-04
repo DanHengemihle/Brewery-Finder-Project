@@ -9,11 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-<<<<<<< HEAD
-@RequestMapping("/")
-=======
 
->>>>>>> main
+@RequestMapping("/")
+
 @RestController
 @CrossOrigin
 public class BeerController {
@@ -40,12 +38,16 @@ public class BeerController {
         return beerDAO.getBeerIdByName(name);
     }
 
-<<<<<<< HEAD
-=======
     @GetMapping("/breweries/{breweryId}")
     public List<Beer> getBreweriesById(@PathVariable int id) {
         return beerDAO.getBeersByBreweryId(id);
     }
->>>>>>> main
+
+
+    @DeleteMapping ("/delete-beer/{id}")
+    public void deleteBeer(@PathVariable int id) {
+        beerDAO.deleteBeer(id);
+    }
+
 
 }
