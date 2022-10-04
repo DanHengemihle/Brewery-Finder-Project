@@ -16,12 +16,6 @@ export default {
 </script>
 
 <style scoped>
-body{
-  height: 100vh;
-  background-image: url("/2beers.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
+
 
 </style>

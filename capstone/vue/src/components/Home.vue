@@ -22,7 +22,7 @@
   
 
  <div class="loading" v-if="isLoading">
- <img id="beer" src="/public/centermug.jpg"/> 
+  
    
   </div>
 
@@ -168,7 +168,7 @@ table{
   grid-gap: 10px 200px;
   align-self: space-around;
   justify-content: space-around;
-  background-color: goldenrod;
+  /* background-color: goldenrod; */
 }
 .heading{
   font-size: 2rem;
@@ -183,7 +183,7 @@ table{
 body, html {
   display: flex;
 
-  background-image: url("/beer7.png");
+
 /* max-height: 300px; */
   justify-content: center;
   align-items: center;
@@ -191,6 +191,9 @@ body, html {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  height: 100vh;
+  background-image: url("/lighterbg.jpg");
+
 } 
 
  body, html{
