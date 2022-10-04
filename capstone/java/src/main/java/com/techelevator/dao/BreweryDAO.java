@@ -12,7 +12,7 @@ public interface BreweryDAO {
 
     Brewery getBreweryByName(String name);
 
-    boolean createBrewery(Brewery brewery);
+    void createBrewery(Brewery brewery);
 
     void updateBrewery(Brewery brewery, int breweryId);
 

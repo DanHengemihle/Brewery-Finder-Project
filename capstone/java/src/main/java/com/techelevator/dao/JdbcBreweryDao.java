@@ -2,7 +2,6 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Brewery;
 import com.techelevator.model.User;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -62,11 +61,11 @@ public class JdbcBreweryDao implements BreweryDAO {
     }
 
     @Override
-    public boolean createBrewery(Brewery brewery) {
-        String insertBrewerySql = "INSERT INTO breweries (brewer_id, name, street, city, state, phone_number, website_url, hours_of_operation) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
-       return jdbcTemplate.update(insertBrewerySql, user.getId(), brewery.getName(), brewery.getStreet(), brewery.getCity(),brewery.getState(),
-                brewery.getPhone(), brewery.getWebsiteUrl(), brewery.getHoursOfOperation()) == 1;
+    public void createBrewery(Brewery brewery) {
+        String insertBrewerySql = "INSERT INTO breweries (brewer_id, name, street, city, state, phone_number, website_url, " +
+                "hours_of_operation) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        jdbcTemplate.update(insertBrewerySql, user.getId() ,brewery.getName(), brewery.getStreet(), brewery.getCity(), brewery.getState(),
+                brewery.getPhone(), brewery.getWebsiteUrl(), brewery.getHoursOfOperation());
     }
 
     @Override // needs finished

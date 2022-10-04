@@ -68,8 +68,8 @@ public class BreweryController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/breweries", method = RequestMethod.POST)
-    public boolean addBrewery(@Valid @RequestBody Brewery brewery){
-        return breweryDAO.createBrewery(brewery);
+    public void addBrewery(@Valid @RequestBody Brewery brewery){
+        breweryDAO.createBrewery(brewery);
     }
 
     @RequestMapping(path = "/breweries/{id}", method = RequestMethod.PUT)
