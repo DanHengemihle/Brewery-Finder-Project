@@ -2,7 +2,7 @@
 
 <div id="admin">
     <div class="headings">
-      <h1 class="heading">Welcome, Admin!</h1>
+      <h1 class="heading">Welcome, Brewer!</h1>
 <h2 class="subheading">Create New Brewery</h2>
   </div>
   <div id="body">

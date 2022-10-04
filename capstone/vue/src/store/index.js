@@ -19,13 +19,22 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
 
-
-
-
-
+breweries: [],
+activeBreweries: {
+  id: null, 
+  name: '',
+  phone_number: '',
+  website_url: '',
+  street: '',
+  city: '',
+  zipcode: '',
+  state: '',
+  hours: ''
+},
     
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+    
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -33,7 +42,9 @@ export default new Vuex.Store({
       localStorage.setItem('token', token);
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     },
+    
     SET_USER(state, user) {
+      console.log(user);
       state.user = user;
       localStorage.setItem('user',JSON.stringify(user));
     },
@@ -44,5 +55,16 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
+    SET_ACTIVE_BREWERY(state, data){
+      state.activeBreweries=data;
+    },
+    SET_BREWERY(state, data){
+      state.breweries=data;
+    }
+  },
+  DELETE_BREWERY(state, breweryIdToDelete) {
+    state.brewery = state.brewery.filter((brewery) => {
+      return brewery.id !== breweryIdToDelete;
+    });
   }
 })

@@ -1,26 +1,33 @@
 import axios from 'axios';
 
 
-const http = axios.create({
-    baseURL: "http://localhost:8080"
-});
+// const http = axios.create({
+//     baseURL: "http://localhost:8080"
+// });
 
 
 export default{
 
 getBreweries(){
-    return http.get('/breweries')
+    return axios.get('/breweries')
 },
 
+addBrewery(payload){
+    return axios.post('/breweries', payload)
+},
 
-getBeer(){
-    return http.get('/beer')
+getBeerByBrewery(id){
+    return axios.get(`/brewery/${id}`)
 },
 
 // getBreweryById(id){
 //     return http.get('/breweries/${id}')
 // },
 
+deleteBrewery(id){
+return axios.delete(`/breweries/${id}`)
+
+}
 
 
 

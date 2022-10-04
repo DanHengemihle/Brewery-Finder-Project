@@ -1,10 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../views/Home.vue'
-import LoginDan from '../views/LoginDan.vue'
+import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
-import RegisterDan from '../views/RegisterDan.vue'
 import store from '../store/index'
+import Register from '../components/Register.vue'
+// import Brewer from '../components/Brewer.vue'
+import BeerLover from '../components/BeerLover.vue'
+import Admin from '../components/Admin.vue'
+import Breweries from '../components/Breweries.vue'
+import BreweryForm from '../components/BreweryForm.vue'
+import Locations from '../components/Locations.vue'
+import Beers from '../components/Beers.vue'
 
 Vue.use(Router)
 
@@ -32,7 +39,7 @@ const router = new Router({
     {
       path: "/login",
       name: "login",
-      component: LoginDan,
+      component: Login,
       meta: {
         requiresAuth: false
       }
@@ -48,20 +55,71 @@ const router = new Router({
     {
       path: "/register",
       name: "register",
-      component: RegisterDan,
+      component: Register,
       meta: {
         requiresAuth: false
       }
       },
       {
-        path: "/breweries/:id",
+        path: "/breweries",
         name: "breweries",
-        component: Home,
+        component: Breweries,
         meta: {
           requiresAuth: false
         }
-      
-    },
+      },
+     
+    { path: "/brewer",
+    name: "brewer",
+    component: BreweryForm,
+    meta: {
+      requiresAuth: true,
+    }
+  },
+
+{
+path: "/beerlover",
+name: "beerlover",
+component: BeerLover,
+meta: {
+  requiresAuth: true,
+}
+},
+
+{
+  path: "/admin",
+  name: "admin",
+  component: Admin,
+  meta: {
+    requiresAuth: true,
+  }
+  },
+  {
+    path: "/maps",
+    name: "maps",
+    component: Locations,
+    meta: {
+      requiresAuth: true,
+    }
+  
+
+
+},
+{
+  path: "/brewery/:id",
+  name: "brewery-page",
+  component: Beers,
+  meta: {
+    requiresAuth: true,
+  }
+}
+
+
+
+    
+
+
+
     // {
     //   path: "/admin",
     //   name: "admin",

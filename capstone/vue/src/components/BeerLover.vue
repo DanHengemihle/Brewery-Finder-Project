@@ -1,42 +1,10 @@
 <template>
-  <body>
-
-<div class="home"> 
-
-  <div class="headings">
-
-<h1 class="heading">Welcome to Bootlegger!</h1> 
-<br>
-
- </div>
- 
- <div id="body"> 
-<h3 class="breweries">Breweries</h3>
-</div>
-<br>
-
-<input type="text" placeholder="Search..">
-<br>
-<br>
-<br>
   
-
- <div class="loading" v-if="isLoading">
- <img id="beer" src="/public/centermug.jpg"/> 
-   
-  </div>
-
-  
- <!-- <brewery-card class="card-space" v-for="brewery in breweries" v-bind:key="brewery.name" v-bind:brewery="brewery"/> -->
-  <!-- </div>  -->
-
-  
- </div>
-
 <div class="brewery-list">
 
-
-
+<div class="heading">
+<h1>Welcome, Beer Lover!</h1>
+</div>
 <table>
     <thead>
 <tr>
@@ -69,7 +37,6 @@
 
 </table>  
 </div>
-</body>
 </template>
 
 <script>
@@ -139,8 +106,17 @@ this.breweries=response.data;
 };
 </script>
 
-<style scoped>
+<style>
 
+.brewery-list{
+padding-right: 25px;
+padding-left: 25px;
+display: flex;
+/* flex-wrap: wrap; */
+/* align-self: space-around; */
+ /* background-image: url("/beer7.png"); */
+ background-repeat: no-repeat;
+}
 
 *{
   padding: 0px;
@@ -148,9 +124,7 @@ this.breweries=response.data;
   box-sizing: border-box;
 }
 
-/* table{
-  padding: 30px;
-  margin-top: 500px;
+table{
   background-color: goldenrod;
   opacity: 90%;
   display: flex;
@@ -158,17 +132,6 @@ this.breweries=response.data;
   align-items: center;
   justify-content: center;
 background-position: center;
-} */
-
-table{
-  padding-right: 25px;
-  padding-left: 25px;
-  display: flex;
-  flex-wrap: wrap;
-  grid-gap: 10px 200px;
-  align-self: space-around;
-  justify-content: space-around;
-  background-color: goldenrod;
 }
 .heading{
   font-size: 2rem;
@@ -180,23 +143,6 @@ table{
   color: goldenrod;
   text-shadow: 2px 2px 15px black;
 }
-body, html {
-  display: flex;
-
-  background-image: url("/beer7.png");
-/* max-height: 300px; */
-  justify-content: center;
-  align-items: center;
-  padding-left: 20px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-} 
-
- body, html{
-   /* max-height: 300px; */
-  height: 100vh;
-} 
 
 
 </style>
