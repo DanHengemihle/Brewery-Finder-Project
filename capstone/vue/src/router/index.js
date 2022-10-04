@@ -5,11 +5,12 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import store from '../store/index'
 import Register from '../components/Register.vue'
-import Brewer from '../components/Brewer.vue'
+// import Brewer from '../components/Brewer.vue'
 import BeerLover from '../components/BeerLover.vue'
 import Admin from '../components/Admin.vue'
 import Breweries from '../components/Breweries.vue'
 import BreweryForm from '../components/BreweryForm.vue'
+import Locations from '../components/Locations.vue'
 
 
 Vue.use(Router)
@@ -67,18 +68,10 @@ const router = new Router({
           requiresAuth: false
         }
       },
-      {
-        path: "/brewery/",
-        name: "brewery",
-        component: BreweryForm,
-        meta: {
-          requiresAuth: true
-        }
-      },
-    
+     
     { path: "/brewer",
     name: "brewer",
-    component: Brewer,
+    component: BreweryForm,
     meta: {
       requiresAuth: true,
     }
@@ -100,6 +93,15 @@ meta: {
   meta: {
     requiresAuth: true,
   }
+  },
+  {
+    path: "/maps",
+    name: "maps",
+    component: Locations,
+    meta: {
+      requiresAuth: true,
+    }
+  
 
 
 }

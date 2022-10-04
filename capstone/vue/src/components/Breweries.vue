@@ -1,5 +1,5 @@
 <template>
-  
+  <body>
 <div class="brewery-list">
 
 <div class="heading">
@@ -10,21 +10,22 @@
 <tr>
 <th>&nbsp;</th>
 <th>Name</th>
-<th>Street</th>
 <th>City</th>
 <th>State</th>
 <th>Zipcode</th>
 <th>Phone</th>
 <th>Website URL</th>
 <th>Hours of Operation</th>
-<th>State</th>
+
  </tr>
 </thead>
 <tbody>
 <tr v-for="brewery in sortedBreweries" :key="brewery">
-    <td class="id">{{brewery.id}}</td>
+    <!-- <td class="id">{{brewery.id}}</td> -->
     <td>
         <td>{{brewery.name}}</td>
+        <td>{{brewery.phone}}</td>
+          <td>{{brewery.website_url}}</td>
     <td>
         <button v-on:click="viewBrewery(brewery.name)">See More</button>&nbsp;
         <button v-on:click="favoriteBrewery(brewery.name)">Add to Favorites</button>
@@ -36,6 +37,7 @@
 
 </table>  
 </div>
+</body>
 </template>
 
 <script>
@@ -105,17 +107,8 @@ this.breweries=response.data;
 };
 </script>
 
-<style>
+<style scoped>
 
-.brewery-list{
-padding-right: 25px;
-padding-left: 25px;
-display: flex;
-/* flex-wrap: wrap; */
-/* align-self: space-around; */
- /* background-image: url("/beer7.png"); */
- background-repeat: no-repeat;
-}
 
 *{
   padding: 0px;
@@ -124,6 +117,7 @@ display: flex;
 }
 
 table{
+  margin-top: 40px;
   background-color: goldenrod;
   opacity: 90%;
   display: flex;
@@ -142,6 +136,23 @@ background-position: center;
   color: goldenrod;
   text-shadow: 2px 2px 15px black;
 }
+body {
+  display: flex;
+
+  background-image: url("/beer7.png");
+
+  justify-content: center;
+  align-items: center;
+  padding-left: 70px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+} 
+
+ body,
+html {
+  height: 100vh;
+} 
 
 
 </style>

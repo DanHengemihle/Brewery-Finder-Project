@@ -1,4 +1,5 @@
 <template>
+
   <div id="app">
     <div id="nav" :class="{ sticky: active }">
       <link
@@ -42,15 +43,14 @@
           <router-link v-bind:to="{ name: 'home' }">Home</router-link>
         </li>
      <li>
-          <router-link v-bind:to="{ name: 'home' }">Breweries</router-link>
+          <router-link v-bind:to="{ name: 'breweries' }">Breweries</router-link>
         </li> 
-        <li>
-          <router-link v-bind:to="{ name: 'home' }">About Us</router-link>
-        </li>
+       
         <li><router-link v-bind:to="{ name: 'login' }">Login</router-link></li>
         <li><router-link v-bind:to="{ name: 'register' }">Register</router-link></li>
-        <li><router-link v-bind:to="{ name: 'admin' }">Admin</router-link></li>
-          <a id="about" href="#about">About</a> |
+                <li><router-link v-bind:to="{ name: 'maps' }">Locations</router-link></li>
+
+                <li><router-link v-bind:to="{ name: 'brewer' }">Brewer</router-link></li>          <a id="about" href="#about">About</a> |
         <a id="contact" href="#contact">Contact</a>
         <input id="search" type="text" placeholder="Search.." />
         <i id="searchicon" class="fa fa-search icon"></i>
@@ -68,7 +68,7 @@
     </nav>
 
       
-        <router-link id="breweryinfo" :to="{name: 'brewery' }" v-if="$store.state.user.role == 'ROLE_BREWER'">Add/Update Brewery</router-link>
+        <!-- <router-link id="breweryinfo" :to="{name: 'brewery' }" v-if="$store.state.user.role == 'ROLE_BREWER'">Add/Update Brewery</router-link> -->
       <!-- </div> -->
     </div>
     <router-view />

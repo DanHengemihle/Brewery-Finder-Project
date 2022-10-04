@@ -1,5 +1,23 @@
 <template>
   <body>
+
+<!-- <div id="details"> -->
+  <!-- <div class="heading">
+    <h1 class="brewery-name"> {{brewery.name}}</h1>
+<div class="address">
+  <h2><span v-if="brewery.state" >{{brewery.state}},</span>{{brewery.city}}</h2>
+</div>
+<div class="website">
+  <a v-bind:href="brewery.websiteURL" target="_blank"><h3>{{brewery.websiteURL}}</h3></a>
+</div>
+
+<div class="show-form-button">
+  <button href="#" v-on:click.prevent="showForm=true"
+v-if="showForm === false && this.$store.state.brewer_id === this.brewery.brewer_id">
+Show Form </button>
+</div>
+</div> -->
+
     <div id="registerBrewery" class="text-center">
       <img :src="'\Logo.png'" />
       <form class="form-register" @submit.prevent="registerBrewery">
@@ -272,6 +290,7 @@ export default {
     //   this.$emit('change', this.selected);
     // },
   },
+  
 };
 </script>
 

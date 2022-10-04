@@ -18,7 +18,7 @@
         <div>
           <label for="username" class="sr-only">Username</label>
 
-          <input 
+          <input
             type="text"
             id="username"
             class="form-control"
@@ -26,7 +26,7 @@
             v-model="user.username"
             required
             autofocus
-          >
+          />
         </div>
 
         <div>
@@ -48,8 +48,8 @@
         <button id="sign-in" type="submit">Sign in</button>
       </form>
     </div>
-    <div id="space">space</div>
-    
+   
+
     <i id="lockicon" class="fa fa-lock icon"></i>
   </body>
 </template>
@@ -65,12 +65,12 @@ export default {
       user: {
         username: "",
         password: "",
-        role: "user"
+        role: "user",
       },
       invalidCredentials: false,
     };
   },
-  
+
   methods: {
     login() {
       authService
@@ -79,7 +79,15 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/");
+            console.log(response.data.user.authorities[0].name);
+            if (response.data.user.authorities[0].name == "ROLE_BREWER") {
+              this.$router.push({ name: "brewer" });
+            } else if (
+              response.data.user.authorities[0].name == "ROLE_BEERLOVER"){
+              this.$router.push({ name: "beerlover" });
+            } else {
+              this.$router.push("/");
+            }
           }
         })
         .catch((error) => {
@@ -96,14 +104,8 @@ export default {
 
 <style scoped>
 
-#space {
-  height: 1000px;
-}
-
 #usericon {
-
-  
-  transform: translate(-18.65vw, 7.9vh); 
+  transform: translate(-18.65vw, 7.9vh);
   size: 100%;
   opacity: 0.8;
   padding: 10px;
@@ -111,8 +113,8 @@ export default {
 }
 
 #lockicon {
-   position: static;
-  
+  position: static;
+
   transform: translate(-20.7vw, 13.5vh);
   opacity: 0.8;
   padding: 10px;
@@ -127,7 +129,6 @@ input::placeholder {
   padding: 0;
   margin: 0;
 }
-
 
 input {
   display: block;
@@ -146,16 +147,13 @@ input {
 img {
   opacity: 0.85;
   width: 25vh;
-  
 }
 
 body {
   display: flex;
 
-  
   background-image: url("/beer7.png");
 
-  
   justify-content: center;
   align-items: center;
   padding-left: 70px;
@@ -170,7 +168,6 @@ html {
 }
 
 h1 {
- 
   font-weight: bolder;
   margin-bottom: 7%;
   font-size: 300%;
