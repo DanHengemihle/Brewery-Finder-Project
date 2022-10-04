@@ -37,16 +37,6 @@ const router = new Router({
         requiresAuth: false
       }
     },
-
-    {
-      path: '/home',
-      name: 'home',
-      component: Home,
-      meta: {
-        requiresAuth: false
-      }
-    },
-
     {
       path: "/login",
       name: "login",
@@ -133,15 +123,15 @@ meta: {
     requiresAuth: false,
   }
 }, 
-// {
-//   path: "/beers/:id/reviews",
-//   name: "beer-reviews",
-//   component: BeerReviews,
-//   props:true,
-//   meta: {
-//     requiresAuth: false
-//   }
-// }
+{
+  path: "/beers/:id/reviews",
+  name: "beer-reviews",
+  component: BeerReviews,
+  props:true,
+  meta: {
+    requiresAuth: false
+  }
+}
 
 
 

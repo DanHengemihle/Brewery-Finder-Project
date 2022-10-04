@@ -42,6 +42,7 @@
         <input v-on:click="summarizeMarkers" type="button" value="Summarize All Markers"/>
       </div>
 
+      <div id="report"></div>
     </div>
   </div>
 </template>
@@ -52,18 +53,11 @@ export default {
   data() {
     return {
       map: null,
-      mapCenter: { lat: 40.4695304, lng: -79.9090141 },
+      mapCenter: { lat: 42.3327, lng: -83.0458 },
       locations: [
-        { coord: { lat: 40.4695304, lng: -79.9090141}, name: "Couch Brewery" },
-        { coord: { lat: 40.39862051, lng: -79.84116859 }, name: "Dancing Gnome Beer" },
-        { coord: { lat: 40.46680403, lng: -79.96553317 }, name: "Eleventh Hour Brewing Co" },
-        { coord: { lat: 40.4884044, lng: -79.9224894 }, name: "Cinderlands Beer Co" },
-        { coord: { lat: 40.4620769, lng: -79.9643613 }, name: "Church Brew Works" },
-        { coord: { lat: 40.45424933, lng: -80.00061073 }, name: "Allegheny City Brewing" },
-        { coord: { lat: 40.4093329, lng: -79.9149542 }, name: "Rock Bottom Brewery" },
-        { coord: { lat: 40.46161288, lng: -79.96570261 }, name: "Pittsburgh Brewing Co" },
-        { coord: { lat: 40.4279919, lng: -79.9639442 }, name: "Hofbrauhaus Pittsburgh" },
-        { coord: { lat: 40.4884044, lng: -79.9224894 }, name: "Hitchhiker Brewing Co." },
+        { coord: { lat: 42.34, lng: -83.0456 }, name: "Ford Field" },
+        { coord: { lat: 42.3411, lng: -83.0553 }, name: "L.C. Arena" },
+        { coord: { lat: 42.339, lng: -83.0485 }, name: "Comerica Park" },
       ],
     };
   },
@@ -139,10 +133,9 @@ export default {
       new window.google.maps.Marker({
         position: markerObj.coord,
         map: this.map,
-        animation: window.google.maps.Animation.DROP,
         label: {
           text: markerObj.name,
-          color: "black",
+          color: "blue",
         },
       });
     },
@@ -170,13 +163,11 @@ export default {
 <style>
 #grid-container {
   display: grid;
-  grid-template-columns: 1.5fr .5fr ;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-areas:
-    "intro intro"
-    "map latitude"
-    "map longitude"
-    "map description"
-    "map buttons";
+    "intro intro intro intro"
+    "latitude longitude description buttons"
+    "map map report report";
 }
 #intro {
     grid-area: intro;
@@ -195,8 +186,8 @@ export default {
 }
 #map {
   grid-area: map;
-  width: 1500px;
-  height: 710px;
+  width: 500px;
+  height: 400px;
   padding: 25px;
   margin: 25px;
 }
