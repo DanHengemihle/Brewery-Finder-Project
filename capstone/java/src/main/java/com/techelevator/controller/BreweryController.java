@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.BreweryDAO;
+import com.techelevator.dao.UserDao;
 import com.techelevator.model.Brewery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -24,6 +25,8 @@ import java.util.List;
 public class BreweryController {
     @Autowired
     private BreweryDAO breweryDAO;
+    @Autowired
+    private UserDao userDao;
 
     @PreAuthorize("permitAll")
     @RequestMapping(value = "/breweries", method = RequestMethod.GET)
@@ -68,15 +71,19 @@ public class BreweryController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/breweries", method = RequestMethod.POST)
-    public void addBrewery(@Valid @RequestBody Brewery brewery){
-        breweryDAO.createBrewery(brewery);
+    public void addBrewery(Principal principal, @Valid @RequestBody Brewery brewery){
+        int brewerId = userDao.findIdByUsername(principal.getName());
+        breweryDAO.createBrewery(brewerId,brewery);
     }
 
     @RequestMapping(path = "/breweries/{id}", method = RequestMethod.PUT)
-    public void updateBrewery(@Valid @RequestBody Brewery brewery, @PathVariable int id){
-        breweryDAO.updateBrewery(brewery, id);
+    public void updateBrewery(@Valid @RequestBody Brewery brewery, @PathVariable int id, Principal principal){
+        int brewerId = userDao.findIdByUsername(principal.getName());
+        breweryDAO.updateBrewery(brewery, id, brewerId);
     }
 
     @RequestMapping(path = "/breweries/{id}", method = RequestMethod.DELETE)
-    public void deleteBrewery(@RequestParam int id){breweryDAO.deleteBrewery(id);}
+    public void deleteBrewery(@PathVariable int id, Principal principal){
+        int brewerId = userDao.findIdByUsername(principal.getName());
+        breweryDAO.deleteBrewery(id, brewerId);}
 }
