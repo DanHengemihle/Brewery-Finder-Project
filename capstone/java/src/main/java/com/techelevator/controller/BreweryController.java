@@ -30,29 +30,33 @@ public class BreweryController {
 
     @PreAuthorize("permitAll")
     @RequestMapping(value = "/breweries", method = RequestMethod.GET)
-    public ResponseEntity<String> GetBreweriesList(){
-        String url = "https://brianiswu-open-brewery-db-v1.p.rapidapi.com/breweries";
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("X-RapidAPI-Key", "3a718e556cmsh7ad85a3df7327f8p1e9f3cjsn0f94a22217e1");
-        headers.add("X-RapidAPI-Host", "brianiswu-open-brewery-db-v1.p.rapidapi.com");
-        HttpEntity<Object> entity = new HttpEntity<Object>(headers);
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-        return response;
+    public List<Brewery> breweries(){
+        return breweryDAO.listAllBreweries();
+//    public ResponseEntity<String> GetBreweriesList(){
+//        String url = "https://brianiswu-open-brewery-db-v1.p.rapidapi.com/breweries";
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.add("X-RapidAPI-Key", "3a718e556cmsh7ad85a3df7327f8p1e9f3cjsn0f94a22217e1");
+//        headers.add("X-RapidAPI-Host", "brianiswu-open-brewery-db-v1.p.rapidapi.com");
+//        HttpEntity<Object> entity = new HttpEntity<Object>(headers);
+//        RestTemplate restTemplate = new RestTemplate();
+//        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+//        return response;
 
 
     }
 
     @RequestMapping(path = "/breweries/{id}", method = RequestMethod.GET)
-    public ResponseEntity<String> getById(@PathVariable int id){
-        String url = "https://brianiswu-open-brewery-db-v1.p.rapidapi.com/breweries/" + id;
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("X-RapidAPI-Key", "3a718e556cmsh7ad85a3df7327f8p1e9f3cjsn0f94a22217e1");
-        headers.add("X-RapidAPI-Host", "brianiswu-open-brewery-db-v1.p.rapidapi.com");
-        HttpEntity<Object> entity = new HttpEntity<Object>(headers);
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-        return response;
+    public Brewery breweryById(@PathVariable int id){
+        return breweryDAO.getBreweryById(id);
+//    public ResponseEntity<String> getById(@PathVariable int id){
+//        String url = "https://brianiswu-open-brewery-db-v1.p.rapidapi.com/breweries/" + id;
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.add("X-RapidAPI-Key", "3a718e556cmsh7ad85a3df7327f8p1e9f3cjsn0f94a22217e1");
+//        headers.add("X-RapidAPI-Host", "brianiswu-open-brewery-db-v1.p.rapidapi.com");
+//        HttpEntity<Object> entity = new HttpEntity<Object>(headers);
+//        RestTemplate restTemplate = new RestTemplate();
+//        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+//        return response;
     }
 
     @PreAuthorize("permitAll")

@@ -9,14 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-<<<<<<< HEAD
+
 
 @RequestMapping("/")
-=======
-
-@RequestMapping("/")
-
->>>>>>> 028f3b670690ed6dafc2f86d5f8dd68e30666446
 @RestController
 @CrossOrigin
 public class BeerController {
@@ -43,23 +38,15 @@ public class BeerController {
         return beerDAO.getBeerIdByName(name);
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 028f3b670690ed6dafc2f86d5f8dd68e30666446
     @GetMapping("/breweries/{breweryId}")
     public List<Beer> getBreweriesById(@PathVariable int id) {
         return beerDAO.getBeersByBreweryId(id);
     }
 
-<<<<<<< HEAD
-=======
 
     @DeleteMapping ("/delete-beer/{id}")
     public void deleteBeer(@PathVariable int id) {
         beerDAO.deleteBeer(id);
     }
-
->>>>>>> 028f3b670690ed6dafc2f86d5f8dd68e30666446
 
 }
