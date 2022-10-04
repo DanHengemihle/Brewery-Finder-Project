@@ -20,6 +20,7 @@ export default new Vuex.Store({
   state: {
 
 beers: [],
+reviews:[],
 breweries: [],
 activeBreweries: {
   id: null, 
@@ -65,7 +66,10 @@ activeBreweries: {
 
     SET_BEERS(state, data){
       state.beers=data;
-    }
+    },
+    SET_REVIEWS_DATA(state, reviews) {
+      state.reviews = reviews;
+    },
   },
   DELETE_BREWERY(state, breweryIdToDelete) {
     state.brewery = state.brewery.filter((brewery) => {
