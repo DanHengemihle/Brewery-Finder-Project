@@ -6,9 +6,11 @@
 </template>
 
 <script>
+
 import Beers from '../components/Beers.vue'
 export default {
-    Components: { Beers }
+  components: { Beers },
+
 }
 </script>
 

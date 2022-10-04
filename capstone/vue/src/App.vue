@@ -93,31 +93,33 @@ export default {
     
     hasBrewerRole(){
       
+    },
+
+        toggleNavClass(){
+            if(this.scrolling == false){
+              return 'nav'
+            } else {
+              return 'sticky-nav'
+            }
+
     }
-
-    //     toggleNavClass(){
-    //         if(this.scrolling == false){
-    //           return 'nav'
-    //         } else {
-    //           return 'sticky-nav'
-    //         }
-
-    // }
-    //   },
-    //   mounted(){
-    //   window.document.onscroll = () => {
-    //       let navBar = document.getElementById('dropdown');
-    //       if(window.scrollY > navBar.offsetTop){
-    //         this.scrolling = true;
-    //         } else {
-    //         this.scrolling = false;
-    //       }
-    //     }
+      },
+      mounted(){
+      window.document.onscroll = () => {
+          let navBar = document.getElementById('dropdown');
+          if(window.scrollY > navBar.offsetTop){
+            this.scrolling = true;
+            } else {
+            this.scrolling = false;
+          }
+        }
   },
 };
 </script>
 
 <style>
+
+
 /* Navbar container */
 .navbar {
   overflow: hidden;
@@ -191,14 +193,7 @@ export default {
   top: 0;
   border-bottom: solid darkgray;
 }
-/* #nav {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  background-color: black;
-  position: fixed;
-  top: 0;
-} */
+
 
 #logonav {
   margin-left: 10px;
@@ -227,7 +222,7 @@ export default {
   padding: 20px;
 }
 
-/* have to add the ID nav (#nav) otherwise the backgrnd color won't change as the previous background color is set in an ID and ID trumps class notation */
+
 #nav.sticky {
   transition: 150ms;
   box-shadow: 0px 15px 10px -15px #111;
@@ -243,6 +238,10 @@ transform: translate(-1.5vw, 1.9vh);
 #search{
   height: 3vh;
   transform: translate(0, 1.5vh);
+}
+
+html{
+  height: 100%;
 }
 
 </style>

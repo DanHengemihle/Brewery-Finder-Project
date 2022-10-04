@@ -49,7 +49,7 @@
       </form>
     </div>
    
-
+    <i id="usericon" class="fa fa-user icon"></i>
     <i id="lockicon" class="fa fa-lock icon"></i>
   </body>
 </template>
@@ -105,7 +105,8 @@ export default {
 <style scoped>
 
 #usericon {
-  transform: translate(-18.65vw, 7.9vh);
+
+  transform: translate(-16vw, 7.9vh);
   size: 100%;
   opacity: 0.8;
   padding: 10px;
@@ -113,9 +114,9 @@ export default {
 }
 
 #lockicon {
-  position: static;
+ 
 
-  transform: translate(-20.7vw, 13.5vh);
+  transform: translate(-18vw, 13.5vh);
   opacity: 0.8;
   padding: 10px;
   min-width: 40px;

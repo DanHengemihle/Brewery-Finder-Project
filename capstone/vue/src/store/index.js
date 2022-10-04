@@ -64,7 +64,7 @@ activeBreweries: {
     },
 
     SET_BEERS(state, data){
-      state.beer=data;
+      state.beers=data;
     }
   },
   DELETE_BREWERY(state, breweryIdToDelete) {

@@ -15,7 +15,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 body{
   height: 100vh;
   background-image: url("/2beers.jpg");
