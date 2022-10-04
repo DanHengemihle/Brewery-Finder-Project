@@ -1,6 +1,8 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Brewery;
+import com.techelevator.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -58,26 +60,26 @@ public class JdbcBreweryDao implements BreweryDAO {
     }
 
     @Override
-    public boolean createBrewery(Brewery brewery) {
-        String insertBrewerySql = "INSERT INTO breweries (name, street, city, state, phone_number, website_url, " +
-                "hours_of_operation) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        return jdbcTemplate.update(insertBrewerySql, brewery.getName(), brewery.getStreet(), brewery.getCity(), brewery.getState(),
-                brewery.getPhone(), brewery.getWebsiteUrl(), brewery.getHoursOfOperation()) == 1;
+    public void createBrewery(int brewerId, Brewery brewery) {
+        String insertBrewerySql = "INSERT INTO breweries (brewer_id, name, street, city, state, phone_number, website_url, " +
+                "hours_of_operation) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        jdbcTemplate.update(insertBrewerySql, brewerId ,brewery.getName(), brewery.getStreet(), brewery.getCity(), brewery.getState(),
+                brewery.getPhone(), brewery.getWebsiteUrl(), brewery.getHoursOfOperation());
     }
 
     @Override // needs finished
-    public void updateBrewery(Brewery brewery, int breweryId) {
+    public void updateBrewery(Brewery brewery, int breweryId, int brewerId) {
         String sql = "UPDATE breweries SET name = ?, street = ?, city = ?, state = ?, phone_number = ?, " +
-                "website_url = ?, hours_of_operation = ? WHERE brewery_id = ?";
+                "website_url = ?, hours_of_operation = ? WHERE brewery_id = ? AND brewer_id = ?";
         jdbcTemplate.update(sql, brewery.getName(), brewery.getStreet(), brewery.getCity(),brewery.getState(),
-                brewery.getPhone(), brewery.getWebsiteUrl(), brewery.getHoursOfOperation(), breweryId);
+                brewery.getPhone(), brewery.getWebsiteUrl(), brewery.getHoursOfOperation(), breweryId, brewerId);
     }
 
     @Override
-    public void deleteBrewery(int breweryId) {
-        String sql = "DELETE FROM breweries WHERE id = ?";
+    public void deleteBrewery(int breweryId, int brewerId) {
+        String sql = "DELETE FROM breweries WHERE brewery_id = ? AND brewer_id = ?";
         try {
-            jdbcTemplate.update(sql, breweryId);
+            jdbcTemplate.update(sql, breweryId, brewerId);
         }catch (Exception ex){
             System.out.println("ERROR deleting from the database");
         }
@@ -90,8 +92,6 @@ public class JdbcBreweryDao implements BreweryDAO {
         brewery.setStreet(results.getString("street"));
         brewery.setCity(results.getString("city"));
         brewery.setState(results.getString("state"));
-//        brewery.setPostalCode(results.getString("postal_code"));
-//        brewery.setCountry(results.getString("country"));
         brewery.setPhone(results.getString("phone_number"));
         brewery.setWebsiteUrl(results.getString("website_url"));
         brewery.setHoursOfOperation(results.getString("hours_of_operation"));

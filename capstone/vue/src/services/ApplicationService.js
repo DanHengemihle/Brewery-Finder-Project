@@ -12,13 +12,13 @@ getBreweries(){
     return axios.get('/breweries')
 },
 
-addBrewery(){
-    return axios.post('/breweries')
+addBrewery(payload){
+    return axios.post('/breweries', payload)
 },
 
-// getBeer(){
-//     return axios.get('/beer')
-// },
+getBeerByBrewery(id){
+    return axios.get(`/brewery/${id}`)
+},
 
 // getBreweryById(id){
 //     return http.get('/breweries/${id}')

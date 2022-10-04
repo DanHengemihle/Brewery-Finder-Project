@@ -11,7 +11,7 @@ import Admin from '../components/Admin.vue'
 import Breweries from '../components/Breweries.vue'
 import BreweryForm from '../components/BreweryForm.vue'
 import Locations from '../components/Locations.vue'
-
+import Beers from '../components/Beers.vue'
 
 Vue.use(Router)
 
@@ -104,7 +104,17 @@ meta: {
   
 
 
+},
+{
+  path: "/brewery/:id",
+  name: "brewery-page",
+  component: Beers,
+  meta: {
+    requiresAuth: true,
+  }
 }
+
+
 
     
 

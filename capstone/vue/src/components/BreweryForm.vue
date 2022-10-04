@@ -34,7 +34,7 @@ Show Form </button>
             id="name"
             class="form-control"
             placeholder="Brewery Name"
-            v-model="brewery.breweryName"
+            v-model="brewery.name"
             required
             autofocus
           />
@@ -48,7 +48,7 @@ Show Form </button>
             id="phone-number"
             class="form-control"
             placeholder="Phone Number"
-            v-model="brewery.phoneNumber"
+            v-model="brewery.phone_number"
             required
           />
         </div>
@@ -61,7 +61,7 @@ Show Form </button>
             id="website-url"
             class="form-control"
             placeholder="Website Url"
-            v-model="brewery.websiteURL"
+            v-model="brewery.website_url"
             required
           />
         </div>
@@ -111,7 +111,7 @@ Show Form </button>
 
             <label for="Hours" class="sr-only">Hours</label>
 
-            <select id="days" name="days" v-model="brewery.days" @change="selectedDay($event)">
+            <select id="days" name="days" v-model="days" @change="selectedDay($event)">
               <option disabled value="">Day</option>
               <option value="Mon">Mon</option>
               <option value="Tue">Tue</option>
@@ -125,7 +125,7 @@ Show Form </button>
             <select
               id="starting-hour"
               name="startingHour"
-              v-model="brewery.startingHour"
+              v-model="startingHour"
               @change="selectedStartingHour($event)"
             >
               <option disabled value="">Starting Hour</option>
@@ -158,7 +158,7 @@ Show Form </button>
             <select
               id="ending-hour"
               name="endingHour"
-              v-model="brewery.endingHour"
+              v-model="endingHour"
               @change="selectedEndingHour($event)"
             >
               <option disabled value="">Ending Hour</option>
@@ -191,7 +191,7 @@ Show Form </button>
             <button id="add-hours" type="submit">Add Hours</button>
           </div>
         </form>
-        <div id="hoursDisplay" v-for="day in brewery.hours" v-bind:key = "day">{{day}} <button id="remove" class="btn" @click="removeDay(day)">Remove</button></div>
+        <div id="hoursDisplay" v-for="day in brewery.hours_of_operation" v-bind:key = "day">{{day}} <button id="remove" class="btn" @click="removeDay(day)">Remove</button></div>
 
         <br />
         <br />
@@ -217,19 +217,22 @@ export default {
   data() {
     return {
       brewery: {
-        breweryName: "",
-        phoneNumber: "",
-        websiteURL: "",
+        brewer_id: this.$store.state.user.id,
+        name: "",
         street: "",
         city: "",
         state: "",
-        hoursOfOp: [{day: []}, {starting: []}, {ending: []}],
-        hours: [],
-        days: "",
-        startingHour: "",
-        endingHour: "",
+        phone_number: "",
+        website_url: "",
+        // hoursOfOp: [{day: []}, {starting: []}, {ending: []}],
+        hours_of_operation: [],
+       
         
       },
+       days: "",
+        startingHour: "",
+        endingHour: "",
+
       registrationErrors: false,
       registrationErrorMsg: "There were problems registering this brewery.",
     };
@@ -256,12 +259,12 @@ export default {
     },
     clearErrors() {
       this.registrationErrors = false;
-      this.registrationErrorMsg = "There were problems registering this user.";
+      this.registrationErrorMsg = "There were problems registering this brewery.";
     },
     hoursOfOperation() {
       
-      this.brewery.hours.push(this.brewery.days + " " + this.brewery.startingHour + " - " + this.brewery.endingHour);
-      this.brewery.hoursOfOp[0].push(this.brewery.days);
+      this.brewery.hours_of_operation.push(this.days + " " + this.startingHour + " - " + this.endingHour);
+      // this.brewery.hoursOfOp[0].push(this.brewery.days);
       // this.brewery.hoursOfOp.starting.push(this.brewery.startingHour);
       // this.brewery.hoursOfOp.ending.push(this.brewery.endingHour);
       
@@ -269,20 +272,20 @@ export default {
     },
 
     selectedDay(event){
-      this.brewery.days = event.target.value;
+      this.days = event.target.value;
     },
 
     selectedStartingHour(event){
-      this.brewery.startingHour = event.target.value;
+      this.startingHour = event.target.value;
     },
 
     selectedEndingHour(event){
-      this.brewery.endingHour = event.target.value;
+      this.endingHour = event.target.value;
     },
 
     removeDay(day){
-      let currentDayToRemove = this.brewery.hours.indexOf(day);
-      this.brewery.hours.splice(currentDayToRemove, 1);
+      let currentDayToRemove = this.brewery.hours_of_operation.indexOf(day);
+      this.brewery.hours_of_operation.splice(currentDayToRemove, 1);
     }
 
 
