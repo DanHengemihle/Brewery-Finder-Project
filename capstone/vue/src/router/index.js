@@ -132,7 +132,16 @@ meta: {
   meta: {
     requiresAuth: false,
   }
-}
+}, 
+// {
+//   path: "/beers/:id/reviews",
+//   name: "beer-reviews",
+//   component: BeerReviews,
+//   props:true,
+//   meta: {
+//     requiresAuth: false
+//   }
+// }
 
 
 

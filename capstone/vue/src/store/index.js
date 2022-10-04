@@ -70,7 +70,10 @@ activeBreweries: {
 
     SET_REVIEWS(state, data){
       state.reviews=data;
-    }
+    },
+    SET_REVIEWS_DATA(state, reviews) {
+      state.reviews = reviews;
+    },
   },
   DELETE_BREWERY(state, breweryIdToDelete) {
     state.brewery = state.brewery.filter((brewery) => {
