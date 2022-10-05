@@ -139,7 +139,7 @@ background-position: center;
 body {
   display: flex;
 
-  background-image: url("/lighterbg.jpg");
+  background-image: url("/beer7.png");
 
   justify-content: center;
   align-items: center;

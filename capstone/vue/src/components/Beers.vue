@@ -49,14 +49,14 @@ export default {
     deleteABeer(id) {
       if (
         confirm(
-          "Are you sure you want to delete this beer and all associated information? This action cannot be undone."
+          "Are you sure you want to delete this brewery and all associated information? This action cannot be undone."
         )
       ) {
         applicationService
-          .deleteBeer(id)
+          .deleteBeer(this.brewery.id)
           .then((response) => {
             if (response.status === 200) {
-              alert("Beer successfully deleted");
+              alert("Brewery successfully deleted");
 
               this.getBeers();
                this.$store.commit("DELETE_BEER", id);

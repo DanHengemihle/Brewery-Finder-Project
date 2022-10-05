@@ -9,12 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-
-
-
 @RequestMapping("/")
-
-
 @RestController
 @CrossOrigin
 public class BeerController {
@@ -53,7 +48,6 @@ public class BeerController {
     public void deleteBeer(@PathVariable int id) {
         beerDAO.deleteBeer(id);
     }
-
 
 
 }
