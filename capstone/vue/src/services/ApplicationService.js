@@ -19,6 +19,7 @@ export default {
         return axios.delete(`beers/${id}`)
     },
 
+<<<<<<< HEAD
     addBrewery(payload) {
         return axios.post('/breweries', payload)
     },
@@ -26,6 +27,32 @@ export default {
     getBeerByBrewery(id) {
         return axios.get(`/breweries/${id}/beers`)
     },
+=======
+getBeerByBreweryId(id){
+    return axios.get(`/breweries/${id}`)
+},
+
+getBeer(){
+    return axios.get('/beers')
+},
+
+// getBreweryById(id){
+//     return http.get('/breweries/${id}')
+// },
+
+deleteBrewery(id){
+return axios.delete(`/breweries/${id}`)
+
+},
+
+deleteBeer(id){
+    return axios.delete(`/beers/${id}`)
+},
+
+addReview(){
+    return axios.post(`/beer/reviews`)
+},
+>>>>>>> main
 
     getBreweryById(id) {
         return axios.get(`/breweries/${id}`)

@@ -10,6 +10,7 @@ import BeerLover from '../components/BeerLover.vue'
 import Admin from '../components/Admin.vue'
 import Breweries from '../components/Breweries.vue'
 import Locations from '../components/Locations.vue'
+// import Beers from '../components/Beers.vue'
 import Beers from '../components/Beers.vue'
 import BreweryDetails from '../components/BreweryDetails.vue'
 import Reviews from '../components/Reviews.vue'
@@ -162,6 +163,36 @@ const router = new Router({
     }
 
 
+<<<<<<< HEAD
+=======
+},
+// {
+//   path: "/brewery/:id",
+//   name: "brewery-page",
+//   component: Beer,
+//   meta: {
+//     requiresAuth: true,
+//   }
+// },
+
+{
+  path: "/beers",
+  name: "beers",
+  component: Beers,
+  meta: {
+    requiresAuth: false,
+  }
+}, 
+// {
+//   path: "/beers/:id/reviews",
+//   name: "beer-reviews",
+//   component: BeerReviews,
+//   props:true,
+//   meta: {
+//     requiresAuth: false
+//   }
+// }
+>>>>>>> main
 
 
 

@@ -17,6 +17,8 @@ public class JdbcBreweryDao implements BreweryDAO {
 
     private final JdbcTemplate jdbcTemplate;
 
+    private User user;
+
     public JdbcBreweryDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -67,7 +69,7 @@ public class JdbcBreweryDao implements BreweryDAO {
                 brewery.getPhone(), brewery.getWebsiteUrl(), brewery.getHoursOfOperation());
     }
 
-    @Override // needs finished
+    @Override 
     public void updateBrewery(Brewery brewery, int breweryId, int brewerId) {
         String sql = "UPDATE breweries SET name = ?, street = ?, city = ?, state = ?, phone_number = ?, " +
                 "website_url = ?, hours_of_operation = ? WHERE brewery_id = ? AND brewer_id = ?";
@@ -84,6 +86,16 @@ public class JdbcBreweryDao implements BreweryDAO {
             System.out.println("ERROR deleting from the database");
         }
     }
+
+//    @Override
+//    public void deleteBrewery(int breweryId) {
+//        String sql = "DELETE FROM breweries WHERE id = ?";
+//        try {
+//            jdbcTemplate.update(sql, breweryId);
+//        }catch (Exception ex){
+//            System.out.println("ERROR deleting from the database");
+//        }
+//    }
 
     private Brewery mapRowToBrewery(SqlRowSet results) {
         Brewery brewery = new Brewery();

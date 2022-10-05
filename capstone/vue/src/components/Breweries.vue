@@ -131,10 +131,16 @@ name: "breweries-list",
   box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 table {
   padding: 30px;
   margin-top: 500px;
   background-color: goldenrod;
+=======
+table{
+  margin-top: 40px;
+  background-color: initial;
+>>>>>>> main
   opacity: 90%;
   display: flex;
   flex-direction: column;

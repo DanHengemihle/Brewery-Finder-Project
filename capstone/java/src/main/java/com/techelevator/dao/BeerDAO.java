@@ -20,4 +20,6 @@ public interface BeerDAO {
 
     List<Review> getReviewsByBeerId(int id);
 
+    void deleteBeer(int id);
+
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-
+@RequestMapping("/")
 @RestController
 @CrossOrigin
 public class BeerController {
@@ -36,9 +36,18 @@ public class BeerController {
         return beerDAO.getBeerIdByName(name);
     }
 
+
     @GetMapping("/breweries/{breweryId}")
     public List<Beer> getBreweriesById(@PathVariable int id) {
         return beerDAO.getBeersByBreweryId(id);
     }
+
+
+
+    @DeleteMapping ("/beers/{id}")
+    public void deleteBeer(@PathVariable int id) {
+        beerDAO.deleteBeer(id);
+    }
+
 
 }
