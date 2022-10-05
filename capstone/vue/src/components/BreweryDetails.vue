@@ -1,4 +1,31 @@
 <template>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
     <div id="details">
 <div class="heading">
 

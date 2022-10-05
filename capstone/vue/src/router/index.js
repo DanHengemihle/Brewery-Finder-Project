@@ -160,11 +160,9 @@ const router = new Router({
       }
 
 
-    }
+    
 
 
-<<<<<<< HEAD
-=======
 },
 // {
 //   path: "/brewery/:id",
@@ -192,7 +190,6 @@ const router = new Router({
 //     requiresAuth: false
 //   }
 // }
->>>>>>> main
 
 
 

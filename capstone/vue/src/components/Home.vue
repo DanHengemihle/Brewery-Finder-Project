@@ -152,17 +152,7 @@ table {
   grid-gap: 10px 200px;
   align-self: space-around;
   justify-content: space-around;
-<<<<<<< HEAD
-  background-color: goldenrod;
-  opacity: 90%;
-  border-radius: 50px;
-   width: 100%;
-  border-collapse: collapse;
-  margin: 0;
-  padding: 0;
-=======
   background-color: initial;
->>>>>>> main
 }
 
 .heading {
