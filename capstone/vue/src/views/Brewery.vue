@@ -1,9 +1,8 @@
 <template>
-<div>
-<h1>List of Breweries</h1>
+
   <breweries />
 
-  </div>
+  
 </template>
 
 <script>
@@ -15,19 +14,5 @@ export default {
 </script>
 
 <style>
-
-
-h1{
-display: block;
-  color: blue;
-}
-
-
-
-
-
-
-
-
 
 </style>

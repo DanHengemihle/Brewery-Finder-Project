@@ -1,23 +1,26 @@
 <template>
-  <div>
-      <h1>List of Beers</h1>
-      <beers />
-  </div>
+
+<beers />
+
+
 </template>
 
 <script>
+<<<<<<< HEAD
+import Beers from "../components/Beers.vue";
+export default {
+  Components: { Beers },
+};
+=======
 
 import Beers from '../components/Beers.vue'
 export default {
   components: { Beers },
 
 }
+>>>>>>> main
 </script>
 
 <style>
 
-h1{
-display: block;
-  color: blue;
-}
 </style>

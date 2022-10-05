@@ -1,3 +1,4 @@
+
 <template>
   <div class="beer-list">
     <h1>List of Beers</h1>
@@ -5,10 +6,14 @@
       <thead>
         <tr>
           <th>&nbsp;</th>
+<<<<<<< HEAD
+          <h1>Breweries</h1>
+=======
           <th>Name</th>
           <th>Description</th>
           <th>Abv</th>
           <th>Type</th>
+>>>>>>> main
         </tr>
       </thead>
       <tbody>
@@ -20,10 +25,17 @@
           <td>{{ beer.beerDescription }}</td>
           <td>{{ beer.abv }}</td>
           <td>
+<<<<<<< HEAD
+            <button v-on:click="favoriteBeer(beer.name)">
+              Add to Favorites
+            </button>
+            <button v-on:click="deleteBeer(beer.id)">Delete</button>
+=======
             <button v-on:click.prevent="favoriteBeer(beer.name)">
               Add to Favorites
             </button>
             <button v-on:click.prevent="deleteABeer(beer.beerId)">Delete</button>
+>>>>>>> main
           </td>
         </tr>
       </tbody>
@@ -46,7 +58,11 @@ export default {
     viewBrewery(id) {
       this.$router.push(`/breweries/${id}`);
     },
+<<<<<<< HEAD
+    deleteBeer() {
+=======
     deleteABeer(id) {
+>>>>>>> main
       if (
         confirm(
           "Are you sure you want to delete this brewery and all associated information? This action cannot be undone."
@@ -56,10 +72,18 @@ export default {
           .deleteBeer(this.brewery.id)
           .then((response) => {
             if (response.status === 200) {
+<<<<<<< HEAD
+              alert("Beer successfully deleted");
+
+              this.$store.commit("DELETE_BEER", this.brewery.id);
+
+              this.$router.push({ name: "Home" });
+=======
               alert("Brewery successfully deleted");
 
               this.getBeers();
                this.$store.commit("DELETE_BEER", id);
+>>>>>>> main
             }
           })
 
@@ -121,10 +145,18 @@ export default {
 <style scoped>
 #beer-list {
   display: inline-block;
+<<<<<<< HEAD
+  /* justify-content: center;
+    align-items: center; */
+}
+
+
+=======
 
 }
 
 
+>>>>>>> main
 
 table {
   background-color: initial;
