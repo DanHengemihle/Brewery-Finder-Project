@@ -21,6 +21,8 @@ import BreweryCard from '../components/BreweryCard.vue'
 
 
 
+import AboutPage from '../components/AboutPage'
+import ContactUs from '../components/ContactUs'
 Vue.use(Router)
 
 /**
@@ -140,6 +142,22 @@ meta: {
     requiresAuth: false,
   }
 }, 
+{
+  path: "/about",
+  name: "about",
+  component: AboutPage,
+  meta: {
+    requiresAuth: false,
+  }
+},
+{
+  path: "/contact",
+  name: "contact",
+  component: ContactUs,
+  meta: {
+    requiresAuth: false,
+  }
+},
 // {
 //   path: "/beers/:id/reviews",
 //   name: "beer-reviews",
