@@ -68,6 +68,7 @@ export default {
     };
   },
   methods: {
+
     initMap() {
       this.calculateCenter();
       this.map = new window.google.maps.Map(document.getElementById("map"), {
@@ -131,6 +132,7 @@ export default {
       );
       this.locations.push(markerObj);
       this.dropPin(markerObj);
+      this.markerEvent(markerObj);
     },
     dropPins() {
       this.locations.forEach((x) => this.dropPin(x));
@@ -160,6 +162,16 @@ export default {
       dataSection.innerHTML = text;
     },
   },
+
+  markerEvent(marker){
+    const infoWindow = new window.google.maps.InfoWindow();
+    marker.addListener("click", () => {
+      infoWindow.close();
+      infoWindow.setContent(marker.name);
+      infoWindow.open(marker.initMap(), marker);
+    
+    });
+},
   mounted() {
     this.initMap();
     this.dropPins();
@@ -168,6 +180,9 @@ export default {
 </script>
 
 <style>
+
+
+
 #grid-container {
   display: grid;
   grid-template-columns: 1.5fr .5fr ;

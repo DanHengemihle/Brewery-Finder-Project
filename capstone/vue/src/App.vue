@@ -100,15 +100,8 @@ export default {
     toggle() {
       this.active = !this.active;
     },
-<<<<<<< HEAD
 
     hasBrewerRole() {},
-=======
-    
-    hasBrewerRole(){
-      
-    },
->>>>>>> main
 
         toggleNavClass(){
             if(this.scrolling == false){
@@ -252,8 +245,6 @@ export default {
   height: 3vh;
   transform: translate(0, 1.5vh);
 }
-<<<<<<< HEAD
-=======
 
 html{
   height: 100%;
@@ -263,5 +254,4 @@ position: relative;
 
 }
 
->>>>>>> main
 </style>
