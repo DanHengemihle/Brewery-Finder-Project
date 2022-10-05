@@ -12,7 +12,7 @@ import Breweries from '../components/Breweries.vue'
 import BreweryForm from '../components/BreweryForm.vue'
 import Locations from '../components/Locations.vue'
 // import Beers from '../components/Beers.vue'
-import Beer from '../views/Beer.vue'
+import Beers from '../components/Beers.vue'
 
 Vue.use(Router)
 
@@ -128,7 +128,7 @@ meta: {
 {
   path: "/beers",
   name: "beers",
-  component: Beer,
+  component: Beers,
   meta: {
     requiresAuth: false,
   }

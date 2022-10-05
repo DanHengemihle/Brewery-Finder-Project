@@ -205,7 +205,7 @@ Show Form </button>
         </button>
       </form>
     </div>
-    <div id="space">space</div>
+  
   </body>
 </template>
 
@@ -217,14 +217,14 @@ export default {
   data() {
     return {
       brewery: {
-        brewer_id: this.$store.state.user.id,
+        brewerId: this.$store.state.user.id,
         name: "",
         street: "",
         city: "",
         state: "",
         phone: "",
         websiteUrl: "",
-         hoursOfOperation: "",
+        hoursOfOperation: "",
          
         // hoursOfOp: [{day: []}, {starting: []}, {ending: []}],
         
@@ -285,10 +285,6 @@ export default {
       this.hours_of_operation.splice(currentDayToRemove, 1);
     }
 
-
-    //  emitChange() {
-    //   this.$emit('change', this.selected);
-    // },
   },
   
 };
@@ -298,28 +294,73 @@ export default {
 
 <style scoped>
 
-div#registerBrewery.text-center{
-  position: absolute;
-  overflow: hidden;
+
+html{
+  height: 100%;
+  background-color: black;
+min-width: 550px;
+position: relative;
+
+}
+
+select{
+
+  background-color: rgba(255, 255, 255, 0.787);
+  border: 2px solid rgba(0, 0, 0, 0.383);
+  border-radius: 3px;
+  padding: 0 10px;
+ 
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
+  color: black;
+}
+
+#add-hours{
+  background-color: rgba(255, 255, 255, 0.787);
+  border: 2px solid rgba(0, 0, 0, 0.383);
+  border-radius: 3px;
+  padding: 0 10px;
+  
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
+  color: black;
+   cursor: pointer;
+}
+
+#registerBrewery{
+  display: block;
+ max-height: 70vh;
+ 
 }
 
 #remove{
-font-size: 1.5vh;
-padding: 0;
+  background-color: rgba(255, 255, 255, 0.787);
+  border: 2px solid rgba(0, 0, 0, 0.383);
+  border-radius: 3px;
+  padding: 0 3px;
+ 
+  font-size: 13px;
+  font-weight: 630;
+  text-align: center;
+  color: black;
+  cursor: pointer;
+
 }
 
 #hoursDisplay{
   font-weight: bold;
-  font-size: 1.8vh;
+  font-size: 1.6vh;
   color: darkgoldenrod;
   margin: 1vh;
 }
 
 #hoursOfOpText{
   font-weight: bolder;
-  font-size: 2vh;
+  font-size: 2.5vh;
   color: darkgoldenrod;
- 
+ padding-bottom: 2%;
 }
 
 .switch {
@@ -396,11 +437,10 @@ input:checked + .slider:before {
   font-weight: 750;
   max-height: 11vh;
   margin-bottom: -17%;
+  overflow: hidden;
 }
 
-#space {
-  height: 1000px;
-}
+
 
 #username {
   margin-top: -2%;
@@ -457,7 +497,7 @@ img {
 
 body {
   display: flex;
-
+  background-color: black;
   background-image: url("/bar1.jpg");
   justify-content: center;
   align-items: center;
@@ -466,7 +506,8 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  
+  overflow-y: auto;
+
 }
 
 body,

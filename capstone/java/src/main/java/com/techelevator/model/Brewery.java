@@ -7,26 +7,35 @@ import java.util.List;
 
 public class Brewery {
     private int id;
+    private int brewerId;
     @NotBlank
     private String name;
     private String street;
     private String city;
     private String state;
     private String phone;
-    @JsonProperty("website_url")
     private String websiteUrl;
     private String hoursOfOperation;
 
     public Brewery() {}
 
-    public Brewery(int id, String name, String street, String city, String state, String phone, String websiteUrl) {
+    public Brewery(int id, int brewerId, String name, String street, String city, String state, String phone, String websiteUrl) {
         this.id = id;
+        this.brewerId = brewerId;
         this.name = name;
         this.street = street;
         this.city = city;
         this.state = state;
         this.phone = phone;
         this.websiteUrl = websiteUrl;
+    }
+
+    public int getBrewerId() {
+        return brewerId;
+    }
+
+    public void setBrewerId(int brewerId) {
+        this.brewerId = brewerId;
     }
 
     public void setId(int id) {

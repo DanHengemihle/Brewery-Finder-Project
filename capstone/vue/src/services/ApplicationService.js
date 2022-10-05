@@ -34,7 +34,7 @@ return axios.delete(`/breweries/${id}`)
 },
 
 deleteBeer(id){
-    return axios.delete(`/beer/${id}`)
+    return axios.delete(`/beers/${id}`)
 },
 
 addReview(){

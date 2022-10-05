@@ -118,7 +118,7 @@ this.breweries=response.data;
 
 table{
   margin-top: 40px;
-  background-color: goldenrod;
+  background-color: initial;
   opacity: 90%;
   display: flex;
   flex-direction: column;

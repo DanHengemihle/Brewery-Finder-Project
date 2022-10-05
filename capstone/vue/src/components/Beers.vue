@@ -20,10 +20,10 @@
           <td>{{ beer.beerDescription }}</td>
           <td>{{ beer.abv }}</td>
           <td>
-            <button v-on:click="favoriteBeer(beer.name)">
+            <button v-on:click.prevent="favoriteBeer(beer.name)">
               Add to Favorites
             </button>
-            <button v-on:click="deleteBeer(beer.beerId)">Delete</button>
+            <button v-on:click.prevent="deleteABeer(beer.beerId)">Delete</button>
           </td>
         </tr>
       </tbody>
@@ -46,7 +46,7 @@ export default {
     viewBrewery(id) {
       this.$router.push(`/breweries/${id}`);
     },
-    deleteBeer(id) {
+    deleteABeer(id) {
       if (
         confirm(
           "Are you sure you want to delete this beer and all associated information? This action cannot be undone."
@@ -58,9 +58,8 @@ export default {
             if (response.status === 200) {
               alert("Beer successfully deleted");
 
-              this.$store.commit("DELETE_BEER", id);
-
-              this.$router.push({ name: "Home" });
+              this.getBeers();
+               this.$store.commit("DELETE_BEER", id);
             }
           })
 
@@ -122,13 +121,10 @@ export default {
 <style scoped>
 #beer-list {
   display: inline-block;
-  /* justify-content: center;
-    align-items: center; */
+
 }
 
-td {
-  /* text-align: center; */
-}
+
 
 table {
   background-color: initial;

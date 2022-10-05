@@ -49,7 +49,7 @@ public class BeerController {
 
 
 
-    @DeleteMapping ("/delete-beer/{id}")
+    @DeleteMapping ("/beers/{id}")
     public void deleteBeer(@PathVariable int id) {
         beerDAO.deleteBeer(id);
     }

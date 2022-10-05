@@ -242,6 +242,10 @@ transform: translate(-1.5vw, 1.9vh);
 
 html{
   height: 100%;
+  
+min-width: 550px;
+position: relative;
+
 }
 
 </style>

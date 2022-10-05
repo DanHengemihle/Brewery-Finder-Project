@@ -48,7 +48,7 @@
         </div>
          <router-link id="haveaccount" :to="{ name: 'login' }">Have an account?</router-link>
           <div class="brewer">
-        <label class="brewer-label"> Brewer? </label>
+        <label class="brewer-label"> Register As Brewer? </label>
         
         <div class="checkbox">
           
@@ -213,7 +213,7 @@ input:checked + .slider:before {
 }
 
 .checkbox{
-  transform: translate(4vw, -2.7vh );
+  transform: translate(5.5vw, -2.7vh );
 }
 
 
@@ -238,14 +238,14 @@ input:checked + .slider:before {
 }
 
 #usericon {
-  transform: translate(-880%, -10%);
+  transform: translate(-780%, -10%);
   opacity: 0.8;
   padding: 10px;
   min-width: 40px;
 }
 
 #keyicon {
-  transform: translate(-985%, 145%);
+  transform: translate(-880%, 145%);
   opacity: 0.8;
   padding: 10px;
   min-width: 40px;

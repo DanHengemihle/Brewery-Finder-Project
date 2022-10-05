@@ -168,7 +168,7 @@ table{
   grid-gap: 10px 200px;
   align-self: space-around;
   justify-content: space-around;
-  /* background-color: goldenrod; */
+  background-color: initial;
 }
 .heading{
   font-size: 2rem;
