@@ -100,8 +100,15 @@ export default {
     toggle() {
       this.active = !this.active;
     },
+<<<<<<< HEAD
 
     
+=======
+    
+    hasBrewerRole(){
+      
+    },
+>>>>>>> main
 
         toggleNavClass(){
             if(this.scrolling == false){
