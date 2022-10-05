@@ -87,8 +87,6 @@ meta: {
 }
 },
 
-<<<<<<< HEAD
-=======
 {
   path: "/admin",
   name: "admin",
@@ -104,7 +102,6 @@ meta: {
     meta: {
       requiresAuth: true,
     }
->>>>>>> main
   
 
 
@@ -135,11 +132,8 @@ meta: {
 //     requiresAuth: false
 //   }
 // }
-<<<<<<< HEAD
 
 
-=======
->>>>>>> main
 
 
 

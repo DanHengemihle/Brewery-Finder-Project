@@ -2,7 +2,7 @@
   
 <div>
 
-<router-link v-bind:to="{name: 'brewery-details', params: {id: this.brewery.breweryId} }">
+<router-link v-bind:to="{name: 'brewery-details', params: {id: this.brewery.name} }">
 <div id="card" data-aos="fade-down">
 <a href="#" class="btn">{{this.brewery.name}}</a>
 </div>
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-    props: ["brewery"],
+    props: ["breweries"],
 
 }
 </script>

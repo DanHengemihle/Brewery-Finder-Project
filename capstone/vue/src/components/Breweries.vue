@@ -173,7 +173,7 @@ table {
 body,
 html {
   display: flex;
-
+opacity: 90%;
   background-image: url("/beer7.png");
 
   justify-content: center;

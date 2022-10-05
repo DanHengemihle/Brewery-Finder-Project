@@ -1,12 +1,8 @@
 import axios from 'axios';
 
 
-// const http = axios.create({
-//     baseURL: "http://localhost:8080"
-// });
 
 
-<<<<<<< HEAD
 export default {
 
     getBreweries() {
@@ -19,17 +15,6 @@ export default {
     deleteBeer(id){
         return axios.delete(`beers/${id}`)
     },
-=======
-export default{
-
-getBreweries(){
-    return axios.get('/breweries')
-},
-
-addBrewery(payload){
-    return axios.post('/breweries', payload)
-},
->>>>>>> main
 
 getBeerByBreweryId(id){
     return axios.get(`/breweries/${id}`)
@@ -54,11 +39,7 @@ addBeerReview(){
 },
 
 
-<<<<<<< HEAD
    
-=======
-
->>>>>>> main
 
 
 
