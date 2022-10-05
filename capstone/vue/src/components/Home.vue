@@ -39,8 +39,8 @@
             <!-- <td class="id">{{brewery.id}}</td> -->
             <!-- <td> -->
             <td class="name">{{ brewery.name }}</td>
-            <td class="ownedby">{{ brewery.phone }}</td>
-            <td>{{ brewery.website_url }}</td>
+            <td>{{ brewery.phone }}</td>
+            <td>{{ brewery.websiteUrl }}</td>
             <!-- <td>
               <button v-on:click="viewBrewery(brewery.id)">Edit</button>&nbsp;
               <button v-on:click="deleteBrewery(brewery.id)">Delete</button>
@@ -126,13 +126,13 @@ name: "breweries-list",
 </script>
 
 <style scoped>
-/* * {
+ /* *{
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
-}
+} */
 
-table {
+/* table {
   padding: 30px;
   margin-top: 500px;
   background-color: goldenrod;
@@ -142,9 +142,9 @@ table {
   align-items: center;
   justify-content: center;
   background-position: center;
-}
+} */
 
-table {
+/* table {
   padding-right: 50px;
   padding-left: 50px;
   display: flex;
@@ -153,7 +153,7 @@ table {
   align-self: space-around;
   justify-content: space-around;
   background-color: initial;
-}
+} */
 
 .heading {
   font-size: 2rem;
@@ -165,7 +165,7 @@ table {
   color: goldenrod;
   text-shadow: 2px 2px 15px black;
 }
-body,
+/* body,
 html {
   display: flex;
 
@@ -181,9 +181,9 @@ html {
 
 body,
 html {
-  /* max-height: 300px; */
-  /* height: 100vh;
-}
+   max-height: 300px; 
+   height: 100vh; */
+/* } */
 
 .brewery-list {
   padding-right: 25px;
@@ -191,17 +191,18 @@ html {
   display: flex;
   flex-wrap: wrap;
   grid-gap: 10px 200px;
-} -- */
-table {
+} 
+ table {
   width: 100%;
   border-collapse: collapse;
   margin: 0;
   padding: 0;
-  padding-right: 20px;
-  padding-left: 50px;
+  padding-right: 30px;
+  padding-left: 40px;
+  margin-top: 50px;
   display: flex;
   flex-wrap: wrap;
-  grid-gap: 10px 200px;
+  grid-gap: 30px 200px;
   align-self: space-around;
   justify-content: space-around;
   background-color: goldenrod;
@@ -237,6 +238,9 @@ td {
 td.name {
   font-weight: 400;
 }
+td.websitename {
+  font-weight: 400;
+}
 .docs-icon img {
   height: 32px;
 }
@@ -252,7 +256,7 @@ td.name {
 
 body,
 html {
-  /* display: flex; */
+   display: flex; 
 
   background-image: url("/beer7.png");
 
@@ -267,5 +271,10 @@ html {
 h1 {
   font-size: 50px;
   box-shadow: goldenrod;
-}
+} 
+
+
+
+
+
 </style>

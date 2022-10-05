@@ -42,7 +42,7 @@ box-shadow: inset 0px 0px 10px #000;
 a:hover, a:visited, a:link, a:active {
     text-decoration: none;
 }
-
+/* 
 #card{
     width: 300px;
     display: flex;
@@ -55,6 +55,6 @@ a:hover, a:visited, a:link, a:active {
     margin-bottom: 2rem;
     border-radius: 5px;
     box-shadow: inset 0px 0px 10px #000;
-}
+} */
 
 </style>

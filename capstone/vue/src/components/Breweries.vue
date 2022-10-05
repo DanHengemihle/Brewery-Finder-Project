@@ -32,6 +32,7 @@
             <th>Website URL</th>
             <th>Hours of Operation</th>
           </tr> -->
+          <h1>Breweries</h1>
         <!-- </thead> -->
         <tbody>
           <tr v-for="brewery in sortedBreweries" :key="brewery">
@@ -39,11 +40,11 @@
             <!-- <td> -->
             <td class="name">{{ brewery.name }}</td>
             <td class="ownedby">{{ brewery.phone }}</td>
-            <td>{{ brewery.website_url }}</td>
-            <td>
+            <td>{{ brewery.websiteUrl }}</td>
+            <!-- <td>
               <button v-on:click="viewBrewery(brewery.id)">Edit</button>&nbsp;
               <button v-on:click="deleteBrewery(brewery.id)">Delete</button>
-            </td>
+            </td> -->
           </tr>
         </tbody>
       </table>
@@ -131,10 +132,6 @@ name: "breweries-list",
   box-sizing: border-box;
 }
 
-table {
-  padding: 30px;
-  margin-top: 500px;
-  background-color: goldenrod;
 table{
   margin-top: 40px;
   background-color: initial;
