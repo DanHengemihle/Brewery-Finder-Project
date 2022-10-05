@@ -1,4 +1,3 @@
-
 <template>
   <div class="beer-list">
     <h1>List of Beers</h1>
@@ -57,7 +56,11 @@ export default {
           .deleteBeer(this.brewery.id)
           .then((response) => {
             if (response.status === 200) {
+<<<<<<< HEAD
               alert("Beer successfully deleted");
+=======
+              alert("Brewery successfully deleted");
+>>>>>>> main
 
               this.getBeers();
                this.$store.commit("DELETE_BEER", id);
