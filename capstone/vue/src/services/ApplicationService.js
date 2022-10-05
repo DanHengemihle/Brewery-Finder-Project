@@ -6,7 +6,6 @@ import axios from 'axios';
 // });
 
 
-<<<<<<< HEAD
 export default {
 
     getBreweries() {
@@ -16,49 +15,37 @@ export default {
         return axios.get('/beers')
     },
 
-    deleteBeer(id){
+    deleteBeer(id) {
         return axios.delete(`beers/${id}`)
     },
-=======
-export default{
 
-getBreweries(){
-    return axios.get('/breweries')
-},
+    addBrewery(payload) {
+        return axios.post('/breweries', payload)
+    },
 
-addBrewery(payload){
-    return axios.post('/breweries', payload)
-},
->>>>>>> main
+    getBeerByBreweryId(id) {
+        return axios.get(`/breweries/${id}`)
+    },
 
-getBeerByBreweryId(id){
-    return axios.get(`/breweries/${id}`)
-},
+    getBeer() {
+        return axios.get('/beers')
+    },
 
-getBeer(){
-    return axios.get('/beers')
-},
+    // getBreweryById(id){
+    //     return http.get('/breweries/${id}')
+    // },
 
-// getBreweryById(id){
-//     return http.get('/breweries/${id}')
-// },
+    deleteBrewery(id) {
+        return axios.delete(`/breweries/${id}`)
 
-deleteBrewery(id){
-return axios.delete(`/breweries/${id}`)
-
-},
+    },
 
 
-addBeerReview(){
-    return axios.post(`/beer/reviews`)
-},
+    addBeerReview() {
+        return axios.post(`/beer/reviews`)
+    },
 
 
-<<<<<<< HEAD
-   
-=======
-
->>>>>>> main
 
 
 

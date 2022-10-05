@@ -143,6 +143,7 @@ table{
   background-position: center;
 }
 
+
 table {
   padding-right: 50px;
   padding-left: 50px;
