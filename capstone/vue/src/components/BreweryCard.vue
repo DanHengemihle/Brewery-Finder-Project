@@ -1,23 +1,49 @@
 <template>
   
-<div>
+<div id="card">
 
-<router-link v-bind:to="{name: 'brewery-details', params: {id: this.brewery.breweryId} }">
+
+<brewery-details />
+<beers />
+
+<!-- <router-link v-bind:to="{name: 'brewery-details', params: {id: this.brewery.breweryId} }">
 <div id="card" data-aos="fade-down">
 <a href="#" class="btn">{{this.brewery.name}}</a>
 </div>
-</router-link>
+</router-link> -->
 </div>
 </template>
 
 <script>
+import BreweryDetails from "../components/BreweryDetails.vue"
+import Beers from "../components/Beers.vue"
+
 export default {
-    props: ["brewery"],
+  components: { BreweryDetails, Beers },
+    data(){
+        return{
+            activeBrewery: {
+  id: "",
+  brewerId: this.$store.state.user.id,
+        name: "",
+        street: "",
+        city: "",
+        state: "",
+        phone: "",
+        websiteUrl: "",
+        hoursOfOperation: "",
+},
+        }
+    },
+
+    created(){
+        this.activeBrewery = this.$store.state.activeBrewery;
+    }
 
 }
 </script>
 
-<style>
+<style scoped>
 
 .btn{
 font-family: Arial, Helvetica, sans-serif;
@@ -56,5 +82,15 @@ a:hover, a:visited, a:link, a:active {
     border-radius: 5px;
     box-shadow: inset 0px 0px 10px #000;
 } */
+
+
+
+#name {
+
+height: 20vh;
+font-size: 10vh;
+transform: translate(0, 50vh);
+color: black;
+}
 
 </style>

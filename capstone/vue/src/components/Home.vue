@@ -35,7 +35,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="brewery in sortedBreweries" :key="brewery">
+          <tr v-for="brewery in sortedBreweries" :key="brewery.id">
             <!-- <td class="id">{{brewery.id}}</td> -->
             <!-- <td> -->
             <td class="name">{{ brewery.name }}</td>
@@ -205,12 +205,12 @@ html {
   grid-gap: 30px 200px;
   align-self: space-around;
   justify-content: space-around;
-  background-color: goldenrod;
+  background-color: initial;
   opacity: 90%;
   border-radius: 50px;
    width: 100%;
  
-  color: #f7fafc;
+  color: black;
  
   padding: 40px;
   flex: 1;

@@ -41,11 +41,10 @@ public class JDBCBeerDAO implements BeerDAO {
     @Override
     public boolean addNewBeer(Beer beer) {
         String sql = "INSERT INTO beer (brewery_id, beer_name, beer_description, image, beer_type, abv) " +
-                "VALUES (?, ?, ?, ?, ?, ?) RETURNING beer_id";
-        Integer newBeerId = jdbcTemplate.queryForObject(sql, Integer.class, beer.getBreweryId(), beer.getBeerName(), beer.getBeerDescription(), beer.getImage(),
+                "VALUES (?, ?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql, beer.getBreweryId(), beer.getBeerName(), beer.getBeerDescription(), beer.getImage(),
                 beer.getBeerType(), beer.getAbv());
-        if (newBeerId == null) return false;
-        beer.setBeerId(newBeerId);
+
         return true;
     }
 

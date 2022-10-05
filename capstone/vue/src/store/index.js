@@ -22,16 +22,27 @@ export default new Vuex.Store({
 beers: [],
 reviews:[],
 breweries: [],
-activeBreweries: {
-  id: null, 
-  name: '',
-  phone_number: '',
-  website_url: '',
-  street: '',
-  city: '',
-  zipcode: '',
-  state: '',
-  hours: ''
+activeBrewery: {
+  id: "",
+  brewerId: "",
+        name: "",
+        street: "",
+        city: "",
+        state: "",
+        phone: "",
+        websiteUrl: "",
+        hoursOfOperation: "",
+},
+
+beer: {
+  beerId: "",
+  breweryId: "",
+    beerName: "",
+    beerDescription: "",
+    image: "",
+    beerType: "",
+    abv: "",
+    
 },
     
     token: currentToken || '',
@@ -58,7 +69,7 @@ activeBreweries: {
       axios.defaults.headers.common = {};
     },
     SET_ACTIVE_BREWERY(state, data){
-      state.activeBreweries=data;
+      state.activeBrewery=data;
     },
     SET_BREWERY(state, data){
       state.breweries=data;

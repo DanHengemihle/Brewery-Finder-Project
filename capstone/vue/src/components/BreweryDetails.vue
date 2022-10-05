@@ -1,35 +1,10 @@
 <template>
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+      
    
     <div id="details">
 <div class="heading">
 
-
+<router-link id="addbeer" :to="{name: 'beerform' }" v-if="$store.state.user.role == 'ROLE_BREWER'">Add Beer</router-link>
 
     <h1 class="brewery-name">{{brewery.name}}</h1>
 
@@ -57,20 +32,24 @@
 
 <script>
 
-import applicationService from '../services/ApplicationService'
+
 
 export default {
     name: "brewery-details",
     
     data() {
         return {
-            brewery: {
-                id: 0,
-                name: '',
-                phone: '',
-                description: '',
-                websiteURL: '',
-            },
+           brewery: {
+  id: "",
+  brewerId: this.$store.state.user.id,
+        name: "",
+        street: "",
+        city: "",
+        state: "",
+        phone: "",
+        websiteUrl: "",
+        hoursOfOperation: "",
+},
             showForm: false,
 
         }
@@ -78,16 +57,17 @@ export default {
     },
    
     created() {
-        applicationService.getBreweryByID(this.$route.params.id).then(response => {
-            this.brewery = response.data
-        })
-       
+        this.brewery = this.$store.state.activeBrewery;
     }
 }
 
 </script>
 
 <style scoped>
+
+#addbeer{
+    font-size: 5vh;
+}
 
 #details {
   padding: 0;
