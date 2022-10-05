@@ -61,9 +61,9 @@
           <li>
             <router-link v-bind:to="{ name: 'admin' }">Admin</router-link>
           </li>
-          <a id="about" href="#about">About</a>
+          <router-link v-bind:to="{ name: 'about' }">About</router-link>
           |
-          <a id="contact" href="#contact">Contact</a>
+          <router-link v-bind:to="{name: 'contact' }">Contact</router-link>
           <input id="search" type="text" placeholder="Search.." />
           <i id="searchicon" class="fa fa-search icon"></i>
 
