@@ -1,110 +1,47 @@
 <template>
-  <body>
-<div class="brewery-list">
+<div id="background">
+<div class="breweries">
 
 <div class="heading">
 <h1>List of Breweries</h1>
 </div>
-<table>
-    <thead>
-<tr>
-<th>&nbsp;</th>
-<th>Name</th>
-<th>City</th>
-<th>State</th>
-<th>Zipcode</th>
-<th>Phone</th>
-<th>Website URL</th>
-<th>Hours of Operation</th>
 
- </tr>
-</thead>
-<tbody>
-<tr v-for="brewery in sortedBreweries" :key="brewery">
-    <!-- <td class="id">{{brewery.id}}</td> -->
-    <td>
-        <td>{{brewery.name}}</td>
-        <td>{{brewery.phone}}</td>
-          <td>{{brewery.website_url}}</td>
-    <td>
-        <button v-on:click="viewBrewery(brewery.name)">See More</button>&nbsp;
-        <button v-on:click="favoriteBrewery(brewery.name)">Add to Favorites</button>
-                <button v-on:click="deleteBrewery(brewery.id)">Delete</button>
+<div class="loading" v-if="isLoading">
+        <img src="C:\Users\Student\workspace\brewery-finder-capstone\capstone\vue\public\giphy.gif" />
+      </div>
 
-    </td>
-</tr>
-    </tbody>
-
-</table>  
+<div class="brewery-list">
+  <brewery-card class="card-space" v-for="brewery in allBreweries" v-bind:key="brewery.breweryId" v-bind:brewery="brewery"/>
+   </div>
 </div>
-</body>
+
+</div>
 </template>
 
 <script>
 import applicationService from "../services/ApplicationService";
-
+import BreweryCard from "../components/BreweryCard.vue"
 export default {
+  props: 
+  ["brewery"],
+  components: {
+    BreweryCard,
+  },
     data(){
         return {
-            breweries: []
+            breweries: [],
+            isLoading: true,
         }
     },
-  name: "breweries-list",
-  methods: {
-    viewBrewery(id) {
-      this.$router.push(`/breweries/${id}`);
-    },
-   deleteBrewery() {
-      if (confirm("Are you sure you want to delete this brewery and all associated information? This action cannot be undone.")) {
-        applicationService
-          .deleteBrewery(this.brewery.id)
-          .then(response => {
-            if (response.status === 200) {
-              alert("Brewery successfully deleted");
-
-              this.$store.commit("DELETE_BREWERY", this.brewery.id);
-
-              this.$router.push({ name: 'Home' });
-            }
-          })
-          
-        .catch((error) => {
-          if (error.response.status === 404) {
-            this.$router.push("/404");
-          } else {
-            console.error(error);
-          }
-        
-        });
-      }
-    },
-    getBreweries() {
-      applicationService.getBreweries().then(response => {
-          if(response.status == 200) {
- this.$store.commit("SET_BREWERY", response.data);
-this.breweries=response.data;
-          }
-       
-      })
-      .catch((error) => {
-          if (error.response.status === 404) {
-            this.$router.push("/404");
-          } else {
-            console.error(error);
-          }
-        
-        });
-    },
-  },
+  
   created() {
-    this.getBreweries();
-  },
-  computed: {
-      sortedBreweries(){
-          return this.$store.state.breweries;
-      }
+    applicationService.getBreweries().then( response =>{
+      this.breweries = response.data
+      this.isLoading=false;
+    })
   }
-};
+}
+ 
 </script>
 
 <style scoped>
@@ -116,43 +53,32 @@ this.breweries=response.data;
   box-sizing: border-box;
 }
 
-table{
-  margin-top: 40px;
-  background-color: goldenrod;
-  opacity: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-background-position: center;
+div.loading {
+  text-align: center;
+  float:center;
+  z-index: 998;
 }
+
+.brewery-list{
+  padding-right: 25px;
+  padding-left: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: 10px 200px;
+  align-self: space-around;
+  justify-content: space-around;
+}
+
 .heading{
   font-size: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   height: 40vh;
-  color: goldenrod;
-  text-shadow: 2px 2px 15px black;
+  color: #ff7300;
+  text-shadow: 2xp 2px 15px black;
 }
-body {
-  display: flex;
-
-  background-image: url("/beer7.png");
-
-  justify-content: center;
-  align-items: center;
-  padding-left: 70px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-} 
-
- body,
-html {
-  height: 100vh;
-} 
-
 
 </style>

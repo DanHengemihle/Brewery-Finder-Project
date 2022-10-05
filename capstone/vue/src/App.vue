@@ -1,5 +1,4 @@
 <template>
-
   <div id="app">
     <div id="nav" :class="{ sticky: active }">
       <link
@@ -15,15 +14,17 @@
 
       <div id="dropdown">
         <button id="logonav" class="dropbtn" @click="toggle"></button>
-        <div v-if="active"><a href="Home">Home</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a></div>
+        <div v-if="active">
+          <a href="Home">Home</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
 
         <!-- <div class="dropdown-content"> -->
-      <!-- <a href="Home">Home</a>
+        <!-- <a href="Home">Home</a>
       <a href="#">Link 2</a>
       <a href="#">Link 3</a> -->
-    <!-- </div> -->
+        <!-- </div> -->
       </div>
       <!-- <router-link id="homenav" v-bind:to="{ name: 'home' }">Home |</router-link
       >&nbsp;|&nbsp;
@@ -33,42 +34,51 @@
           v-if="$store.state.token != ''"
           >Logout</router-link
         > -->
-        
 
-        <nav class="navbar">
-      <ul class="nav links">
-        <!-- <div id="nav"> -->
+      <nav class="navbar">
+        <ul class="nav links">
+          <!-- <div id="nav"> -->
 
-        <li>
-          <router-link v-bind:to="{ name: 'home' }">Home</router-link>
-        </li>
-     <li>
-          <router-link v-bind:to="{ name: 'breweries' }">Breweries</router-link>
-        </li> 
-       
-        <li><router-link v-bind:to="{ name: 'login' }">Login</router-link></li>
-        <li><router-link v-bind:to="{ name: 'register' }">Register</router-link></li>
-                <li><router-link v-bind:to="{ name: 'maps' }">Locations</router-link></li>
+          <li>
+            <router-link v-bind:to="{ name: 'home' }">Home</router-link>
+          </li>
+          <li>
+            <router-link v-bind:to="{ name: 'breweries' }"
+              >Breweries</router-link
+            >
+          </li>
 
-                <li><router-link v-bind:to="{ name: 'brewer' }">Brewer</router-link></li>          <a id="about" href="#about">About</a> |
-        <a id="contact" href="#contact">Contact</a>
-        <input id="search" type="text" placeholder="Search.." />
-        <i id="searchicon" class="fa fa-search icon"></i>
+          <li>
+            <router-link v-bind:to="{ name: 'login' }">Login</router-link>
+          </li>
+          <li>
+            <router-link v-bind:to="{ name: 'register' }">Register</router-link>
+          </li>
+          <li>
+            <router-link v-bind:to="{ name: 'maps' }">Locations</router-link>
+          </li>
 
+          <li>
+            <router-link v-bind:to="{ name: 'admin' }">Admin</router-link>
+          </li>
+          <a id="about" href="#about">About</a>
+          |
+          <a id="contact" href="#contact">Contact</a>
+          <input id="search" type="text" placeholder="Search.." />
+          <i id="searchicon" class="fa fa-search icon"></i>
 
-        <li>
-          <router-link
-            id="logout-link"
-            v-bind:to="{ name: 'logout' }"
-            v-if="$store.state.token != ''"
-            >Logout</router-link
-          >
-        </li>
-      </ul>
-    </nav>
+          <li>
+            <router-link
+              id="logout-link"
+              v-bind:to="{ name: 'logout' }"
+              v-if="$store.state.token != ''"
+              >Logout</router-link
+            >
+          </li>
+        </ul>
+      </nav>
 
-      
-        <!-- <router-link id="breweryinfo" :to="{name: 'brewery' }" v-if="$store.state.user.role == 'ROLE_BREWER'">Add/Update Brewery</router-link> -->
+      <!-- <router-link id="breweryinfo" :to="{name: 'brewery' }" v-if="$store.state.user.role == 'ROLE_BREWER'">Add/Update Brewery</router-link> -->
       <!-- </div> -->
     </div>
     <router-view />
@@ -82,7 +92,7 @@ export default {
     return {
       scrolling: false,
       active: false,
-      loggedIn: false
+      loggedIn: false,
     };
   },
 
@@ -90,10 +100,8 @@ export default {
     toggle() {
       this.active = !this.active;
     },
-    
-    hasBrewerRole(){
-      
-    }
+
+    hasBrewerRole() {},
 
     //     toggleNavClass(){
     //         if(this.scrolling == false){
@@ -150,7 +158,6 @@ export default {
   font-family: inherit; /* Important for vertical align on mobile phones */
   margin: 0; /* Important for vertical align on mobile phones */
 }
-
 
 /* Dropdown content (hidden by default) */
 .dropdown-content {
@@ -234,15 +241,13 @@ export default {
   background-color: darkgray;
 }
 
-
-#searchicon{
- font-size: 1em;
-transform: translate(-1.5vw, 1.9vh);
+#searchicon {
+  font-size: 1em;
+  transform: translate(-1.5vw, 1.9vh);
 }
 
-#search{
+#search {
   height: 3vh;
   transform: translate(0, 1.5vh);
 }
-
 </style>

@@ -6,33 +6,45 @@ import axios from 'axios';
 // });
 
 
-export default{
+export default {
 
-getBreweries(){
-    return axios.get('/breweries')
-},
+    getBreweries() {
+        return axios.get('/breweries')
+    },
+    getBeers() {
+        return axios.get('/beers')
+    },
 
-addBrewery(payload){
-    return axios.post('/breweries', payload)
-},
+    deleteBeer(id){
+        return axios.delete(`beers/${id}`)
+    },
 
-getBeerByBrewery(id){
-    return axios.get(`/brewery/${id}`)
-},
+    addBrewery(payload) {
+        return axios.post('/breweries', payload)
+    },
 
-// getBreweryById(id){
-//     return http.get('/breweries/${id}')
-// },
+    getBeerByBrewery(id) {
+        return axios.get(`/breweries/${id}/beers`)
+    },
 
-deleteBrewery(id){
-return axios.delete(`/breweries/${id}`)
+    getBreweryById(id) {
+        return axios.get(`/breweries/${id}`)
+    },
 
-}
+    deleteBrewery(id) {
+        return axios.delete(`/breweries/${id}`)
 
+    },
 
+    addReview(review) {
+        return axios.post('/reviews', review)
+    },
 
+    addNewBeer(beer) {
+        return axios.post(`/beers`, beer)
+    },
 
-
-
-
+    updateBrewery(brewery) {
+        return axios.put(`/breweries`, brewery)
+    }
 }

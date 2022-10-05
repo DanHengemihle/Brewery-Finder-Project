@@ -62,6 +62,9 @@ activeBreweries: {
       state.breweries=data;
     }
   },
+  SET_BEERS(state, data){
+    state.beers=data;
+  },
   DELETE_BREWERY(state, breweryIdToDelete) {
     state.brewery = state.brewery.filter((brewery) => {
       return brewery.id !== breweryIdToDelete;

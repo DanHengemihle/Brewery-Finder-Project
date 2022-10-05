@@ -9,9 +9,12 @@ import Register from '../components/Register.vue'
 import BeerLover from '../components/BeerLover.vue'
 import Admin from '../components/Admin.vue'
 import Breweries from '../components/Breweries.vue'
-import BreweryForm from '../components/BreweryForm.vue'
 import Locations from '../components/Locations.vue'
 import Beers from '../components/Beers.vue'
+import BreweryDetails from '../components/BreweryDetails.vue'
+import Reviews from '../components/Reviews.vue'
+
+
 
 Vue.use(Router)
 
@@ -59,64 +62,111 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-      },
-      {
-        path: "/breweries",
-        name: "breweries",
-        component: Breweries,
-        meta: {
-          requiresAuth: false
-        }
-      },
-     
-    { path: "/brewer",
-    name: "brewer",
-    component: BreweryForm,
-    meta: {
-      requiresAuth: true,
+    },
+    {
+      path: "/breweries",
+      name: "breweries",
+      component: Breweries,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+
+      path: "/beers",
+      name: "beers",
+      component: Beers,
+      meta: {
+        requiresAuth: false
+      }
+
+
+
+    },
+
+
+    {
+      path: "/brewer",
+      name: "brewer",
+      component: Admin,
+      meta: {
+        requiresAuth: true,
+      }
+    },
+
+    {
+      path: "/beerlover",
+      name: "beerlover",
+      component: BeerLover,
+      meta: {
+        requiresAuth: true,
+      }
+    },
+
+    {
+      path: "/admin",
+      name: "admin",
+      component: Admin,
+      meta: {
+        requiresAuth: false,
+      }
+    },
+    {
+      path: "/maps",
+      name: "maps",
+      component: Locations,
+      meta: {
+        requiresAuth: false,
+      }
+
+
+
+    },
+    {
+      path: "/brewery/:id",
+      name: "brewery-details",
+      component: BreweryDetails,
+      meta: {
+        requiresAuth: false,
+      }
+    },
+    {
+
+      path: "/beers/:id",
+      name: 'beer-details',
+      component: BreweryDetails,
+      meta: {
+        requiresAuth: false,
+      }
+
+    },
+    {
+      path: "/maps",
+      name: "maps",
+      component: Locations,
+      meta: {
+        requiresAuth: true,
+      }
+
+
+    },
+    {
+      path: '/reviews',
+      name: "reviews",
+      component: Reviews,
+      meta: {
+        requiresAuth: true,
+      }
+
+
     }
-  },
-
-{
-path: "/beerlover",
-name: "beerlover",
-component: BeerLover,
-meta: {
-  requiresAuth: true,
-}
-},
-
-{
-  path: "/admin",
-  name: "admin",
-  component: Admin,
-  meta: {
-    requiresAuth: true,
-  }
-  },
-  {
-    path: "/maps",
-    name: "maps",
-    component: Locations,
-    meta: {
-      requiresAuth: true,
-    }
-  
-
-
-},
-{
-  path: "/brewery/:id",
-  name: "brewery-page",
-  component: Beers,
-  meta: {
-    requiresAuth: true,
-  }
-}
 
 
 
-    
+
+
+
+
 
 
 
@@ -128,7 +178,7 @@ meta: {
     //     requiresAuth: false
     //   }
     // },
-    
+
   ]
 })
 
