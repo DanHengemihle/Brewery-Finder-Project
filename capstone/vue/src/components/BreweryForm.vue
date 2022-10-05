@@ -217,7 +217,7 @@ export default {
   data() {
     return {
       brewery: {
-        brewer_id: this.$store.state.user.id,
+        //brewer_id: this.$store.state.user.id,
         name: "",
         street: "",
         city: "",
