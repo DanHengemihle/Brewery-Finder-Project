@@ -6,10 +6,7 @@
       <thead>
         <tr>
           <th>&nbsp;</th>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Abv</th>
-          <th>Type</th>
+          <h1>Breweries</h1>
         </tr>
       </thead>
       <tbody>

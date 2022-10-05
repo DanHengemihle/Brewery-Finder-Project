@@ -5,11 +5,8 @@
         <h1 class="heading">Welcome to Bootlegger!</h1>
         <br />
       </div>
-      <div id="body">
-        <h3 class="breweries">Breweries</h3>
-      </div>
-      <br />
-      <input type="text" placeholder="Search.." />
+    
+       
       <br />
       <br />
       <br />
@@ -27,13 +24,14 @@
         <thead>
           <tr>
             <th>&nbsp;</th>
-            <th>Name</th>
+            <!-- <th>Name</th>
             <th>City</th>
             <th>State</th>
             <th>Zipcode</th>
             <th>Phone</th>
             <th>Website URL</th>
-            <th>Hours of Operation</th>
+            <th>Hours of Operation</th> -->
+            <h1>Breweries</h1>
           </tr>
         </thead>
         <tbody>
@@ -41,12 +39,12 @@
             <!-- <td class="id">{{brewery.id}}</td> -->
             <!-- <td> -->
             <td class="name">{{ brewery.name }}</td>
-            <td>{{ brewery.phone }}</td>
+            <td class="ownedby">{{ brewery.phone }}</td>
             <td>{{ brewery.website_url }}</td>
-            <td>
+            <!-- <td>
               <button v-on:click="viewBrewery(brewery.id)">Edit</button>&nbsp;
               <button v-on:click="deleteBrewery(brewery.id)">Delete</button>
-            </td>
+            </td> -->
           </tr>
         </tbody>
       </table>
@@ -58,17 +56,13 @@
 import applicationService from "../services/ApplicationService";
 
 export default {
-  data() {
-    return {
-      breweries: [],
-    };
-  },
-  name: "breweries-list",
+name: "breweries-list",
   methods: {
     viewBrewery(id) {
       this.$router.push(`/breweries/${id}`);
     },
     deleteBrewery() {
+      applicationService
       if (
         confirm(
           "Are you sure you want to delete this brewery and all associated information? This action cannot be undone."
@@ -132,7 +126,7 @@ export default {
 </script>
 
 <style scoped>
-* {
+/* * {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
@@ -161,7 +155,12 @@ table {
   background-color: goldenrod;
   opacity: 90%;
   border-radius: 50px;
+   width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
 }
+
 .heading {
   font-size: 2rem;
   display: flex;
@@ -189,7 +188,7 @@ html {
 body,
 html {
   /* max-height: 300px; */
-  height: 100vh;
+  /* height: 100vh;
 }
 
 .brewery-list {
@@ -198,5 +197,81 @@ html {
   display: flex;
   flex-wrap: wrap;
   grid-gap: 10px 200px;
+} -- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  padding-right: 20px;
+  padding-left: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: 10px 200px;
+  align-self: space-around;
+  justify-content: space-around;
+  background-color: goldenrod;
+  opacity: 90%;
+  border-radius: 50px;
+   width: 100%;
+ 
+  color: #f7fafc;
+ 
+  padding: 40px;
+  flex: 1;
+  margin: 100px;
+  text-align: center;
+  cursor: pointer;
+  width: 60%;
+}
+
+th {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 500;
+  text-align: left;
+}
+
+tr {
+  margin: 20px;
+  padding: 40px;
+}
+td {
+  padding: 8px;
+  font-family: "Work Sans", sans-serif;
+}
+
+td.name {
+  font-weight: 400;
+}
+.docs-icon img {
+  height: 32px;
+}
+.avatar {
+  border-radius: 20px;
+  width: 32px;
+  vertical-align: middle;
+  padding-right: 5px;
+}
+.ownedby {
+  vertical-align: middle;
+}
+
+body,
+html {
+  /* display: flex; */
+
+  background-image: url("/beer7.png");
+
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+h1 {
+  font-size: 50px;
+  box-shadow: goldenrod;
 }
 </style>
