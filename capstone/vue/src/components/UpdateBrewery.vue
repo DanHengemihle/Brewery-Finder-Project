@@ -250,8 +250,8 @@ export default {
           }
         })
         .catch((error) => {
-          if (error.response.status === 204) {
-            this.$router.push("/204");
+          if (error.response.status === 404) {
+            this.$router.push("/404");
           } else {
             console.error(error);
           }

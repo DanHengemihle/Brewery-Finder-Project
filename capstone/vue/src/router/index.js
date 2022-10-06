@@ -49,7 +49,7 @@ const router = new Router({
     
     {
       path: '/home',
-      name: 'breweries',
+      name: 'home',
       component: Breweries,
       meta: {
         requiresAuth: false
