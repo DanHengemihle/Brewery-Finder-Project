@@ -29,7 +29,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 div.contact-us {
     margin-top: 60px;
