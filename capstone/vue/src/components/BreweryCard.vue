@@ -2,15 +2,11 @@
   
 <div id="card">
 
-<<<<<<< HEAD
-<router-link v-bind:to="{name: 'brewery-details', params: {id: this.brewery.name} }">
-=======
 
 <brewery-details />
 <beers />
 
 <!-- <router-link v-bind:to="{name: 'brewery-details', params: {id: this.brewery.breweryId} }">
->>>>>>> main
 <div id="card" data-aos="fade-down">
 <a href="#" class="btn">{{this.brewery.name}}</a>
 </div>
@@ -23,9 +19,6 @@ import BreweryDetails from "../components/BreweryDetails.vue"
 import Beers from "../components/Beers.vue"
 
 export default {
-<<<<<<< HEAD
-    props: ["breweries"],
-=======
   components: { BreweryDetails, Beers },
     data(){
         return{
@@ -46,7 +39,6 @@ export default {
     created(){
         this.activeBrewery = this.$store.state.activeBrewery;
     }
->>>>>>> main
 
 }
 </script>

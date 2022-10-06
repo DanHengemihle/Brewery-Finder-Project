@@ -5,8 +5,7 @@
         <h1 class="heading">Welcome to Bootlegger!</h1>
         <br />
       </div>
-    
-       
+
       <br />
       <br />
       <br />
@@ -24,7 +23,7 @@
         <!-- <thead>
           <tr>
             <th>&nbsp;</th> -->
-            <!-- <th>Name</th>
+        <!-- <th>Name</th>
             <th>City</th>
             <th>State</th>
             <th>Zipcode</th>
@@ -32,18 +31,27 @@
             <th>Website URL</th>
             <th>Hours of Operation</th>
           </tr> -->
-          <h1>Breweries</h1>
+        <h1>Breweries</h1>
         <!-- </thead> -->
         <tbody>
           <tr v-for="brewery in sortedBreweries" :key="brewery.id">
             <!-- <td class="id">{{brewery.id}}</td> -->
             <!-- <td> -->
-            <td class="name" @click="viewBrewery(brewery)">{{ brewery.name }}</td>
+            <td class="name" @click="viewBrewery(brewery)">
+              {{ brewery.name }}
+            </td>
             <td class="ownedby">{{ brewery.phone }}</td>
-            <td>{{ brewery.websiteUrl }}</td>
-            <td>{{brewery.website_url}} </td>
+            <td>
+              <a :href="[brewery.websiteUrl]" target="_blank">
+                {{ brewery.websiteUrl }}
+              </a></td>
+            <td>
+              <a :href="[brewery.website_url]" target="_blank">
+                {{ brewery.website_url }}
+              </a>
+            </td>
             <!-- <td>
-              <button v-on:click="viewBrewery(brewery.id)">Edit</button>&nbsp;
+              <button v-on:click="updateBrewery(brewery.id)">Edit</button>&nbsp;
               <button v-on:click="deleteBrewery(brewery.id)">Delete</button>
             </td> -->
           </tr>
@@ -57,11 +65,11 @@
 import applicationService from "../services/ApplicationService";
 // import BreweryCard from "../components/BreweryCard.vue";
 export default {
-  data(){
-  return{
-    activeBrewery: {
-  id: "",
-  brewerId: "",
+  data() {
+    return {
+      activeBrewery: {
+        id: "",
+        brewerId: "",
         name: "",
         street: "",
         city: "",
@@ -69,23 +77,22 @@ export default {
         phone: "",
         websiteUrl: "",
         hoursOfOperation: "",
-},
-  }
+      },
+      url: "",
+    };
   },
-name: "breweries-list",
+  name: "breweries-list",
   methods: {
     viewBrewery(selectedBrewery) {
-      applicationService.getBreweryById(selectedBrewery.id)
-     .then((response) =>{
-       if (response.status == 200){
-         this.$store.commit("SET_ACTIVE_BREWERY", selectedBrewery);
-         this.$router.push({name: "brewery"});
-       }
-     })
- 
+      applicationService.getBreweryById(selectedBrewery.id).then((response) => {
+        if (response.status == 200) {
+          this.$store.commit("SET_ACTIVE_BREWERY", selectedBrewery);
+          this.$router.push({ name: "brewery" });
+        }
+      });
     },
     deleteBrewery() {
-      applicationService
+      applicationService;
       if (
         confirm(
           "Are you sure you want to delete this brewery and all associated information? This action cannot be undone."
@@ -136,7 +143,27 @@ name: "breweries-list",
           }
         });
     },
+    viewWebsite(url) {
+      this.$router.replace(url);
+    },
   },
+
+    updateBrewery(id){
+      applicationService.editBrewery(id)
+      .then((response) => {
+          if (response.status == 200) {
+  this.$store.commit("SET_BREWERY", response.data);
+            this.breweries = response.data;
+          }
+        })
+        .catch((error) => {
+          if (error.response.status === 204) {
+            this.$router.push("/204");
+          } else {
+            console.error(error);
+          }
+        });
+    },
   created() {
     this.getBreweries();
   },
@@ -211,7 +238,7 @@ opacity: 90%;
 body,
 html {
   /* max-height: 300px; */
-  /* height: 100vh;
+/* height: 100vh;
 }
 
 .brewery-list {
@@ -236,10 +263,10 @@ table {
   background-color: initial;
   opacity: 90%;
   border-radius: 50px;
-   width: 100%;
- 
+  width: 100%;
+
   color: #f7fafc;
- 
+
   padding: 40px;
   flex: 1;
   margin: 100px;
@@ -260,16 +287,14 @@ tr {
 td {
   padding: 8px;
   font-family: "Work Sans", sans-serif;
-
 }
 
 td.name {
   font-weight: 400;
   color: lightblue;
-  
 }
 
-td.name:hover{
+td.name:hover {
   cursor: pointer;
 }
 

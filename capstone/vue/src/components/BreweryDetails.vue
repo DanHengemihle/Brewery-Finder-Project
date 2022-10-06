@@ -3,7 +3,8 @@
    
     <div id="details">
 <div class="heading">
-
+<router-link id="updatebrewery" :to="{name: 'updatebrewery' }" v-if="$store.state.user.role == 'ROLE_BREWER'">Update Brewery</router-link>
+              <button v-on:click="deleteBrewery(brewery.id)">Delete Brewery</button>
 <router-link id="addbeer" :to="{name: 'beerform' }" v-if="$store.state.user.role == 'ROLE_BREWER'">Add Beer</router-link>
 
     <h1 class="brewery-name">{{brewery.name}}</h1>
@@ -33,8 +34,9 @@
 <script>
 
 
-
+import applicationService from "../services/ApplicationService";
 export default {
+   
     name: "brewery-details",
     
     data() {
@@ -54,6 +56,45 @@ export default {
 
         }
 
+    },
+
+    methods: {
+
+deleteBrewery() {
+      applicationService;
+      if (
+        confirm(
+          "Are you sure you want to delete this brewery and all associated information? This action cannot be undone."
+        )
+      ) {
+        applicationService
+          .deleteBrewery(this.brewery.id)
+          .then((response) => {
+            if (response.status === 200) {
+              alert("Brewery successfully deleted");
+
+              this.$store.commit("DELETE_BREWERY", this.brewery.id);
+
+              this.$router.push({ name: "home" });
+            }
+          })
+
+          .catch((error) => {
+            if (error.response) {
+              this.errorMsg =
+                "Error deleting brewery. Response received was '" +
+                error.response.statusText +
+                "'.";
+            } else if (error.request) {
+              this.errorMsg =
+                "Error deleting brewery. Server could not be reached.";
+            } else {
+              this.errorMsg =
+                "Error deleting brewery. Request could not be created.";
+            }
+          });
+      }
+    },
     },
    
     created() {

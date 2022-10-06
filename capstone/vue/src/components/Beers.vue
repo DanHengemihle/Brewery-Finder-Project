@@ -20,10 +20,10 @@
           <td>{{ beer.beerDescription }}</td>
           <td>{{ beer.abv }}</td>
           <td>
-            <button v-on:click.prevent="favoriteBeer(beer.name)">
+            <button v-on:click.prevent="favoriteBeer(beer.name)" v-if="$store.state.user.role == 'ROLE_USER'">
               Add to Favorites
             </button>
-            <button v-on:click.prevent="deleteABeer(beer.beerId)">Delete</button>
+            <button v-on:click.prevent="deleteABeer(beer.beerId)" v-if="$store.state.user.role == 'ROLE_BREWER'">Delete</button>
           </td>
         </tr>
       </tbody>
@@ -33,7 +33,6 @@
 
 <script>
 import applicationService from "../services/ApplicationService";
-// import ReviewsForm from "../components/ReviewsForm.vue";
 
 export default {
   data() {
@@ -68,11 +67,7 @@ export default {
           .deleteBeer(id)
           .then((response) => {
             if (response.status === 200) {
-<<<<<<< HEAD
-            //   alert("Beer successfully deleted");
-=======
               alert("Beer successfully deleted");
->>>>>>> main
 
               this.getBeers();
                this.$store.commit("DELETE_BEER", id);
@@ -107,7 +102,7 @@ export default {
     },
     getBeersByBreweryId() {
       applicationService
-        .getBeerByBreweryId(this.$store.state.user.id)
+        .getBeerByBreweryId(this.$store.state.activeBrewery.id)
         .then((response) => {
           if (response.status == 200) {
             this.$store.commit("SET_BEERS", response.data);
@@ -124,7 +119,7 @@ export default {
     },
   },
   created() {
-    this.getBeers();
+    this.getBeersByBreweryId();
   },
   computed: {
     sortedBeers() {

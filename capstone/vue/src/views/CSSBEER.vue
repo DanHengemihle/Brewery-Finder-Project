@@ -1,5 +1,6 @@
 <template>
 <div id="entirety">
+  
   <div class="glass">
   <div class="wrapper">
     <div class="pour">
@@ -65,11 +66,14 @@
       c0.01,0.01,0.03,0.02,0.05,0.04C536.29,33.47,536.25,33.45,536.25,33.43z"/>
   </svg>
   <div class="instructions">and<br/>hold to pour</div>
+  
   <div id="tags">
    <router-link id="home-link" :to="{ name: 'home' }">Welcome to Bootlegger!</router-link>
+    <img :src="'\Logo.png'" />
   </div>
-   <p>Made by Mike Golus</p>
-  
+  <div id="externallink">
+   <a id="link" href="https://codepen.io/mikegolus/pen/jJzRwJ" target="blank">Made by Mike Golus</a>
+  </div>
 </div>
 
 
@@ -91,22 +95,22 @@ methods: {
 </script>
 
 <style scoped>
-
+img{
+  transform: translate(1.3vw, 1vh);
+}
 #home-link{
     font-size: 5vh;
     color: darkgoldenrod;
-   
+    
 }
-
 #tags{
-     transform: translate(-20vw, -60vh);
+transform: translate(-20vw, -60vh);
 }
 
 
-
-p{
-    color: darkgray;
-    transform: translate(6vw, -10vh);
+#externallink {
+    
+    transform: translate(8vw, -27vh);
 }
 
  .st0{fill:url(#SVGID_1_)}
@@ -117,21 +121,19 @@ p{
       .st5{fill:url(#SVGID_2_)}
 
 
-
-
-
 html {
   height: 100%;
 }
 
 #entirety {
   background-color: black;
-  
+  background-size: cover;
   height: 100vh;
+  width: 100vw;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  transform: translate(0vw, 10vh);
+  transform: translate(0vw, 12vh);
   overflow: hidden;
 }
 
@@ -159,7 +161,7 @@ html {
   left: 10.5%;
   right: 10.5%;
   top: 5%;
-  bottom: 10%;
+  bottom: 24%;
   transform: perspective(96vmin) rotateX(-30.8deg);
 }
 

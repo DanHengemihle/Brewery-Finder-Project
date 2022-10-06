@@ -81,12 +81,12 @@ export default {
             this.$store.commit("SET_USER", response.data.user);
             console.log(response.data.user.authorities[0].name);
             if (response.data.user.authorities[0].name == "ROLE_BREWER") {
-              this.$router.push({ name: "brewer" });
+              this.$router.push({ name: "home" });
             } else if (
               response.data.user.authorities[0].name == "ROLE_BEERLOVER"){
               this.$router.push({ name: "beerlover" });
             } else {
-              this.$router.push("/");
+              this.$router.push("/home");
             }
           }
         })

@@ -14,7 +14,7 @@ public interface BreweryDAO {
 
     void createBrewery(int brewerId, Brewery brewery);
 
-    void updateBrewery(Brewery brewery, int breweryId, int brewerId);
+    void updateBrewery(Brewery brewery);
 
     void deleteBrewery(int breweryId, int brewerId);
 }
