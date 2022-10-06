@@ -82,10 +82,10 @@ public class BreweryController {
         breweryDAO.createBrewery(brewerId, brewery);
     }
 
-    @RequestMapping(path = "/breweries/{id}", method = RequestMethod.PUT)
-    public void updateBrewery(@Valid @RequestBody Brewery brewery, @PathVariable int id, Principal principal){
-        int brewerId = userDao.findIdByUsername(principal.getName());
-        breweryDAO.updateBrewery(brewery, id, brewerId);
+    @RequestMapping(path = "/breweries", method = RequestMethod.PUT)
+    public void updateBrewery(@Valid @RequestBody Brewery brewery){
+
+        breweryDAO.updateBrewery(brewery);
     }
 
     @RequestMapping(path = "/breweries/{id}", method = RequestMethod.DELETE)

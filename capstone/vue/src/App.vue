@@ -61,6 +61,7 @@
           <li>
             <router-link v-bind:to="{ name: 'admin' }">Admin</router-link>
           </li>
+
          
           
           
@@ -68,7 +69,7 @@
           <router-link v-bind:to="{ name: 'about' }">About</router-link>
           |
           <router-link v-bind:to="{name: 'contact' }">Contact</router-link>
-          <input id="search" type="text" placeholder="Search.." @keydown.enter="search($event)"/>
+          <input id="search" type="text" placeholder="Search.." @keypress.enter="search($event)"/>
           <i id="searchicon" class="fa fa-search icon"></i>
 
           <li>
@@ -108,10 +109,6 @@ export default {
       this.active = !this.active;
     },
     
-    hasBrewerRole(){
-      
-    },
-
         toggleNavClass(){
             if(this.scrolling == false){
               return 'nav'

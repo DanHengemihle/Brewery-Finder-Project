@@ -24,7 +24,7 @@ export default {
     },
 
     getBeerByBreweryId(id) {
-        return axios.get(`/breweries/${id}`)
+        return axios.get(`/breweries/beers/${id}`)
     },
 
     getBeer() {
@@ -55,6 +55,10 @@ export default {
 
     getBreweryById(id){
         return axios.get(`/breweries/${id}`)
+    },
+
+    editBrewery(payload){
+        return axios.put(`/breweries`, payload)
     }
 
 

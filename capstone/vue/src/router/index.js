@@ -17,7 +17,7 @@ import BeerForm from '../components/BeerForm.vue'
 import CSSBEER from '../views/CSSBEER.vue'
 import ReviewsForm from '../components/ReviewsForm.vue'
 import BreweryCard from '../components/BreweryCard.vue'
-
+import UpdateBrewery from '../components/UpdateBrewery.vue'
 
 
 
@@ -206,6 +206,14 @@ meta: {
       name: "brewery",
       component: BreweryCard,
 
+    },
+    {
+      path: "/brewery/update",
+      name: "updatebrewery",
+      component: UpdateBrewery,
+      meta: {
+        requiresAuth: true
+      }
     },
     
   ]
