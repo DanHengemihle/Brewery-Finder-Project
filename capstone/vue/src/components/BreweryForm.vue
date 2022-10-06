@@ -511,6 +511,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   overflow-y: auto;
+  background-position-y: -10vh;
 
 }
 

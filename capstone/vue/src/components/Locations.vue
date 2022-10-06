@@ -198,15 +198,25 @@ export default {
 }
 #latitude {
   grid-area: latitude;
+    background-image: linear-gradient(to bottom, goldenrod, black);
+  font-weight: 500;
+
 }
 #longitude {
   grid-area: longitude;
+    background-image: linear-gradient(to bottom, goldenrod, black);
+  font-weight: 500;
 }
 #description {
   grid-area: description;
+    background-image: linear-gradient(to bottom, goldenrod, goldenrod);
+  font-weight: 500;
 }
 #buttons {
   grid-area: buttons;
+  background-image: linear-gradient(to bottom, goldenrod, black);
+  
+  font-weight: 500;
 }
 #map {
   grid-area: map;
@@ -214,6 +224,8 @@ export default {
   height: 710px;
   padding: 25px;
   margin: 25px;
+  border: solid black;
+
 }
 #report {
   grid-area:report;
@@ -224,11 +236,12 @@ export default {
   border: 1px dashed gray;
 }
 .coord-input {
-  border: 1px dashed gray;
+  border: 3px solid black;
   padding: 25px;
   margin: 25px;
 }
 .input-cell {
   vertical-align: top;
 }
+
 </style>

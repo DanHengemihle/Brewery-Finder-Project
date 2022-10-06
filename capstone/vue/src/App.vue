@@ -220,6 +220,7 @@ export default {
   position: fixed;
   top: 0;
   border-bottom: solid darkgray;
+  z-index: 9999;
 }
 
 #logonav {
