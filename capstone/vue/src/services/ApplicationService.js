@@ -44,13 +44,27 @@ getBeerByBreweryId(id){
     },
 
 
-    addBeerReview() {
-        return axios.post(`/beer/reviews`)
+    addBeerReview(id) {
+        return axios.post(`/beer/${id}reviews`)
     },
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    
 =======
+=======
+    addBeer(beer){
+        return axios.post(`/beers`, beer)
+    },
+
+    searchBreweries(query){
+        return axios.get(`breweries/search${query}`)
+    },
+
+    getBreweryById(id){
+        return axios.get(`/breweries/${id}`)
+    }
+>>>>>>> main
 
 >>>>>>> main
 

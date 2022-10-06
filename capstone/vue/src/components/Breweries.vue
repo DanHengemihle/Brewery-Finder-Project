@@ -35,12 +35,13 @@
           <h1>Breweries</h1>
         <!-- </thead> -->
         <tbody>
-          <tr v-for="brewery in sortedBreweries" :key="brewery">
+          <tr v-for="brewery in sortedBreweries" :key="brewery.id">
             <!-- <td class="id">{{brewery.id}}</td> -->
             <!-- <td> -->
-            <td class="name">{{ brewery.name }}</td>
+            <td class="name" @click="viewBrewery(brewery)">{{ brewery.name }}</td>
             <td class="ownedby">{{ brewery.phone }}</td>
             <td>{{ brewery.websiteUrl }}</td>
+            <td>{{brewery.website_url}} </td>
             <!-- <td>
               <button v-on:click="viewBrewery(brewery.id)">Edit</button>&nbsp;
               <button v-on:click="deleteBrewery(brewery.id)">Delete</button>
@@ -54,12 +55,34 @@
 
 <script>
 import applicationService from "../services/ApplicationService";
-
+// import BreweryCard from "../components/BreweryCard.vue";
 export default {
+  data(){
+  return{
+    activeBrewery: {
+  id: "",
+  brewerId: "",
+        name: "",
+        street: "",
+        city: "",
+        state: "",
+        phone: "",
+        websiteUrl: "",
+        hoursOfOperation: "",
+},
+  }
+  },
 name: "breweries-list",
   methods: {
-    viewBrewery(id) {
-      this.$router.push(`/breweries/${id}`);
+    viewBrewery(selectedBrewery) {
+      applicationService.getBreweryById(selectedBrewery.id)
+     .then((response) =>{
+       if (response.status == 200){
+         this.$store.commit("SET_ACTIVE_BREWERY", selectedBrewery);
+         this.$router.push({name: "brewery"});
+       }
+     })
+ 
     },
     deleteBrewery() {
       applicationService
@@ -210,7 +233,7 @@ table {
   grid-gap: 10px 200px;
   align-self: space-around;
   justify-content: space-around;
-  background-color: goldenrod;
+  background-color: initial;
   opacity: 90%;
   border-radius: 50px;
    width: 100%;
@@ -221,7 +244,6 @@ table {
   flex: 1;
   margin: 100px;
   text-align: center;
-  cursor: pointer;
   width: 60%;
 }
 
@@ -238,11 +260,19 @@ tr {
 td {
   padding: 8px;
   font-family: "Work Sans", sans-serif;
+
 }
 
 td.name {
   font-weight: 400;
+  color: lightblue;
+  
 }
+
+td.name:hover{
+  cursor: pointer;
+}
+
 .docs-icon img {
   height: 32px;
 }

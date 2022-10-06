@@ -18,7 +18,7 @@ Show Form </button>
 </div>
 </div> -->
 
-    <div id="create-review" class="text-center">
+    <div id="add-review" class="text-center">
       <img :src="'\Logo.png'" />
       <form class="form-register" @submit.prevent="createReview">
         <h1 class="h3 mb-3 font-weight-normal">Add Review</h1>
@@ -27,10 +27,10 @@ Show Form </button>
         </div>
 
         <div>
-          <label for="brewery-name" class="sr-only">Brewery Name</label>
+          <label for="rating-number" class="sr-only">Rating</label>
 
          <select id="rating-number" name="rating-numbers" v-model="review.rating" @change="selectedRating($event)">
-              <option disabled value="">Day</option>
+              <option disabled value="">Rating</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -38,7 +38,19 @@ Show Form </button>
               <option value="5">5</option>
               
             </select>
+        </div>
 
+         <div>
+          <label for="brewery-name" class="sr-only">Brewery Name</label>
+ <input
+            type="text"
+            id="breweryname"
+            class="form-control"
+            placeholder="Brewery Name"
+            v-model="review.breweryName"
+          />
+        
+        </div>
 
         <div>
           <label for="review" class="sr-only">Review</label>
@@ -87,7 +99,7 @@ export default {
   methods: {
     createReview() {
       applicationService
-        .addReview(this.review)
+        .addBeerReview(this.review)
         .then((response) => {
           if (response.status == 201) {
             this.$store.commit("SET_REVIEWS", response.data);
@@ -221,38 +233,14 @@ input:checked + .slider:before {
   margin-bottom: -17%;
 }
 
-#space {
-  height: 1000px;
-}
 
-#username {
-  margin-top: -2%;
-}
 
-#usericon {
-  transform: translate(-880%, -10%);
-  opacity: 0.8;
-  padding: 10px;
-  min-width: 40px;
-}
-
-#keyicon {
-  transform: translate(-985%, 145%);
-  opacity: 0.8;
-  padding: 10px;
-  min-width: 40px;
-}
 
 input::placeholder {
   color: black;
 }
 
-#haveaccount {
-  color: #000274;
-  font-weight: 650;
-  font-size: 1.8vh;
-  text-shadow: 30px;
-}
+
 
 * {
   padding: 0;
@@ -302,7 +290,7 @@ h1 {
   color: darkgoldenrod;
 }
 
-#create-brewery {
+#create-review {
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0px 0px 20px rgba(8, 7, 16, 0.6);
   color: darkgoldenrod;

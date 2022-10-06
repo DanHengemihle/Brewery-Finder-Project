@@ -61,10 +61,14 @@
           <li>
             <router-link v-bind:to="{ name: 'admin' }">Admin</router-link>
           </li>
-          <a id="about" href="#about">About</a>
+         
+          
+          
+          
+          <router-link v-bind:to="{ name: 'about' }">About</router-link>
           |
-          <a id="contact" href="#contact">Contact</a>
-          <input id="search" type="text" placeholder="Search.." />
+          <router-link v-bind:to="{name: 'contact' }">Contact</router-link>
+          <input id="search" type="text" placeholder="Search.." @keydown.enter="search($event)"/>
           <i id="searchicon" class="fa fa-search icon"></i>
 
           <li>
@@ -86,6 +90,7 @@
 </template>
 
 <script>
+import ApplicationService from './services/ApplicationService';
 export default {
   name: "app",
   data() {
@@ -93,6 +98,8 @@ export default {
       scrolling: false,
       active: false,
       loggedIn: false,
+      query: "?query=",
+      searchQuery: "",
     };
   },
 
@@ -117,8 +124,26 @@ export default {
               return 'sticky-nav'
             }
 
-    }
+    },
+
+      search(event){
+        this.searchQuery = event.target.value;
+        ApplicationService.searchBreweries(this.query + this.searchQuery)
+        .then((response) =>{
+          if (response.status === 200){
+          this.$store.commit("SET_BREWERY", response.data);
+          this.$router.push({name: "breweries"});
+              
+          }
+        })
+        .catch((error) =>{
+          if(error.response.status === 404) {
+            this.$router.push("/404");
+          } else 
+          console.error(error);
+        });
       },
+  
       mounted(){
       window.document.onscroll = () => {
           let navBar = document.getElementById('dropdown');
@@ -128,6 +153,7 @@ export default {
             this.scrolling = false;
           }
         }
+      }
   },
 };
 </script>

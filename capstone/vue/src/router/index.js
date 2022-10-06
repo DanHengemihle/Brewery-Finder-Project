@@ -13,7 +13,16 @@ import BreweryForm from '../components/BreweryForm.vue'
 import Locations from '../components/Locations.vue'
 // import Beers from '../components/Beers.vue'
 import Beers from '../components/Beers.vue'
+import BeerForm from '../components/BeerForm.vue'
+import CSSBEER from '../views/CSSBEER.vue'
+import ReviewsForm from '../components/ReviewsForm.vue'
+import BreweryCard from '../components/BreweryCard.vue'
 
+
+
+
+import AboutPage from '../components/AboutPage'
+import ContactUs from '../components/ContactUs'
 Vue.use(Router)
 
 /**
@@ -31,12 +40,22 @@ const router = new Router({
   routes: [
     {
       path: '/',
+      name: 'intro',
+      component: CSSBEER,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    
+    {
+      path: '/home',
       name: 'home',
       component: Home,
       meta: {
         requiresAuth: false
       }
     },
+
     {
       path: "/login",
       name: "login",
@@ -123,6 +142,22 @@ meta: {
     requiresAuth: false,
   }
 }, 
+{
+  path: "/about",
+  name: "about",
+  component: AboutPage,
+  meta: {
+    requiresAuth: false,
+  }
+},
+{
+  path: "/contact",
+  name: "contact",
+  component: ContactUs,
+  meta: {
+    requiresAuth: false,
+  }
+},
 // {
 //   path: "/beers/:id/reviews",
 //   name: "beer-reviews",
@@ -152,6 +187,31 @@ meta: {
     //     requiresAuth: false
     //   }
     // },
+
+    {
+      path: "/beer",
+      name: "beerform",
+      component: BeerForm,
+      meta: {
+        requiresAuth: true
+      }
+    },
+
+    {
+      path: "/beer/reviews",
+      name: "reviewform",
+      component: ReviewsForm,
+      meta: {
+        requiresAuth: true
+      }
+    },
+
+    {
+      path: "/brewery",
+      name: "brewery",
+      component: BreweryCard,
+
+    },
     
   ]
 })

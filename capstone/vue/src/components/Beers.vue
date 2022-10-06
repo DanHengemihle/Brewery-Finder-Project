@@ -33,12 +33,24 @@
 
 <script>
 import applicationService from "../services/ApplicationService";
+// import ReviewsForm from "../components/ReviewsForm.vue";
 
 export default {
   data() {
     return {
       breweries: [],
       beers: [],
+      beer: {
+        beerId: "",
+        breweryId: "",
+          beerName: "",
+          beerDescription: "",
+          image: "",
+          beerType: "",
+          abv: "",
+          
+      },
+      
     };
   },
   name: "breweries-list",
@@ -53,7 +65,7 @@ export default {
         )
       ) {
         applicationService
-          .deleteBeer(this.brewery.id)
+          .deleteBeer(id)
           .then((response) => {
             if (response.status === 200) {
 <<<<<<< HEAD

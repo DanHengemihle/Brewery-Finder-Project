@@ -72,14 +72,14 @@ public class BreweryController {
         return response;
     }
 
-    @RequestMapping(path = "/breweries/{name}", method = RequestMethod.GET)
-    public Brewery getByName(@PathVariable String name){return breweryDAO.getBreweryByName(name);}
+    @RequestMapping(method = RequestMethod.GET)
+    public Brewery getByName(@RequestParam(value="name") String name){return breweryDAO.getBreweryByName(name);}
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/breweries", method = RequestMethod.POST)
     public void addBrewery(Principal principal, @Valid @RequestBody Brewery brewery){
         int brewerId = userDao.findIdByUsername(principal.getName());
-        breweryDAO.createBrewery(brewerId,brewery);
+        breweryDAO.createBrewery(brewerId, brewery);
     }
 
     @RequestMapping(path = "/breweries/{id}", method = RequestMethod.PUT)

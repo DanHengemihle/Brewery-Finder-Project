@@ -17,7 +17,7 @@ public class BeerController {
     private BeerDAO beerDAO;
 
     @PostMapping("/beers")
-    public void create(@RequestBody @Valid Beer beer) {
+    public void addNewBeer(@RequestBody @Valid Beer beer) {
         beerDAO.addNewBeer(beer);
     }
 
@@ -37,8 +37,8 @@ public class BeerController {
     }
 
 
-    @GetMapping("/breweries/{breweryId}")
-    public List<Beer> getBreweriesById(@PathVariable int id) {
+    @GetMapping("/breweries/beers/{id}")
+    public List<Beer> getBeersByBreweryId(@PathVariable int id) {
         return beerDAO.getBeersByBreweryId(id);
     }
 
