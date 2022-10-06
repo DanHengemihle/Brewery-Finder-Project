@@ -72,9 +72,9 @@ public class JdbcBreweryDao implements BreweryDAO {
     @Override 
     public void updateBrewery(Brewery brewery) {
         String sql = "UPDATE breweries SET name = ?, street = ?, city = ?, state = ?, phone_number = ?, " +
-                "website_url = ?, hours_of_operation = ? WHERE brewery_id = ? AND brewer_id = ?";
+                "website_url = ?, hours_of_operation = ? WHERE brewery_id = ?";
         jdbcTemplate.update(sql, brewery.getName(), brewery.getStreet(), brewery.getCity(),brewery.getState(),
-                brewery.getPhone(), brewery.getWebsiteUrl(), brewery.getHoursOfOperation(), brewery.getId(), brewery.getBrewerId());
+                brewery.getPhone(), brewery.getWebsiteUrl(), brewery.getHoursOfOperation(), brewery.getId());
     }
 
     @Override

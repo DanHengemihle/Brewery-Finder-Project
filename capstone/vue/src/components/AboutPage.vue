@@ -59,7 +59,7 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 .alignleft {
   width: 10%;
   height: 10%;
