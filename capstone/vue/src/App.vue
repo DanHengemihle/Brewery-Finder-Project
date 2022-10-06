@@ -39,13 +39,11 @@
         <ul class="nav links">
           <!-- <div id="nav"> -->
 
-          <li>
+          <!-- <li>
             <router-link v-bind:to="{ name: 'home' }">Home</router-link>
-          </li>
+          </li> -->
           <li>
-            <router-link v-bind:to="{ name: 'breweries' }"
-              >Breweries</router-link
-            >
+            <router-link v-bind:to="{ name: 'breweries' }">Home</router-link>
           </li>
 
           <li>
@@ -62,14 +60,15 @@
             <router-link v-bind:to="{ name: 'admin' }">Admin</router-link>
           </li>
 
-         
-          
-          
-          
           <router-link v-bind:to="{ name: 'about' }">About</router-link>
           |
-          <router-link v-bind:to="{name: 'contact' }">Contact</router-link>
-          <input id="search" type="text" placeholder="Search.." @keypress.enter="search($event)"/>
+          <router-link v-bind:to="{ name: 'contact' }">Contact</router-link>
+          <input
+            id="search"
+            type="text"
+            placeholder="Search.."
+            @keypress.enter="search($event)"
+          />
           <i id="searchicon" class="fa fa-search icon"></i>
 
           <li>
@@ -91,7 +90,7 @@
 </template>
 
 <script>
-import ApplicationService from './services/ApplicationService';
+import ApplicationService from "./services/ApplicationService";
 export default {
   name: "app",
   data() {
@@ -109,55 +108,47 @@ export default {
       this.active = !this.active;
     },
 
+    hasBrewerRole() {},
 
-    hasBrewerRole(){
-      
+    toggleNavClass() {
+      if (this.scrolling == false) {
+        return "nav";
+      } else {
+        return "sticky-nav";
+      }
     },
 
-        toggleNavClass(){
-            if(this.scrolling == false){
-              return 'nav'
-            } else {
-              return 'sticky-nav'
-            }
-
-    },
-
-      search(event){
-        this.searchQuery = event.target.value;
-        ApplicationService.searchBreweries(this.query + this.searchQuery)
-        .then((response) =>{
-          if (response.status === 200){
-          this.$store.commit("SET_BREWERY", response.data);
-          this.$router.push({name: "breweries"});
-              
+    search(event) {
+      this.searchQuery = event.target.value;
+      ApplicationService.searchBreweries(this.query + this.searchQuery)
+        .then((response) => {
+          if (response.status === 200) {
+            this.$store.commit("SET_BREWERY", response.data);
+            this.$router.push({ name: "breweries" });
           }
         })
-        .catch((error) =>{
-          if(error.response.status === 404) {
+        .catch((error) => {
+          if (error.response.status === 404) {
             this.$router.push("/404");
-          } else 
-          console.error(error);
+          } else console.error(error);
         });
-      },
-  
-      mounted(){
+    },
+
+    mounted() {
       window.document.onscroll = () => {
-          let navBar = document.getElementById('dropdown');
-          if(window.scrollY > navBar.offsetTop){
-            this.scrolling = true;
-            } else {
-            this.scrolling = false;
-          }
+        let navBar = document.getElementById("dropdown");
+        if (window.scrollY > navBar.offsetTop) {
+          this.scrolling = true;
+        } else {
+          this.scrolling = false;
         }
-      }
+      };
+    },
   },
 };
 </script>
 
 <style>
-
-
 /* Navbar container */
 .navbar {
   overflow: hidden;
@@ -231,7 +222,6 @@ export default {
   border-bottom: solid darkgray;
 }
 
-
 #logonav {
   margin-left: 10px;
   padding-right: 50px;
@@ -259,7 +249,6 @@ export default {
   padding: 20px;
 }
 
-
 #nav.sticky {
   transition: 150ms;
   box-shadow: 0px 15px 10px -15px #111;
@@ -276,12 +265,10 @@ export default {
   transform: translate(0, 1.5vh);
 }
 
-html{
+html {
   height: 100%;
-  
-min-width: 550px;
-position: relative;
 
+  min-width: 550px;
+  position: relative;
 }
-
 </style>

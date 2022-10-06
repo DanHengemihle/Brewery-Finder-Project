@@ -33,7 +33,7 @@ Show Form </button>
             type="text"
             id="name"
             class="form-control"
-            :value="$store.state.activeBrewery.name"
+            :value="brewery.name"
             @input="selectedName($event)"
             required
             autofocus
