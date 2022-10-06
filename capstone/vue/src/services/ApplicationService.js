@@ -1,9 +1,6 @@
 import axios from 'axios';
 
 
-// const http = axios.create({
-//     baseURL: "http://localhost:8080"
-// });
 
 
 export default {
@@ -45,6 +42,7 @@ export default {
         return axios.post(`/beer/${id}reviews`)
     },
 
+
     addBeer(beer){
         return axios.post(`/beers`, beer)
     },
@@ -60,8 +58,6 @@ export default {
     editBrewery(payload){
         return axios.put(`/breweries`, payload)
     }
-
-
 
 
 

@@ -92,5 +92,8 @@ font-size: 10vh;
 transform: translate(0, 50vh);
 color: black;
 }
-
+#card {
+    background-color: rgb(218, 165, 34);
+    padding-top: 5%;
+}
 </style>

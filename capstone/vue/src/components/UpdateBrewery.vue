@@ -33,7 +33,7 @@ Show Form </button>
             type="text"
             id="name"
             class="form-control"
-            :value="$store.state.activeBrewery.name"
+            :value="brewery.name"
             @input="selectedName($event)"
             required
             autofocus
@@ -250,8 +250,8 @@ export default {
           }
         })
         .catch((error) => {
-          if (error.response.status === 204) {
-            this.$router.push("/204");
+          if (error.response.status === 404) {
+            this.$router.push("/404");
           } else {
             console.error(error);
           }

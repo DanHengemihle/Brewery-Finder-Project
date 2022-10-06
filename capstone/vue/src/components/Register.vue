@@ -301,6 +301,7 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position-y: -12vh;
 }
 
 body,

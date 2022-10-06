@@ -143,6 +143,7 @@ input {
   font-weight: 500;
   text-align: center;
   color: black;
+ 
 }
 
 img {
@@ -161,6 +162,7 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position-y: -27vh;
 }
 
 body,

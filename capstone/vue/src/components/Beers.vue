@@ -1,29 +1,21 @@
 <template>
   <div class="beer-list">
-    <h1>List of Beers</h1>
+    <h1> </h1>
     <table>
-      <thead>
-        <tr>
-          <th>&nbsp;</th>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Abv</th>
-          <th>Type</th>
-        </tr>
-      </thead>
       <tbody>
         <tr v-for="beer in sortedBeers" :key="beer.id">
           <td class="id"></td>
           <td></td>
-          <td><img :src="beer.image" /></td>
-          <td>{{ beer.beerName }}</td>
-          <td>{{ beer.beerDescription }}</td>
-          <td>{{ beer.abv }}</td>
+          <div id="beerimage">
+          <td ><img :src="beer.image" /></td></div>
+          <td id="beername">{{ beer.beerName }}</td>
+          <td id="description">{{ beer.beerDescription }}</td>
+          <td id="abv">{{ beer.abv }}% abv</td>
           <td>
             <button v-on:click.prevent="favoriteBeer(beer.name)" v-if="$store.state.user.role == 'ROLE_USER'">
               Add to Favorites
             </button>
-            <button v-on:click.prevent="deleteABeer(beer.beerId)" v-if="$store.state.user.role == 'ROLE_BREWER'">Delete</button>
+            <button v-on:click.prevent="deleteABeer(beer.beerId)" v-if="$store.state.user.role == 'ROLE_BREWER'">Remove Beer</button>
           </td>
         </tr>
       </tbody>
@@ -33,7 +25,6 @@
 
 <script>
 import applicationService from "../services/ApplicationService";
-// import ReviewsForm from "../components/ReviewsForm.vue";
 
 export default {
   data() {
@@ -132,17 +123,71 @@ export default {
 
 <style scoped>
 #beer-list {
-  display: inline-block;
-
+  display: flex;
+  justify-content: space-evenly;
+}
+html {
+  background-color: darkgoldenrod;
 }
 
 
 
 table {
-  background-color: initial;
-  background-image: url("/lighterbg.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+thead {
+  font-size: 20px;
+  word-spacing: 50%;
+  text-align: left;
+}
+
+#beername {
+  font-size: 30px;
+  color: #000;
+  font-weight: 700;
+  font-style: italic;
+  text-decoration: underline;
+}
+#description {
+  font-size: 20px;
+  color: black;
+  font-weight: 700;
+  text-align: left;
+  padding-left: 5%;
+  padding-right: 5%;
+  font-style: italic;
+  max-width: 57vw;
+}
+#abv {
+  font-size: 25px;
+  color: black;
+  font-weight: 700;
+  text-decoration: underline;
+  text-align: left;
+  transform: translate(-1vw);
+  
+
+}
+h1 {
+  color: black;
+  margin-left: 130px;
+  padding-top: 2%;
+}
+img {
+  max-height: 50vh;
+  max-width: 15vw;
+  height: 100%;
+}
+button {
+  border: 7px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 0px 20px rgba(8, 7, 16, 0.6);
+  color: darkgoldenrod;
+  font-size: 110%;
+  background-color: black;
+  cursor: pointer;
+  margin-top: -4.5vh;
+
 }
 </style>

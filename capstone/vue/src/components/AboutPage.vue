@@ -61,7 +61,7 @@ export default {};
 
 <style scoped>
 .alignleft {
-  width: 10%;
+  width: 15%;
   height: 10%;
   float: left;
   clear: both;
@@ -74,6 +74,8 @@ body, html {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    background-position-y: -7vh;
+    
     
 }
     
@@ -87,11 +89,12 @@ img.background {
     opacity: 90%;
 }
 div.about-page {
-    margin-top: 60px;
-    max-width: 75vw;
-  padding-top: 80px;
+    margin-top: 50px;
+    max-width: 45vw;
+    margin-bottom: 40px;
+  padding-top: 70px;
   background-position: center;
-  margin-left: 50px;
+  margin-left: 120px;
   background-size: cover;
   background-repeat: no-repeat;
   color: black;
@@ -103,6 +106,7 @@ div.about-page {
 }
 h1 {
     text-decoration: underline;
+    color: goldenrod;
 }
 b {
     text-decoration: underline;
