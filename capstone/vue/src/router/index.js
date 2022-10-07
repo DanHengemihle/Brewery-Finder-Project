@@ -18,7 +18,7 @@ import CSSBEER from '../views/CSSBEER.vue'
 import ReviewsForm from '../components/ReviewsForm.vue'
 import BreweryCard from '../components/BreweryCard.vue'
 import UpdateBrewery from '../components/UpdateBrewery.vue'
-
+import Favorites from '../components/Favorites.vue'
 
 
 import AboutPage from '../components/AboutPage'
@@ -217,6 +217,12 @@ meta: {
         requiresAuth: true
       }
     },
+
+    {
+      path: "/beers/favorites",
+      name: "favorites",
+      component: Favorites
+    }
     
   ]
 })

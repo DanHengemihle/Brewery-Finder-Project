@@ -19,7 +19,7 @@ Show Form </button>
 </div> -->
 
     <div id="registerBrewery" class="text-center">
-      <img :src="'\Logo.png'" />
+      <img :src="'/Logo.png'" />
       <form class="form-register" @submit.prevent="updateBrewery">
         <h1 class="h3 mb-3 font-weight-normal">Edit Brewery</h1>
         <div class="alert alert-danger" role="alert" v-if="registrationErrors">
