@@ -29,7 +29,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 #linkedinlink {
   color: white;
@@ -65,4 +65,5 @@ html {
 .header {
   text-align: center;
 }
+
 </style>

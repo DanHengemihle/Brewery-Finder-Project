@@ -31,8 +31,8 @@ public class BeerController {
         return beerDAO.getBeerById(id);
     }
 
-    @GetMapping("/beers/{name}")
-    public int getBeerIdByName(@PathVariable String name) {
+    @GetMapping
+    public int getBeerIdByName(@RequestParam(value="name") String name) {
         return beerDAO.getBeerIdByName(name);
     }
 

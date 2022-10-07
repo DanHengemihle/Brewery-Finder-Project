@@ -3,9 +3,7 @@
    
     <div id="details">
 <div class="heading">
-<router-link id="updatebrewery" :to="{name: 'updatebrewery' }" v-if="$store.state.user.role == 'ROLE_BREWER'">Update Brewery</router-link>
-              <button v-on:click="deleteBrewery(brewery.id)">Delete Brewery</button>
-<router-link id="addbeer" :to="{name: 'beerform' }" v-if="$store.state.user.role == 'ROLE_BREWER'">Add Beer</router-link>
+      <h1 class="brewery-name">{{brewery.name}}</h1>
 
     <h1 class="brewery-name">{{brewery.name}}</h1>
 
@@ -18,9 +16,12 @@
 </div>
 
 <div class="description">
-    <h2 class="brewery-description">{{brewery.description}}</h2>
+    <a v-bind:href="brewery-description" target="_blank"><h2>{{brewery.description}}</h2></a>
 </div>
 </div>
+<router-link id="updatebrewery" :to="{name: 'updatebrewery' }" v-if="$store.state.user.role == 'ROLE_BREWER'">Update Brewery</router-link>
+              <button v-on:click="deleteBrewery(brewery.id)">Delete Brewery</button>
+<router-link id="addbeer" :to="{name: 'beerform' }" v-if="$store.state.user.role == 'ROLE_BREWER'">Add Beer</router-link>
 
 <div class="subheading">
     <h3>Beers from {{brewery.name}}</h3>
@@ -108,6 +109,8 @@ deleteBrewery() {
 
 #addbeer{
     font-size: 5vh;
+    display: flex;
+    color: white;
 }
 
 #details {
@@ -148,23 +151,22 @@ deleteBrewery() {
    80%{opacity: 80%; width: 80%;}
    100%{opacity: 100%; width: 100;}
 }
-img.company-logo {
-    grid-column: 1/2;
-    grid-row: 1/2;
-    background-color: rgb(209, 209, 209);
-    border-radius: 15px;
-    max-width: 300px;
-    justify-self: center;
-    align-self: center;
-    margin-top: 2vh;
-    animation-name: logo;
-    animation-duration: 1s;
-    animation-timing-function: ease-in;
+
+.address{
+    grid-column: 2/2;
+    grid-row: 2/2;
+    font-size: 12px;
+    color: black;
+    margin-top: -5vh;
+    text-align: center;
 }
+
 .brewery-name {
     grid-column: 2/2;
     font-size: 3rem;
     grid-row: 1/1;
+    text-align: center;
+    margin-right: 20px;
     
 }
 .website {
@@ -172,13 +174,13 @@ img.company-logo {
     grid-row: 2/2;
     margin-top: -1vh;
 }
-.address {
+/* .address {
     grid-column: 2/2;
     grid-row: 2/2;
     font-size: 12px;
     color: black;
-    margin-top: -5vh;
-}
+    margin-top: 2vh;
+} */
 a:link {
     text-decoration: none;
     color: black;
@@ -193,14 +195,12 @@ a:hover {
     text-align: center;
     margin: 2vh 2vw 0 2vw;
 }
-span.beer-type {
-    color:rgb(65, 65, 65);
-}
-#beer-list {
+
+/* #beer-list {
     padding-top: 15px;
     text-align: center;
-}
-.card-space {
+} */
+/* .card-space {
     border-radius: 15px;
     margin-bottom: 10vh;
     box-shadow: inset 0px 0px 10px #000;
@@ -210,10 +210,14 @@ span.beer-type {
 }
 .card-space:nth-child(even) {
     background-color: 	#F5F5F5;
-}
-.card-space:hover {
+} */
+/* .card-space:hover {
     background-color: rgb(139, 139, 139);
 
+} */
+
+#update-brewery{
+    font-size: 20px;
 }
 
 

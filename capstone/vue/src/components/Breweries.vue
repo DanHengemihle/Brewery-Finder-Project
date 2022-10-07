@@ -1,9 +1,10 @@
 <template>
   <body>
-    <div class="home">
+    <div id="background">
+    
       <div class="headings">
         <h1 class="heading">Welcome to Bootlegger!</h1>
-        <br />
+      
       </div>
 
       <br />
@@ -32,6 +33,8 @@
             <th>Hours of Operation</th>
           </tr> -->
         <h1>Breweries</h1>
+        <br>
+        <br>
         <!-- </thead> -->
         <tbody>
           <tr v-for="brewery in sortedBreweries" :key="brewery.id">
@@ -176,116 +179,55 @@ export default {
 </script>
 
 <style scoped>
-/* * {
-  padding: 0px;
-  margin: 0px;
-  box-sizing: border-box;
-}
 
-table{
-  margin-top: 40px;
-  background-color: initial;
-  opacity: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-position: center;
-}
 
 
 table {
-  padding-right: 50px;
+  width: 100%;
+  margin: 0;
+ font-size: 25px;
+ max-width: 100%;
+  padding-right: 40px;
   padding-left: 50px;
   display: flex;
-  flex-wrap: wrap;
-  grid-gap: 10px 200px;
+  /* flex-wrap: wrap; */
+  /* grid-gap: 10px 200px; */
   align-self: space-around;
   justify-content: space-around;
-  background-color: goldenrod;
-  opacity: 90%;
-  border-radius: 50px;
-   width: 100%;
-  border-collapse: collapse;
-  margin: 0;
-  padding: 0;
-}
-
-.heading {
-  font-size: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 40vh;
-  color: goldenrod;
-  text-shadow: 2px 2px 15px black;
-}
-body,
-html {
-  display: flex;
-opacity: 90%;
-  background-image: url("/beer7.png");
-
-  justify-content: center;
-  align-items: center;
-  padding-left: 20px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-body,
-html {
-  /* max-height: 300px; */
-/* height: 100vh;
-}
-
-.brewery-list {
-  padding-right: 25px;
-  padding-left: 25px;
-  display: flex;
-  flex-wrap: wrap;
-  grid-gap: 10px 200px;
-} -- */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 0;
-  padding: 0;
-  padding-right: 20px;
-  padding-left: 50px;
-  display: flex;
-  flex-wrap: wrap;
-  grid-gap: 10px 200px;
-  align-self: space-around;
-  justify-content: space-around;
-  background-color: initial;
-  opacity: 90%;
-  border-radius: 50px;
-  width: 100%;
-
+  /* background-color: initial; */
+  opacity: 30%;
+  border-radius: 70px;
+  width: 50%;
   color: #f7fafc;
-
-  padding: 40px;
-  flex: 1;
-  margin: 100px;
-  text-align: center;
-  width: 60%;
+  padding: 20px;
+  border-collapse: collapse;
+  opacity: 90%;
+ flex: 1;
+ /* /* height: 400px; */
+  margin: 80px;
+  text-align: center; 
+ border: 4px solid;
+ /* border-width: 25px 10px; */
+ margin-top: 30px;
+animation-name: bounce;
+animation-duration: 3s;
+animation-iteration-count: 2;
+backdrop-filter: blur(5px);
+box-shadow: inset 0px 0px 20px #000;
 }
 
-th {
+/* th {
   font-family: "Work Sans", sans-serif;
   font-weight: 500;
-  text-align: left;
-}
+  text-align: center;
+} */
 
-tr {
+/* tr {
   margin: 20px;
   padding: 40px;
-}
+} */
 td {
-  padding: 8px;
+  padding: 20px;
   font-family: "Work Sans", sans-serif;
 }
 
@@ -298,35 +240,39 @@ td.name:hover {
   cursor: pointer;
 }
 
-.docs-icon img {
-  height: 32px;
-}
-.avatar {
-  border-radius: 20px;
-  width: 32px;
-  vertical-align: middle;
-  padding-right: 5px;
-}
-.ownedby {
-  vertical-align: middle;
-}
 
 body,
 html {
   /* display: flex; */
-
-  background-image: url("/beer7.png");
-
+/* opacity: 80%; */
+  background-image: url("/2beers.jpg");
+/* position: absolute; */
+/* display: flex; */
+/* flex-wrap: wrap; */
+/* flex-direction: column; */
   justify-content: center;
   align-items: center;
   padding-left: 20px;
-  background-position: center;
+  /* background-position: center; */
   background-size: cover;
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
 }
+
+
+/* .brewery-list{
+  text-
+} */
+
 
 h1 {
   font-size: 50px;
   box-shadow: goldenrod;
 }
+
+
+
+
+
+
+
 </style>

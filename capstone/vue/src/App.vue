@@ -55,14 +55,14 @@
           <li>
             <router-link v-bind:to="{ name: 'maps' }">Locations</router-link>
           </li>
-
-          <li>
-            <router-link v-bind:to="{ name: 'admin' }">Admin</router-link>
-          </li>
+          
+         <router-link id="favorites" :to="{name: 'favorites' }" v-if="$store.state.user.role == 'ROLE_USER'">Favorite Beers</router-link>
 
           <router-link v-bind:to="{ name: 'about' }">About</router-link>
-          |
+          
           <router-link v-bind:to="{ name: 'contact' }">Contact</router-link>
+         
+         
           <input
             id="search"
             type="text"
@@ -233,6 +233,15 @@ export default {
   background-size: cover;
   border-style: none;
 }
+
+li a:hover{
+
+background-color: #111;
+box-shadow: inset 0px 0px 5px goldenrod;
+}
+
+
+
 
 #homenav {
   padding-left: 20px;

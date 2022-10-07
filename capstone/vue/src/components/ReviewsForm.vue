@@ -19,7 +19,7 @@ Show Form </button>
 </div> -->
 
     <div id="add-review" class="text-center">
-      <img :src="'\Logo.png'" />
+      <img :src="'/Logo.png'" />
       <form class="form-register" @submit.prevent="createReview">
         <h1 class="h3 mb-3 font-weight-normal">Add Review</h1>
         <div class="alert alert-danger" role="alert" v-if="registrationErrors">
@@ -40,28 +40,11 @@ Show Form </button>
             </select>
         </div>
 
-         <div>
-          <label for="brewery-name" class="sr-only">Brewery Name</label>
- <input
-            type="text"
-            id="breweryname"
-            class="form-control"
-            placeholder="Brewery Name"
-            v-model="review.breweryName"
-          />
-        
-        </div>
-
         <div>
           <label for="review" class="sr-only">Review</label>
 
-          <input
-            type="text"
-            id="review"
-            class="form-control"
-            placeholder="Write your review."
-            v-model="review.description"
-          />
+          <textarea id="review" class="form-control" type="text"  placeholder="Write your review." v-model="review.description"></textarea>
+         
         </div>
 
         <button
@@ -84,11 +67,12 @@ export default {
   name: "register",
   data() {
     return {
+      reviews: [],
       review: {
-        user_id: this.$store.state.user.id,
-        beerId: "",
-        beerName: "",
-        breweryName: "",
+        userId: this.$store.state.user.id,
+        beerId: this.$store.state.beer.beerId,
+        beerName: this.$store.state.beer.beerName,
+        breweryName: this.$store.state.activeBrewery.name,
         description: "",
         rating: "",
       },
@@ -101,9 +85,9 @@ export default {
       applicationService
         .addBeerReview(this.review)
         .then((response) => {
-          if (response.status == 201) {
+          if (response.status == 200 || response.status == 201) {
             this.$store.commit("SET_REVIEWS", response.data);
-            this.reviews = response.data;
+            this.reviews.unshift(response.data);
             this.$router.push({
               path: "/home",
               query: { registration: "success" },
@@ -134,120 +118,17 @@ export default {
 
 
 <style scoped>
-div#registerBrewery.text-center {
-  position: absolute;
-  overflow: hidden;
+
+#add-review{
+
 }
-
-#remove {
-  font-size: 1.5vh;
-  padding: 0;
-}
-
-#hoursDisplay {
-  font-weight: bold;
-  font-size: 1.8vh;
-  color: darkgoldenrod;
-  margin: 1vh;
-}
-
-#hoursOfOpText {
-  font-weight: bolder;
-  font-size: 2vh;
-  color: darkgoldenrod;
-}
-
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 25px;
-  height: 15px;
-  padding: 0px;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgb(0, 0, 0);
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 10px;
-  width: 10px;
-  left: 4px;
-  bottom: 3px;
-  background-color: rgb(255, 247, 228);
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-input:checked + .slider {
-  background-color: rgb(235, 181, 46);
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px black;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(8px);
-  -ms-transform: translateX(8px);
-  transform: translateX(8px);
-  color-adjust: black;
-}
-
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-
-.checkbox {
-  transform: translate(4vw, -2.7vh);
-}
-
-.brewer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 2vh;
-  font-weight: 750;
-  max-height: 11vh;
-  margin-bottom: -17%;
-}
-
-
-
-
-input::placeholder {
-  color: black;
-}
-
-
 
 * {
   padding: 0;
   margin: 0;
 }
 
-input {
+input, textarea {
   display: block;
   height: 50px;
   background-color: rgba(255, 255, 255, 0.787);
@@ -259,6 +140,17 @@ input {
   font-weight: 650;
   text-align: center;
   color: black;
+  width: 20vw;
+  
+}
+
+textarea::placeholder {
+  color: black;
+}
+
+textarea{
+  height: 20vh;
+  width: 30vw;
 }
 
 img {
@@ -276,11 +168,13 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  flex-direction: column;
 }
 
-body,
-html {
+
+body, html {
   height: 100vh;
+  
 }
 
 h1 {
@@ -297,6 +191,6 @@ h1 {
   font-size: 130%;
   background-color: black;
   cursor: pointer;
-  margin-top: -4.5vh;
+  margin-top: 2vh;
 }
 </style>
