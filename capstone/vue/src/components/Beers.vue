@@ -23,12 +23,15 @@
             </button>
             <button v-on:click.prevent="deleteABeer(beer.beerId)" v-if="$store.state.user.role == 'ROLE_BREWER'">Remove Beer</button>
           </td>
-           <div v-if="$store.state.user.role == 'ROLE_USER'">
+           <div id="reviews" v-if="$store.state.user.role == 'ROLE_USER'">
             <button @click.prevent="getReviews(beer.beerId)"> See Reviews </button>
-            <tr id="reviews" v-for="review in reviews" :key="review.id">
-          <td>Rating: {{review.rating}}</td>
-          <br>
-          <td>Description: {{review.description}}</td>
+              <br>
+              <br>
+            <tr id="reviewsinfo" v-for="review in reviews" :key="review.id">
+              <p>Rating: </p>
+          <td v-if="idEquals(beer.beerId)">{{review.rating}}</td> 
+                                               
+          <td v-if="idEquals(beer.beerId)">Description: {{review.description}}</td>
         </tr>
             </div>
         </tr>
@@ -63,7 +66,17 @@ export default {
   },
   name: "breweries-list",
   methods: {
+    idEquals(id){
+      return id == this.beer.beerId;
+    },
     getReviews(id){
+      applicationService.getBeerById(id)
+      .then((response) =>{
+        if (response.status == 200){
+          this.$store.commit("SET_ACTIVE_BEER", id);
+          this.beer = response.data;
+        }
+      })
       applicationService.getAllReviewsById(id)
       .then((response) =>{
         if (response.status == 200){
@@ -165,7 +178,8 @@ export default {
 <style scoped>
 
 #reviews{
-  transform: translate();
+  transform: translate(-2vw, 0);
+  
 }
 #beer-list {
   display: flex;
