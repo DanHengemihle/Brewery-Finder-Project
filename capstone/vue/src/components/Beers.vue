@@ -12,12 +12,28 @@
           <td id="description">{{ beer.beerDescription }}</td>
           <td id="abv">{{ beer.abv }}% abv</td>
           <td>
-            <button v-on:click.prevent="favoriteBeer(beer.name)" v-if="$store.state.user.role == 'ROLE_USER'">
+            <button v-on:click.prevent="favoriteBeer(beer)" v-if="$store.state.user.role == 'ROLE_USER'">
               Add to Favorites
+            </button>
+
+           
+
+            <button v-on:click.prevent="addReview(beer.beerId)" v-if="$store.state.user.role == 'ROLE_USER'">
+              Add Review
             </button>
             <button v-on:click.prevent="deleteABeer(beer.beerId)" v-if="$store.state.user.role == 'ROLE_BREWER'">Remove Beer</button>
           </td>
+           <div v-if="$store.state.user.role == 'ROLE_USER'">
+            <button @click.prevent="getReviews(beer.beerId)"> See Reviews </button>
+            <tr id="reviews" v-for="review in reviews" :key="review.id">
+          <td>Rating: {{review.rating}}</td>
+          <br>
+          <td>Description: {{review.description}}</td>
         </tr>
+            </div>
+        </tr>
+        
+        
       </tbody>
     </table>
   </div>
@@ -29,6 +45,7 @@ import applicationService from "../services/ApplicationService";
 export default {
   data() {
     return {
+      reviews: [],
       breweries: [],
       beers: [],
       beer: {
@@ -46,6 +63,15 @@ export default {
   },
   name: "breweries-list",
   methods: {
+    getReviews(id){
+      applicationService.getAllReviewsById(id)
+      .then((response) =>{
+        if (response.status == 200){
+          this.$store.commit("SET_REVIEWS", id);
+          this.reviews = response.data;
+        }
+      })
+    },
     viewBrewery(id) {
       this.$router.push(`/breweries/${id}`);
     },
@@ -109,9 +135,24 @@ export default {
           }
         });
     },
+
+    addReview(id){
+      applicationService.getBeerById(id)
+      .then((response) => {
+        if (response.status == 200) {
+            this.$store.commit("SET_ACTIVE_BEER", response.data);
+            this.beer = response.data;
+            this.$router.push({name: "reviewform"});
+      }
+      });
+    },
+    favoriteBeer(name){
+      this.$store.commit("SET_FAVORITES", name);
+    }
   },
   created() {
     this.getBeersByBreweryId();
+    this.getAllReviewsById();
   },
   computed: {
     sortedBeers() {
@@ -122,6 +163,10 @@ export default {
 </script>
 
 <style scoped>
+
+#reviews{
+  transform: translate();
+}
 #beer-list {
   display: flex;
   justify-content: space-evenly;

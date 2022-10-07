@@ -21,7 +21,7 @@ public class JDBCBeerDAO implements BeerDAO {
 
     @Override
     public Beer getBeerById(int id) {
-        String sql = "SELECT * FROM beer WHERE id = ?";
+        String sql = "SELECT * FROM beer WHERE beer_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
         if (results.next()) {
             return mapRowToBeer(results);

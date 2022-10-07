@@ -67,11 +67,12 @@ export default {
   name: "register",
   data() {
     return {
+      reviews: [],
       review: {
-        user_id: this.$store.state.user.id,
-        beerId: "",
-        beerName: "",
-        breweryName: "",
+        userId: this.$store.state.user.id,
+        beerId: this.$store.state.beer.beerId,
+        beerName: this.$store.state.beer.beerName,
+        breweryName: this.$store.state.activeBrewery.name,
         description: "",
         rating: "",
       },
@@ -84,9 +85,9 @@ export default {
       applicationService
         .addBeerReview(this.review)
         .then((response) => {
-          if (response.status == 201) {
+          if (response.status == 200 || response.status == 201) {
             this.$store.commit("SET_REVIEWS", response.data);
-            this.reviews = response.data;
+            this.reviews.unshift(response.data);
             this.$router.push({
               path: "/home",
               query: { registration: "success" },

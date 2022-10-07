@@ -28,6 +28,10 @@ export default {
         return axios.get('/beers')
     },
 
+    getAllReviewsById(id){
+        return axios.get(`beer/${id}/reviews`)
+    },
+
     // getBreweryById(id){
     //     return http.get('/breweries/${id}')
     // },
@@ -38,10 +42,9 @@ export default {
     },
 
 
-    addBeerReview(id) {
-        return axios.post(`/beer/${id}reviews`)
+    addBeerReview(payload) {
+        return axios.post(`/beer/reviews`, payload)
     },
-
 
     addBeer(beer){
         return axios.post(`/beers`, beer)
@@ -57,6 +60,10 @@ export default {
 
     editBrewery(payload){
         return axios.put(`/breweries`, payload)
+    },
+
+    getBeerById(id){
+        return axios.get(`/beers/${id}`)
     }
 
 

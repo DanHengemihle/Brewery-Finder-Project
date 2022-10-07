@@ -106,7 +106,7 @@ this.breweries=response.data;
 };
 </script>
 
-<style>
+<style scoped>
 
 .brewery-list{
 padding-right: 25px;
