@@ -259,6 +259,7 @@ html {
   right: 0;
   bottom: 10%;
   padding-bottom: 200%;
+  
   background-size: 100% auto;
   background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1526092/bubbles.png');
   background-repeat: repeat-y;
@@ -411,7 +412,7 @@ html {
 .instructions {
   position: fixed;
   left: 50%;
-  top: 50%;
+  top: 20%;
   color: #fff;
   text-align: center;
   font-family: sans-serif;
