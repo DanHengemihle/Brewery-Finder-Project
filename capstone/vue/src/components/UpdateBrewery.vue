@@ -218,7 +218,7 @@ export default {
     return {
       brewery: {
         id: this.$store.state.activeBrewery.id,  
-        brewerId: this.$store.state.activeBrewery.brewerId,
+        brewerId: this.$store.state.user.id,
         name: this.$store.state.activeBrewery.name,
         street: this.$store.state.activeBrewery.street,
         city: this.$store.state.activeBrewery.city,
@@ -246,7 +246,7 @@ export default {
           if (response.status == 200) {
   this.$store.commit("SET_BREWERY", response.data);
             this.breweries = response.data;
-            this.$router.push({ name: "home"});
+            this.$router.push({ name: "breweries"});
           }
         })
         .catch((error) => {

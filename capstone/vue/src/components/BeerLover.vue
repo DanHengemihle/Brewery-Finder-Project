@@ -124,14 +124,16 @@ display: flex;
   box-sizing: border-box;
 }
 
+
 table{
-  background-color: goldenrod;
-  opacity: 90%;
+  background-color:goldenrod;
+  opacity: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 background-position: center;
+margin-right: 50px;
 }
 .heading{
   font-size: 2rem;

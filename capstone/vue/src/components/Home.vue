@@ -125,14 +125,13 @@ name: "breweries-list",
 };
 </script>
 
-<style scoped>
+<style >
  /* *{
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
 } */
-
-/* table {
+ /* table {
   padding: 30px;
   margin-top: 500px;
   background-color: goldenrod;
@@ -142,7 +141,7 @@ name: "breweries-list",
   align-items: center;
   justify-content: center;
   background-position: center;
-} */
+}  */
 
 /* table {
   padding-right: 50px;
@@ -165,7 +164,7 @@ name: "breweries-list",
   color: goldenrod;
   text-shadow: 2px 2px 15px black;
 }
-/* body,
+ /* body,
 html {
   display: flex;
 
@@ -182,8 +181,8 @@ html {
 body,
 html {
    max-height: 300px; 
-   height: 100vh; */
-/* } */
+   height: 100vh; 
+ }  */
 
 .brewery-list {
   padding-right: 25px;
@@ -192,22 +191,25 @@ html {
   flex-wrap: wrap;
   grid-gap: 10px 200px;
 } 
+
+
+
  table {
-  width: 100%;
-  border-collapse: collapse;
+  /* width: 100%; */
+  /* border-collapse: collapse;
   margin: 0;
   padding: 0;
   padding-right: 30px;
   padding-left: 40px;
-  margin-top: 50px;
-  display: flex;
+  margin-top: 50px; */
+  /* display: flex; */
   flex-wrap: wrap;
   grid-gap: 30px 200px;
   align-self: space-around;
   justify-content: space-around;
   background-color: initial;
   opacity: 90%;
-  border-radius: 50px;
+  border-radius: 90px;
    width: 100%;
  
   color: black;
@@ -220,7 +222,7 @@ html {
   width: 60%;
 }
 
-th {
+/* th {
   font-family: "Work Sans", sans-serif;
   font-weight: 500;
   text-align: left;
@@ -239,8 +241,8 @@ td.name {
   font-weight: 400;
 }
 td.websitename {
-  font-weight: 400;
-}
+  font-weight: 400; */
+/* } */
 .docs-icon img {
   height: 32px;
 }
@@ -256,10 +258,9 @@ td.websitename {
 
 body,
 html {
-   display: flex; 
-
+  
+   /* display: flex; */
   background-image: url("/beer7.png");
-
   justify-content: center;
   align-items: center;
   padding-left: 20px;
@@ -267,6 +268,7 @@ html {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 
 h1 {
   font-size: 50px;
