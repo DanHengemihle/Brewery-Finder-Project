@@ -89,7 +89,7 @@ export default {
             this.$store.commit("SET_REVIEWS", response.data);
             this.reviews.unshift(response.data);
             this.$router.push({
-              path: "/home",
+              path: "/brewery",
               query: { registration: "success" },
             });
           }

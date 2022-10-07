@@ -89,7 +89,7 @@ beer: {
   },
 
   SET_FAVORITES(state, data){
-    state.favorites.push(data);
+    state.favorites.unshift(data);
   },
 
   DELETE_BEER(state, id){

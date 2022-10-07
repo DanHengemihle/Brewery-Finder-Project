@@ -96,7 +96,7 @@ methods: {
 
 <style scoped>
 img{
-  transform: translate(1.3vw, 1vh);
+  transform: translate(-2vw, 1vh);
 }
 #home-link{
     font-size: 5vh;
@@ -110,7 +110,7 @@ transform: translate(-20vw, -60vh);
 
 #externallink {
     
-    transform: translate(8vw, -27vh);
+    transform: translate(6vw, -27vh);
 }
 
  .st0{fill:url(#SVGID_1_)}
@@ -123,6 +123,7 @@ transform: translate(-20vw, -60vh);
 
 html {
   height: 100%;
+  background-position-y: -20%;
 }
 
 #entirety {
@@ -133,8 +134,9 @@ html {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  transform: translate(0vw, 12vh);
+  transform: translate(0vw, 14vh);
   overflow: hidden;
+  
 }
 
 /* GLASS */
@@ -317,7 +319,7 @@ html {
   right: 0;
   top: 0;
   padding-bottom: 15%;
-  margin-top: -7.5%;
+  margin-top: -5.5%;
   border-radius: 50%;
   background: #f4f4f4;
 }

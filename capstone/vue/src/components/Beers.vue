@@ -24,15 +24,17 @@
             <button v-on:click.prevent="deleteABeer(beer.beerId)" v-if="$store.state.user.role == 'ROLE_BREWER'">Remove Beer</button>
           </td>
            <div id="reviews" v-if="$store.state.user.role == 'ROLE_USER'">
-            <button @click.prevent="getReviews(beer.beerId)"> See Reviews </button>
+            <button @click.prevent="getReviews(beer.beerId)" @click="toggle"> See Reviews </button>
               <br>
               <br>
+            <div v-if="active">
             <tr id="reviewsinfo" v-for="review in reviews" :key="review.id">
-              <p>Rating: </p>
-          <td v-if="idEquals(beer.beerId)">{{review.rating}}</td> 
+              
+          <td  v-if="idEquals(beer.beerId)">Rating: {{review.rating}}</td> 
                                                
           <td v-if="idEquals(beer.beerId)">Description: {{review.description}}</td>
         </tr>
+        </div>
             </div>
         </tr>
         
@@ -49,6 +51,7 @@ export default {
   data() {
     return {
       reviews: [],
+      active: false,
       breweries: [],
       beers: [],
       beer: {
@@ -68,6 +71,9 @@ export default {
   methods: {
     idEquals(id){
       return id == this.beer.beerId;
+    },
+      toggle() {
+      this.active = !this.active;
     },
     getReviews(id){
       applicationService.getBeerById(id)
@@ -100,7 +106,7 @@ export default {
             if (response.status === 200) {
               alert("Beer successfully deleted");
 
-              this.getBeers();
+              this.getBeersByBreweryId();
                this.$store.commit("DELETE_BEER", id);
             }
           })

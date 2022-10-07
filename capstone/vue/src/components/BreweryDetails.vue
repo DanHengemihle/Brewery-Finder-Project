@@ -3,9 +3,9 @@
    
     <div id="details">
 <div class="heading">
-      <h1 class="brewery-name">{{brewery.name}}</h1>
+      <h1 class="brewery-name">{{brewery.name}}</h1> 
 
-    <h1 class="brewery-name">{{brewery.name}}</h1>
+    <h1 class="brewery-name">{{brewery.name}}</h1> 
 
 <div class="address">
     <h2><span v-if="brewery.street" >{{brewery.street}}, </span>{{brewery.city}}</h2>
@@ -16,13 +16,14 @@
 </div>
 
 <div class="description">
-    <a v-bind:href="brewery-description" target="_blank"><h2>{{brewery.hoursOfOperation}}</h2></a>
+<h2>{{brewery.hoursOfOperation}}</h2>
 </div>
 </div>
-<router-link id="updatebrewery" :to="{name: 'updatebrewery' }" v-if="$store.state.user.role == 'ROLE_BREWER'">Update Brewery</router-link>
-              <button v-if="$store.state.user.role == 'ROLE_BREWER'" v-on:click="deleteBrewery(brewery.id)">Delete Brewery</button>
-<router-link id="addbeer" :to="{name: 'beerform' }" v-if="$store.state.user.role == 'ROLE_BREWER'">Add Beer</router-link>
-
+<div class="buttons">
+<button id="updatebrewery" @click="pushToUpdateBrewery" v-if="$store.state.user.role == 'ROLE_BREWER'">Update Brewery</button>
+              <button id="deletebutton" v-if="$store.state.user.role == 'ROLE_BREWER'" v-on:click="deleteBrewery(brewery.id)">Delete Brewery</button>
+<button id="addbeer" @click="pushToAddBeer" v-if="$store.state.user.role == 'ROLE_BREWER'">Add Beer</button>
+</div>
 <div class="subheading">
     <h3>Beers from {{brewery.name}}</h3>
 </div>
@@ -60,6 +61,14 @@ export default {
     },
 
     methods: {
+
+        pushToAddBeer(){
+            this.$router.push({name: 'beerform' });
+        },
+
+        pushToUpdateBrewery(){
+            this.$router.push({name: 'updatebrewery' });
+        },
 
 deleteBrewery() {
       applicationService;
@@ -107,6 +116,11 @@ deleteBrewery() {
 
 <style scoped>
 
+*{
+    margin-left: 40px;
+}
+
+
 #addbeer{
     font-size: 5vh;
     display: flex;
@@ -121,6 +135,7 @@ deleteBrewery() {
 }
 .heading {
     display: grid;
+    /* text-align: cente; */
     grid-template-columns: auto auto;
     margin-top: 100px;
     grid-column-gap: 1vw;
@@ -151,28 +166,52 @@ deleteBrewery() {
    80%{opacity: 80%; width: 80%;}
    100%{opacity: 100%; width: 100;}
 }
+#deletebutton{
+  border: 7px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 0px 20px rgba(8, 7, 16, 0.6);
+  color: darkgoldenrod;
+  font-size: 110%;
+  background-color: black;
+  cursor: pointer;
+  margin-top: 0.5vh;
+
+}
+
 
 .address{
     grid-column: 2/2;
-    grid-row: 2/2;
+    grid-row: 3/2;
     font-size: 12px;
     color: black;
     margin-top: -5vh;
-    text-align: center;
+    /* text-align: center; */
+        transform: translate(-4vw, 1vh); 
 }
+
 
 .brewery-name {
     grid-column: 2/2;
     font-size: 3rem;
     grid-row: 1/1;
     text-align: center;
-    margin-right: 20px;
-    
+    margin-right: 50px;
+    transform: translate(-3vw, 2vh);
 }
 .website {
     grid-column: 2/2;
     grid-row: 2/2;
-    margin-top: -1vh;
+    /* margin-top: 10vh; */
+    text-align: center;
+    transform: translate(-5.2vw, 5vh);
+}
+#updatebrewery{
+   border: 7px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 0px 20px rgba(8, 7, 16, 0.6);
+  color: darkgoldenrod;
+  font-size: 110%;
+  background-color: black;
+  cursor: pointer;
+  margin-left: 725px;
 }
 /* .address {
     grid-column: 2/2;
@@ -181,10 +220,14 @@ deleteBrewery() {
     color: black;
     margin-top: 2vh;
 } */
+
 a:link {
     text-decoration: none;
     color: black;
     font-size: 12px;
+}
+button{
+    color: black;
 }
 a:hover {
     color: 	#696969;
@@ -192,8 +235,10 @@ a:hover {
 .description {
     grid-column: 1/3;
     grid-row: 3/3;
-    text-align: center;
+    /* text-align: center; */
     margin: 2vh 2vw 0 2vw;
+    transform: translate(-2vw, 2vh);
+
 }
 
 /* #beer-list {
@@ -216,8 +261,16 @@ a:hover {
 
 } */
 
-#update-brewery{
-    font-size: 20px;
+#addbeer{
+    border: 7px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 0px 20px rgba(8, 7, 16, 0.6);
+  color: darkgoldenrod;
+  font-size: 110%;
+  background-color: black;
+  cursor: pointer;
+  margin-left: 840px;
+  margin-top: 2.5px;
+ 
 }
 
 
