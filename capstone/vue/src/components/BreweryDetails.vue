@@ -20,7 +20,7 @@
 </div>
 </div>
 <router-link id="updatebrewery" :to="{name: 'updatebrewery' }" v-if="$store.state.user.role == 'ROLE_BREWER'">Update Brewery</router-link>
-              <button v-on:click="deleteBrewery(brewery.id)">Delete Brewery</button>
+              <button v-if="$store.state.user.role == 'ROLE_BREWER'" v-on:click="deleteBrewery(brewery.id)">Delete Brewery</button>
 <router-link id="addbeer" :to="{name: 'beerform' }" v-if="$store.state.user.role == 'ROLE_BREWER'">Add Beer</router-link>
 
 <div class="subheading">

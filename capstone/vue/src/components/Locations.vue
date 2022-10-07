@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id= "full">
     <div id="grid-container">
       <div id="intro">
        
@@ -181,6 +181,10 @@ export default {
 
 <style scoped>
 
+html {
+  background-color: grey;
+}
+
 
 
 #grid-container {
@@ -192,30 +196,30 @@ export default {
     "map longitude"
     "map description"
     "map buttons";
-  
+    background-color: grey;
 }
 #intro {
     grid-area: intro;
 }
 #latitude {
   grid-area: latitude;
-    background-image: linear-gradient(to bottom, goldenrod, black);
+    background-image: linear-gradient(to bottom, goldenrod, rgb(133, 101, 20));
   font-weight: 500;
 
 }
 #longitude {
   grid-area: longitude;
-    background-image: linear-gradient(to bottom, goldenrod, black);
+    background-image: linear-gradient(to bottom, goldenrod, rgb(133, 101, 20));
   font-weight: 500;
 }
 #description {
   grid-area: description;
-    background-image: linear-gradient(to bottom, goldenrod, goldenrod);
+    background-image: linear-gradient(to bottom, goldenrod, rgb(133, 101, 20));
   font-weight: 500;
 }
 #buttons {
   grid-area: buttons;
-  background-image: linear-gradient(to bottom, goldenrod, black);
+  background-image: linear-gradient(to bottom, goldenrod, rgb(133, 101, 20));
   
   font-weight: 500;
 }
@@ -226,7 +230,11 @@ export default {
   padding: 25px;
   margin: 25px;
   border: solid black;
+  
 
+}
+div {
+  
 }
 #report {
   grid-area:report;
@@ -235,6 +243,7 @@ export default {
   padding: 25px;
   margin: 25px;
   border: 1px dashed gray;
+  background-color: grey;
 }
 .coord-input {
   border: 3px solid black;

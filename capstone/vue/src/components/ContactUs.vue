@@ -2,7 +2,7 @@
 <body>  
     
   <div class="contact-us">
-<h1 class="header">Contact Us</h1>
+<!-- <h1 class="header">Contact Us</h1> -->
 <p></p>
 <h2 class="header">Questions about Bootlegger?</h2>
 <p></p>
@@ -29,7 +29,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+
+#linkedinlink {
+  color: white;
+}
 
 div.contact-us {
     margin-top: 60px;
@@ -40,13 +44,18 @@ div.contact-us {
   background-size: cover;
   background-repeat: no-repeat;
   color: black;
-  font-size: 18px;
+  font-size: 25px;
   font-weight: 700;
   letter-spacing: 2px;
-  margin-left: 100px;
   
+ background-color: grey;
 }
-
+img {
+padding-left: 60px;
+}
+html {
+  background-color: grey;
+}
 
 #linkedin {
   height: 30px;
