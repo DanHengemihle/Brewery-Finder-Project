@@ -29,7 +29,7 @@ export default {
 }
 </script>
 
-<style >
+<style>
 
 #linkedinlink {
   color: white;
