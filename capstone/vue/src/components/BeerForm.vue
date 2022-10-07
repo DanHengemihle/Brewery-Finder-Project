@@ -121,7 +121,7 @@ export default {
         .then((response) => {
           if (response.status == 201 || response.status == 200) {
             this.$router.push({
-              path: "/home",
+              path: "/brewery",
               query: { registration: "success" },
             });
           }

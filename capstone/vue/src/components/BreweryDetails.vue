@@ -173,13 +173,10 @@ deleteBrewery() {
   font-size: 110%;
   background-color: black;
   cursor: pointer;
-  margin-top: -4.5vh;
+  margin-top: 0.5vh;
 
 }
 
-#addbeer{
-    font-size: 30px;
-}
 
 .address{
     grid-column: 2/2;
@@ -188,32 +185,33 @@ deleteBrewery() {
     color: black;
     margin-top: -5vh;
     /* text-align: center; */
-        transform: translate(-6vw, 1vh); 
+        transform: translate(-4vw, 1vh); 
 }
 
-a#updatebrewery{
-font-size: 30px;
-color: white;
-transform: translate(2vw, 4vh); 
-margin-left: 725px;
-}
+
 .brewery-name {
     grid-column: 2/2;
     font-size: 3rem;
     grid-row: 1/1;
     text-align: center;
     margin-right: 50px;
-    transform: translate(-1vw, 2vh);
+    transform: translate(-3vw, 2vh);
 }
 .website {
     grid-column: 2/2;
     grid-row: 2/2;
     /* margin-top: 10vh; */
     text-align: center;
-    transform: translate(-2vw, 5vh);
+    transform: translate(-5.2vw, 5vh);
 }
 #updatebrewery{
-    color: black;
+   border: 7px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 0px 20px rgba(8, 7, 16, 0.6);
+  color: darkgoldenrod;
+  font-size: 110%;
+  background-color: black;
+  cursor: pointer;
+  margin-left: 725px;
 }
 /* .address {
     grid-column: 2/2;
@@ -239,7 +237,7 @@ a:hover {
     grid-row: 3/3;
     /* text-align: center; */
     margin: 2vh 2vw 0 2vw;
-    transform: translate(1vw, 2vh);
+    transform: translate(-2vw, 2vh);
 
 }
 
@@ -263,8 +261,16 @@ a:hover {
 
 } */
 
-#addBeer{
-    color:black;
+#addbeer{
+    border: 7px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 0px 20px rgba(8, 7, 16, 0.6);
+  color: darkgoldenrod;
+  font-size: 110%;
+  background-color: black;
+  cursor: pointer;
+  margin-left: 840px;
+  margin-top: 2.5px;
+ 
 }
 
 
