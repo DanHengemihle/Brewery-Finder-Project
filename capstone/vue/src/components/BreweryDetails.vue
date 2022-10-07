@@ -20,9 +20,9 @@
 </div>
 </div>
 <div class="buttons">
-<router-link id="updatebrewery" :to="{name: 'updatebrewery' }" v-if="$store.state.user.role == 'ROLE_BREWER'">Update Brewery</router-link>
+<button id="updatebrewery" @click="pushToUpdateBrewery" v-if="$store.state.user.role == 'ROLE_BREWER'">Update Brewery</button>
               <button id="deletebutton" v-if="$store.state.user.role == 'ROLE_BREWER'" v-on:click="deleteBrewery(brewery.id)">Delete Brewery</button>
-<router-link id="addbeer" :to="{name: 'beerform' }" v-if="$store.state.user.role == 'ROLE_BREWER'">Add Beer</router-link>
+<button id="addbeer" @click="pushToAddBeer" v-if="$store.state.user.role == 'ROLE_BREWER'">Add Beer</button>
 </div>
 <div class="subheading">
     <h3>Beers from {{brewery.name}}</h3>
@@ -61,6 +61,14 @@ export default {
     },
 
     methods: {
+
+        pushToAddBeer(){
+            this.$router.push({name: 'beerform' });
+        },
+
+        pushToUpdateBrewery(){
+            this.$router.push({name: 'updatebrewery' });
+        },
 
 deleteBrewery() {
       applicationService;
