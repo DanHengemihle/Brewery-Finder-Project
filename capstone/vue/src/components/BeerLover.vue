@@ -106,11 +106,7 @@ this.breweries=response.data;
 };
 </script>
 
-<<<<<<< HEAD
 <style >
-=======
-<style scoped>
->>>>>>> main
 
 .brewery-list{
 padding-right: 25px;
@@ -131,7 +127,7 @@ display: flex;
 
 table{
   background-color:goldenrod;
-  opacity: 50%;
+  /* opacity: 50%; */
   display: flex;
   flex-direction: column;
   align-items: center;
