@@ -192,6 +192,7 @@ export default {
     "map longitude"
     "map description"
     "map buttons";
+  
 }
 #intro {
     grid-area: intro;

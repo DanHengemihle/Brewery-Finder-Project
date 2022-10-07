@@ -124,6 +124,7 @@ display: flex;
   box-sizing: border-box;
 }
 
+
 table{
   background-color:goldenrod;
   opacity: 50%;
