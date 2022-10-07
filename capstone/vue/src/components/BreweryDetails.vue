@@ -12,11 +12,11 @@
 </div>
 
 <div class="website">
-    <a v-bind:href="brewery.websiteUrl" target="_blank"><h3> {{brewery.website_url}}</h3></a>
+    <a v-bind:href="brewery.websiteUrl" target="_blank"><h3> {{brewery.websiteUrl}}</h3></a>
 </div>
 
 <div class="description">
-    <a v-bind:href="brewery-description" target="_blank"><h2>{{brewery.description}}</h2></a>
+<h2>{{brewery.hoursOfOperation}}</h2>
 </div>
 </div>
 <router-link id="updatebrewery" :to="{name: 'updatebrewery' }" v-if="$store.state.user.role == 'ROLE_BREWER'">Update Brewery</router-link>
