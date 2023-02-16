@@ -1,22 +1,6 @@
 <template>
   <body>
 
-<!-- <div id="details"> -->
-  <!-- <div class="heading">
-    <h1 class="brewery-name"> {{brewery.name}}</h1>
-<div class="address">
-  <h2><span v-if="brewery.state" >{{brewery.state}},</span>{{brewery.city}}</h2>
-</div>
-<div class="website">
-  <a v-bind:href="brewery.websiteURL" target="_blank"><h3>{{brewery.websiteURL}}</h3></a>
-</div>
-
-<div class="show-form-button">
-  <button href="#" v-on:click.prevent="showForm=true"
-v-if="showForm === false && this.$store.state.brewer_id === this.brewery.brewer_id">
-Show Form </button>
-</div>
-</div> -->
 
     <div id="registerBrewery" class="text-center">
       <img :src="'/Logo.png'" />
@@ -227,7 +211,6 @@ export default {
         websiteUrl: this.$store.state.activeBrewery.websiteUrl,
         hoursOfOperation: this.$store.state.activeBrewery.hoursOfOperation,
          
-        // hoursOfOp: [{day: []}, {starting: []}, {ending: []}],
         
       },
       hours_of_operation: [],
@@ -265,9 +248,6 @@ export default {
       
       this.hours_of_operation.push(this.days + " " + this.startingHour + " - " + this.endingHour);
       this.brewery.hoursOfOperation = this.hours_of_operation.toString();
-      // this.brewery.hoursOfOp[0].push(this.brewery.days);
-      // this.brewery.hoursOfOp.starting.push(this.brewery.startingHour);
-      // this.brewery.hoursOfOp.ending.push(this.brewery.endingHour);
       
      
     },
@@ -297,7 +277,7 @@ export default {
   },
   selectedPhone(event){
 this.brewery.phone = event.target.value;
-// this.$store.state.activeBrewery.phone = event.target.value;
+
   },
   selectedUrl(event){
 this.brewery.websiteUrl = event.target.value;
